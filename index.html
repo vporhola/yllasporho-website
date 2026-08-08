@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ylläs – Kuule omat ajatuksesi | Ylläsporho</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,700;0,900;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #222;
+            line-height: 1.7;
+            background-color: #fcfcfc;
+        }
+
+        /* Yläosa */
+        header {
+            text-align: center;
+            padding: 2rem 1rem 1.2rem;
+            background-color: #ffffff;
+            border-bottom: 1px solid #eee;
+        }
+
+        .site-title {
+            font-family: 'Merriweather', serif;
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: #111;
+            letter-spacing: -0.5px;
+        }
+
+        .site-domain {
+            font-size: 0.85rem;
+            color: #777;
+            margin-bottom: 1.2rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #111;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+        }
+
+        nav a:hover {
+            color: #666;
+        }
+
+        /* Hero-osio (alkuperäinen näyttävä malli) */
+        .hero {
+            position: relative;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #ffffff;
+            padding: 4rem 1.5rem;
+            overflow: hidden;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.45);
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-content h1 {
+            font-family: 'Merriweather', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1.15;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 12px rgba(0,0,0,0.6);
+        }
+
+        .hero-content p.subtitle {
+            font-size: 1.25rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            text-shadow: 0 1px 6px rgba(0,0,0,0.6);
+        }
+
+        /* Napit */
+        .btn-primary {
+            display: inline-block;
+            background-color: #111111;
+            color: #ffffff !important;
+            padding: 0.95rem 2.2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #2a2a2a;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+        }
+
+        .btn-secondary {
+            display: inline-block;
+            background-color: #111111;
+            color: #ffffff !important;
+            padding: 0.9rem 2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+        }
+
+        .btn-secondary:hover {
+            background-color: #2a2a2a;
+            transform: translateY(-2px);
+        }
+
+        /* Pääsisältöalueet */
+        .container {
+            max-width: 1050px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem;
+        }
+
+        /* Fiilis-osio */
+        .feel-section {
+            text-align: center;
+            max-width: 750px;
+            margin: 0 auto 5rem auto;
+        }
+
+        .feel-section h2 {
+            font-family: 'Merriweather', serif;
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: #111;
+        }
+
+        .feel-section p {
+            font-size: 1.1rem;
+            color: #444;
+            margin-bottom: 1.2rem;
+        }
+
+        /* 3-Kortin Grid elämyksille (KUVALLINEN) */
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 6rem;
+        }
+
+        .exp-card {
+            background: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #eee;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .exp-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        }
+
+        .exp-card-image {
+            width: 100%;
+            height: 180px;
+            overflow: hidden;
+        }
+
+        .exp-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .exp-card:hover .exp-card-image img {
+            transform: scale(1.05);
+        }
+
+        .exp-card-content {
+            padding: 1.8rem;
+            flex-grow: 1;
+        }
+
+        .exp-card-content h3 {
+            font-family: 'Merriweather', serif;
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: #111;
+        }
+
+        .exp-card-content p {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* Majoitus-osio */
+        .accommodation-section {
+            margin-bottom: 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 3rem auto;
+        }
+
+        .section-header h2 {
+            font-family: 'Merriweather', serif;
+            font-size: 2.2rem;
+            color: #111;
+            margin-bottom: 0.8rem;
+        }
+
+        .section-header p {
+            font-size: 1.05rem;
+            color: #555;
+        }
+
+        .accommodation-teaser {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            border: 1px solid #eaeaea;
+        }
+
+        .acc-teaser-image {
+            width: 100%;
+            height: 100%;
+            min-height: 320px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .acc-teaser-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .acc-teaser-content h3 {
+            font-family: 'Merriweather', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #111;
+        }
+
+        .acc-teaser-content p {
+            color: #444;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #ffffff;
+            border-top: 1px solid #eee;
+            padding: 3rem 1rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.8rem;
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: #666;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .footer-links a:hover {
+            color: #111;
+        }
+
+        .footer-copy {
+            font-size: 0.85rem;
+            color: #888;
+        }
+
+        /* Responsiivisuus */
+        @media (max-width: 850px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero-content p.subtitle {
+                font-size: 1.05rem;
+            }
+            .accommodation-teaser {
+                grid-template-columns: 1fr;
+                padding: 1.8rem;
+                gap: 2rem;
+            }
+            .acc-teaser-image {
+                height: 240px;
+                min-height: auto;
+            }
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="site-title">Ylläsporho</div>
+        <div class="site-domain">yllasporho.com</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Etusivu</a></li>
+                <li><a href="yllasporho.html">Majoitus</a></li>
+                <li><a href="mahdollisuudet.html">Mahdollisuudet</a></li>
+                <li><a href="yhteydenotto.html">Yhteystiedot</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- HERO: Slogan keskiössä -->
+    <section class="hero" id="etusivu">
+        <video autoplay muted loop playsinline defaultMuted poster="images/kuertunturi2.jpg" class="hero-video">
+            <source src="videos/kuertunturi.mp4" type="video/mp4">
+        </video>
+        
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content">
+            <h1>Kuule omat ajatuksesi.</h1>
+            <p class="subtitle">Astu ulos arjesta ja anna Lapin seitsemän tunturin muistuttaa, miltä aito hiljaisuus ja vapaat maastot tuntuvat.</p>
+            <a href="mahdollisuudet.html" class="btn-primary">Tutustu Ylläksen elämyksiin →</a>
+        </div>
+    </section>
+
+    <!-- PÄÄSISÄLTÖ -->
+    <main class="container">
+        
+        <!-- TEKSTI: Miksi Ylläs? -->
+        <section class="feel-section">
+            <h2>Pysähdy. Hengitä. Hae tunturista voimaa.</h2>
+            <p>
+                Ylläs ei ole vain matkakohde, se on mielentila. Täällä seitsemän tunturin ympäröimänä arjen kiireet haihtuvat pakkasilmaan ja pohjoisen ainutlaatuinen valo tekee jokaisesta hetkestä erityisen.
+            </p>
+            <p>
+                Olipa haaveissasi tykkylumisten puiden siimeksessä mutkittelevat murtomaaladut, rinteet, maastopyöräily tunturimaisemissa tai ilta revontulien loisteessa, Ylläs tarjoaa puitteet joita et unohda.
+            </p>
+        </section>
+
+        <!-- EROTTUVUUSTEKIJÄT (KUVALLISET KORTIT) -->
+        <section class="experience-grid">
+            
+            <div class="exp-card">
+                <div class="exp-card-image">
+                    <img src="images/latu.jpg" alt="Hoidettu latu ja tunturimaisema Ylläksellä">
+                </div>
+                <div class="exp-card-content">
+                    <h3>Suomen laajin reitistö</h3>
+                    <p>330 kilometriä hoidettuja latuja sekä satoja kilometrejä talvipyöräily- ja lumikenkäilyreittejä alkaa lähes kotioveltasi.</p>
+                </div>
+            </div>
+
+            <div class="exp-card">
+                <div class="exp-card-image">
+                    <img src="images/puro.jpg" alt="Tunturipuro ja metsämaisema Ylläksellä">
+                </div>
+                <div class="exp-card-content">
+                    <h3>Aito tunturiluonto</h3>
+                    <p>Pallas-Yllästunturin kansallispuiston puhdas ilma ja hiljaisuus tarjoavat tilaisuuden kokea aitoa pohjoisen rauhaa.</p>
+                </div>
+            </div>
+
+            <div class="exp-card">
+                <div class="exp-card-image">
+                    <img src="images/tykky.jpg" alt="Revontulet ja tykkylumi Lapin yössä">
+                </div>
+                <div class="exp-card-content">
+                    <h3>Kaamoksen ja valon taikaa</h3>
+                    <p>Syksyn ruska, talven tykkylumi ja revntulet sekä keskikesän yötön yö ovat jokainen oma elämyksensä.</p>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- MAJOITUSMAHDOLLISUUDET -->
+        <section id="majoitus" class="accommodation-section">
+            
+            <div class="section-header">
+                <h2>Majoitusmahdollisuudet</h2>
+                <p>Majoitu mukavasti Äkäslompolossa ja nauti tunturiluonnon rauhasta lähellä palveluita.</p>
+            </div>
+
+            <div class="accommodation-teaser">
+                <div class="acc-teaser-image">
+                    <img src="images/ulko_talvi.jpg" alt="Tunnelmallista majoitusta Ylläksellä">
+                </div>
+                <div class="acc-teaser-content">
+                    <h3>Tukikohtasi tunturissa</h3>
+                    <p>
+                        Onnistuneen tunturipäivän jälkeen majoituksen pitää tarjota puitteet levolle: saunan lämpöä, takkatulen loimua ja rauhallista sijaintia reittien äärellä.
+                    </p>
+                    <p>
+                        Tarjoamme laadukkaita ja tunnelmallisia majoitusvaihtoehtoja paikoissa, joissa on helppo viihtyä ja vetää henkeä.
+                    </p>
+                    <a href="yllasporho.html" class="btn-secondary">Tutustu majoitusvaihtoehtoihin →</a>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="site-title" style="font-size: 1.5rem;">Ylläsporho</div>
+            <ul class="footer-links">
+                <li><a href="index.html">Etusivu</a></li>
+                <li><a href="yllasporho.html">Majoitus</a></li>
+                <li><a href="mahdollisuudet.html">Mahdollisuudet</a></li>
+                <li><a href="yhteydenotto.html">Yhteystiedot</a></li>
+            </ul>
+            <p class="footer-copy">© Ylläsporho – Äkäslompolo, Ylläs. Kaikki oikeudet pidätetään.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

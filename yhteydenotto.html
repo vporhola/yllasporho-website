@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ylläsporho – Vuokramökki Ylläs</title>
+    
+    <!-- Tuodaan serif-fontti otsikoille (Merriweather) ja sans-serif leipätekstille (Inter/Roboto) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script>
+    function onContactSubmit(token) {
+        document.getElementById("contact-form").submit();
+    }
+    </script>
+    
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background-color: #fff;
+        }
+
+        header {
+            text-align: center;
+            padding: 2.5rem 1rem 1.5rem;
+            background-color: #ffffff;
+        }
+
+        .site-title {
+            font-family: 'Merriweather', serif;
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: #111;
+            letter-spacing: -0.5px;
+        }
+
+        .site-domain {
+            font-size: 0.85rem;
+            color: #777;
+            margin-bottom: 1.5rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #111;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+        }
+
+        nav a:hover {
+            color: #555;
+        }
+
+        .hero {
+            position: relative;
+            min-height: 60vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), 
+                        url(images/yhteydenotto.jpg) center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #ffffff;
+            padding: 3rem 1.5rem;
+        }
+
+        .hero-content {
+            max-width: 680px;
+        }
+
+        .hero h1 {
+            font-family: 'Merriweather', serif;
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            font-weight: 400;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background-color: #ffffff;
+            color: #111111;
+            padding: 0.75rem 1.75rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            transition: transform 0.15s ease, background-color 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-1px);
+        }
+
+        .contact-section {
+            background-color: #b0b7bd; /* Ruutukaappauksen harmaa tausta */
+            padding: 4rem 1.5rem;
+            color: #111;
+        }
+
+        .contact-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-form h3, .contact-info h3 {
+            font-family: 'Merriweather', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+            background-color: #fff;
+        }
+
+        .btn-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: #25D366;
+            color: white;
+            padding: 0.75rem 1.25rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 1.5rem 0;
+        }
+
+        footer {
+            background-color: #ffffff;
+            border-top: 1px solid #eee;
+            padding: 2.5rem 1rem;
+            text-align: center;
+            margin-top: auto;
+            flex-shrink: 0;
+        }
+
+        .footer-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: #666;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .footer-links a:hover {
+            color: #111;
+        }
+
+        .footer-copy {
+            font-size: 0.85rem;
+            color: #888;
+        }
+
+        @media (max-width: 768px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            nav ul {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="site-title">Ylläsporho</div>
+        <div class="site-domain">yllasporho.com</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Etusivu</a></li>
+                <li><a href="yllasporho.html">Majoitus</a></li>
+                <li><a href="mahdollisuudet.html">Mahdollisuudet</a></li>
+                <li><a href="yhteydenotto.html">Yhteystiedot</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="etusivu">
+        <div class="hero-content">
+            <h1>Ota yhteyttä</h1>
+            <h2></h2>
+            <p>
+                Haluatko kuulla omat ajatuksesi ja nauttia Lapin luonnosta? Ota yhteyttä ja kerro meille, miten voimme auttaa sinua tekemään lomastasi unohtumattoman.
+            </p>
+            <a href="#yhteystiedot" class="btn-primary">Ota yhteyttä!</a>
+        </div>
+    </section>
+
+        <section class="contact-section" id="yhteystiedot">
+        <div class="contact-container">
+            
+            <!-- Vasen sarake: Lomake -->
+            <div class="contact-form">
+                <h3>Jätä viesti</h3>
+                <form id="contact-form" action="https://formspree.io/f/xkodlobe" method="POST">
+    
+        <div class="form-group">
+        <label for="name">Nimi / Name (Vaaditaan)</label>
+        <input type="text" id="name" name="nimi" required>
+        </div>
+
+        <div class="form-group">
+        <label for="email">Email (Vaaditaan)</label>
+        <input type="email" id="email" name="_replyto" required>
+        </div>
+
+        <div class="form-group">
+        <label for="message">Viesti</label>
+        <textarea id="message" name="viesti" rows="4"></textarea>
+        </div>
+
+        <button class="btn-primary g-recaptcha" 
+            data-sitekey="6LcfEnAtAAAAAHG8WU-7ovUMRPgIVP8lG80f7kig  " 
+            data-callback="onContactSubmit" 
+            data-action="submit" 
+            style="border:none; cursor:pointer;">
+        Lähetä
+        </button>
+        </form>
+            </div>
+
+            <div class="contact-info">
+                <h3>Ylläsporho</h3>
+                
+                <p><strong>Email</strong></p>
+                <p style="margin-bottom: 1rem;">yllas.porho@gmail.com</p>
+
+                <a href="https://wa.me/358401234567" class="btn-whatsapp" target="_blank">
+                    💬 Chat on WhatsApp
+                </a>
+
+                <p style="margin-top: 1rem;"><strong>Puhelin / Phone</strong></p>
+                <p>+358 40 123 4567</p>
+            </div>
+
+        </div>
+    </section>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="site-title" style="font-size: 1.5rem;">Ylläsporho</div>
+            <ul class="footer-links">
+                <li><a href="index.html">Etusivu</a></li>
+                <li><a href="yllasporho.html">Majoitus</a></li>
+                <li><a href="mahdollisuudet.html">Mahdollisuudet</a></li>
+                <li><a href="yhteydenotto.html">Yhteystiedot</a></li>
+            </ul>
+            <p class="footer-copy">© Ylläsporho – Äkäslompolo, Ylläs. Kaikki oikeudet pidätetään.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

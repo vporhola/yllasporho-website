@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahdollisuudet – Ylläsporho</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+* {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #222;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 2.5rem 1rem 1.5rem;
+            background-color: #ffffff;
+            border-bottom: 1px solid #eee;
+        }
+
+        .site-title {
+            font-family: 'Merriweather', serif;
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: #111;
+            letter-spacing: -0.5px;
+        }
+
+        .site-domain {
+            font-size: 0.85rem;
+            color: #777;
+            margin-bottom: 1.5rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #111;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+        }
+
+        nav a.active, nav a:hover {
+            color: #555;
+            text-decoration: underline;
+        }
+
+        /*kuva ja teksti*/
+.hero {
+        position: relative;
+        min-height: 60vh;
+        background:linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), 
+        url(images/tunturi.jpg) center/cover no-repeat;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #ffffff;
+        padding: 3rem 1.5rem;
+        }
+
+.hero-content {
+        max-width: 680px;
+        }
+
+.hero h1 {
+        font-family: 'Merriweather', serif;
+        font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+.hero h2 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        }
+
+.hero p {
+        font-size: 0.95rem;
+        margin-bottom: 2rem;
+        opacity: 0.95;
+        font-weight: 400;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        /* KORTTI-ASOTTELU (GRID) */
+        .spot-card {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 2.5rem;
+            align-items: stretch;
+        }
+
+        /* Joka toisessa kortissa kuva oikealla */
+        .spot-card.reverse {
+            direction: rtl;
+        }
+        .spot-card.reverse > * {
+            direction: ltr;
+        }
+
+        /* 1. KUVAKORTIN SÄILIÖ (Pakotetaan oikea koko ja layer-rakenne) */
+        .spot-card .image-card, 
+        .spot-card .spot-image-wrapper {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            width: 100%;
+            height: 100%;
+            min-height: 320px; /* Varmistaa riittävän korkeuden */
+        }
+
+        /* 2. KUVA: Oletuksena tummennettu ja harmaannutettu */
+        .image-card img, 
+        .spot-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: brightness(0.75) saturate(0.65) !important;
+            transition: filter 0.4s ease, transform 0.4s ease !important;
+        }
+
+        /* 3. TEKSTI KUVAN PÄÄLLÄ (Piilossa alhaalla perustilassa) */
+        .image-overlay-text {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1.2rem 1rem 0.8rem;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
+            color: #ffffff;
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-align: center;
+            
+            /* Efekti: haalistettu & leijuu alhaalta */
+            opacity: 0;
+            transform: translateY(12px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        /* 4. HOVER-EFEKTI: Hiiri tuodaan kuvan päälle */
+        .image-card:hover img, 
+        .spot-image-wrapper:hover img {
+            filter: brightness(1.0) saturate(1.0) !important;
+            transform: scale(1.03);
+        }
+
+        .image-card:hover .image-overlay-text,
+        .spot-image-wrapper:hover .image-overlay-text {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .spot-content h2 {
+            font-family: 'Merriweather', serif;
+            font-size: 1.5rem;
+            color: #111;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .spot-content h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin: 1.2rem 0 0.6rem 0;
+            color: #333;
+        }
+
+        .spot-content p {
+            margin-bottom: 1rem;
+            color: #444;
+            font-size: 0.95rem;
+        }
+
+        .spot-content ul {
+            list-style: none;
+            margin-top: 0.5rem;
+        }
+
+        .spot-content ul li {
+            position: relative;
+            padding-left: 1.3rem;
+            margin-bottom: 0.6rem;
+            color: #444;
+            font-size: 0.92rem;
+        }
+
+        .spot-content ul li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #111;
+            font-weight: bold;
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+
+        /* Nostolaatikko (Callout) */
+        .callout {
+            background-color: #f4f6f8;
+            border-left: 4px solid #111111;
+            padding: 1rem 1.2rem;
+            margin-top: 1.5rem;
+            font-style: italic;
+            font-size: 0.92rem;
+            border-radius: 0 6px 6px 0;
+            color: #333;
+        }
+
+        .callout strong {
+            font-style: normal;
+            color: #111;
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        /* Mobiiliasettelu */
+        @media (max-width: 850px) {
+            .spot-card, .spot-card.reverse {
+                grid-template-columns: 1fr;
+                direction: ltr;
+                padding: 1.5rem;
+            }
+            .spot-card .image-card,
+            .spot-card .spot-image-wrapper {
+                min-height: 240px;
+                height: 240px;
+            }
+        }
+        /* Piilotetaan lisää-osio oletuksena */
+    .more-text {
+    display: none;
+    margin-top: 1rem;
+    }
+
+    /* Kun 'active'-luokka lisätään, teksti tulee näkyviin */
+    .more-text.is-open {
+    display: block;
+    }
+
+    /* "Lue lisää" -napin tyylit */
+    .read-more-btn {
+    background: none;
+    border: none;
+    color: #0056b3; /* Voit vaihtaa teemavärisi mukaiseksi */
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    padding: 0.4rem 0;
+    margin-bottom: 1rem;
+    display: inline-block;
+    text-decoration: underline;
+    }
+
+    .read-more-btn:hover {
+    color: #003366;
+    }
+
+           /* ALAPALKKI (FOOTER) */
+        footer {
+            background-color: #ffffff;
+            border-top: 1px solid #eee;
+            padding: 2.5rem 1rem;
+            text-align: center;
+            margin-top: auto;
+            flex-shrink: 0;
+        }
+
+        .footer-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: #666;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .footer-links a:hover {
+            color: #111;
+        }
+
+        .footer-copy {
+            font-size: 0.85rem;
+            color: #888;
+        }
+
+        </style>
+</head>
+<body>
+
+    <header>
+        <div class="site-title">Ylläsporho</div>
+        <div class="site-domain">yllasporho.com</div>
+<nav>
+            <ul>
+                <li><a href="index.html">Etusivu</a></li>
+                <li><a href="yllasporho.html">Majoitus</a></li>
+                <li><a href="mahdollisuudet.html">Mahdollisuudet</a></li>
+                <li><a href="yhteydenotto.html">Yhteystiedot</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <section class="hero" id="etusivu">
+    <div class="hero-content">
+    <h1>Ylläksen mahdollisuudet & elämykset
+    </h1>
+    <p>Ylläksen alue tarjoaa monipuoliset mahdollisuudet vaikuttua. Ylläs-Pallastunturin kansallispuisto tarjoaa jotain sellaista mitä ei Suomessa monesta paikkaa löydy. Luonnon erilaiset muodot, värit ja hiljaisuus on jotain kokemisen arvoista. Luonnossa akut latautuvat ja kuulet jälleen omat ajatukset.
+    </p>
+    </div>
+    </section>
+
+    <main class="container">
+
+       <!-- KOTAMAJA -->
+        <article class="spot-card">
+            <div class="image-card">
+        <img src="images/kotamaja.jpg" alt="Kotamaja,Äkäslompolo">
+        <div class="image-overlay-text">Kotamaja, Äkäslompolo</div>
+        </div>
+            <div class="spot-content">
+                <h2>Kotamaja – Legendaarinen Kahvila</h2>
+                <p>
+                    Ylläksen sydämessä sijaitseva Kotamaja on paljon enemmän kuin vain kahvila. Se on elämys, joka jää mieleen. Jo vuosikymmenten ajan Kotamaja on tarjonnut vierailijoilleen lämpimän ja kutsuvan paikan rentoutua, nauttia herkullisista leivonnaisista ja ihailla henkeäsalpaavia tunturimaisemia.</p>
+                <h3>Mikä tekee Kotamajasta erityisen?</h3>
+                 <ul>
+                    <li><strong>Ainutlaatuinen tunnelma:</strong> Kotamajan kodikas sisustus ja perinteinen lappilainen tyyli luovat viihtyisän ilmapiirin, jossa jokainen vieras tuntee olonsa tervetulleeksi.</li>
+                    <li><strong>Herkulliset tarjoilut:</strong> Valikoimasta löytyy suussa sulavia leivonnaisia, tuoreita voileipiä ja tietenkin perinteistä lappilaista poronkäristystä. Kaikki valmistetaan rakkaudella ja paikallisista raaka-aineista.</li>
+                    <li><strong>Upeat maisemat:</strong>Kotamaja sijaitsee keskellä Ylläksen kauneinta luontoa. Ikkunoista avautuvat näkymät tuntureille ja metsille, jotka tarjoavat täydellisen taustan rentoutumiselle.</li>
+                    <li><strong>Aktiviteetit ympäri vuoden:</strong> Olitpa sitten hiihtämässä, vaeltamassa tai vain nauttimassa luonnon rauhasta, Kotamaja on täydellinen taukopaikka. Talvella voi lämmitellä takkatulen ääressä ja kesällä nauttia terassin auringosta.</li>
+                </ul>
+
+                <div class="callout">
+                    <strong>Koe Kotamajan taika osana Ylläksen elämyksiä!</strong>
+                        Ylläksellä on paljon tarjottavaa ja Kotamaja on yksi niistä paikoista, jotka tekevät vierailusta erityisen. Tule ja koe itse, miksi Kotamaja on Ylläksen rakastetuin kahvila.</div>
+            </div>
+        </article>
+
+        <!-- KUERLINKAT -->
+        <article class="spot-card reverse">
+            <div class="image-card">
+            <img src="images/kuerlinkat.jpg" alt="Kuerlinkat">
+            <div class="image-overlay-text">Kuerlinkat, Äkäslompolo</div>
+            </div>
+            <div class="spot-content">
+                <h2>Kuerlinkat – Luonnon rauhaa ja seikkailua</h2>
+                <p>
+                    Ylläksen monipuolinen luonto tarjoaa elämyksiä ympäri vuoden ja yksi sen helmistä on Kuerlinkat. Tämä upea kohde yhdistää luonnon rauhan ja seikkailun, tarjoten unohtumattomia kokemuksia kaikille vierailijoille.
+                </p>
+                <h3>Mikä tekee Kuerlinkoista erityisen?</h3>
+                <ul>
+                    <li><strong>Henkeäsalpaavat maisemat:</strong>Kuerlinkat sijaitsevat Ylläksen kauneimpien maisemien keskellä. Täällä voit nauttia rauhallisista kävelyretkistä, ihailla tunturimaisemia ja hengittää raikasta Lapin ilmaa.</li>
+                    <li><strong>Monipuoliset aktiviteetit:</strong>Kuerlinkat tarjoavat tekemistä ympäri vuoden. Kesällä voit patikoida, pyöräillä tai vaikka kalastaa alueen kirkkaissa vesissä. Kuerlinkat toimivat myös kylminä kuukausina. Putouksen päälle muodostuu jäinen ja luminen katto.</li>
+                    <li><strong>Luonnonrauha:</strong>Kuerlinkat ovat täydellinen paikka irtautua arjen kiireistä ja nauttia luonnon rauhasta. Alueen hiljaisuus ja kauneus tarjoavat täydellisen ympäristön rentoutumiselle ja mielenrauhan löytämiselle.</li>
+                    <li><strong>Perheystävällisyys:</strong>Kuerlinkat sopivat erinomaisesti myös perheille. Alueella on helppoja reittejä ja turvallisia paikkoja, joissa lapset voivat leikkiä ja tutkia luontoa.</li>
+                </ul>
+
+                <!-- TEKSTILAATIKKO -->
+                <div class="callout">
+                    <strong>Koe Kuerlinkat osana Ylläksen elämyksiä!</strong>
+                    Ylläksellä on paljon tarjottavaa ja Kuerlinkat ovat yksi niistä paikoista, jotka tekevät vierailusta erityisen. Tule ja koe itse, miksi Kuerlinkat ovat Ylläksen rakastetuimpia luontokohteita.
+                </div>
+            </div>
+        </article>
+
+        <!-- PAKASAIVO -->
+        <article class="spot-card">
+            <div class="image-card">
+            <img src="images/pakasaivo.jpg" alt="Pakasaivo">
+            <div class="image-overlay-text">Pakasaivo, Kolari</div>
+            </div>
+            
+            <div class="spot-content">
+                <h2>Pakasaivo – Lapin salaperäinen helmi</h2>
+                
+                <div class="content-block">
+
+                <p>Kuvittele paikka, jossa aika pysähtyy ja luonnonvoimat näyttävät voimansa. Pakasaivo, joka sijaitsee Kolarissa, on juuri tällainen paikka. Tämä upea rotkojärvi, jota ympäröivät jylhät kallioseinämät, tunnetaan myös nimellä "Lapin helvetti". Pakasaivo on saivojärvi, jonka syvyys on jopa 60 metriä ja sen kristallinkirkas vesi heijastaa taivaan kauneuden kuin peili.
+                </p>
+                
+                <div class="more-text">
+                <p>Pakasaivo ei ole vain luonnonihme, vaan myös kulttuurihistoriallisesti merkittävä kohde. Saamelaisten pyhänä paikkana tunnettu järvi ja sen läheisyydessä sijaitseva Kirkkopahta, suuri uhrikivi, kertovat alueen rikkaasta perinteestä ja mystiikasta. Täällä voit tuntea historian havinan ja kokea luonnon pyhyyden.
+                </p>
+                </div>
+
+
+                <button type="button" class="read-more-btn" onclick="toggleReadMore(this)">Lue lisää ▼</button>
+
+                    <h3>Miksi sinun pitäisi vierailla?</h3>
+                <ul>
+                    <li><strong>Jylhät kalliot:</strong>Pakasaivon jylhät kalliot ja syvä, kirkas vesi tarjoavat unohtumattoman visuaalisen elämyksen.</li>
+                    <li><strong>Kulttuuriperintö:</strong>Tutustu saamelaisten pyhään paikkaan ja koe alueen mystinen tunnelma.</li>
+                    <li><strong>Retkeily:</strong>Alueen polut ja näköalapaikat tarjoavat upeat puitteet retkeilyyn ja luonnon ihailuun.</li>
+                </ul>
+
+                <!-- TEKSTILAATIKKO -->
+                <div class="callout">
+                    <strong>Pakasaivo – Luonto ja historia kohtaavat</strong>
+                    Pakasaivo on paikka, jossa luonto ja historia kohtaavat, tarjoten kävijöilleen ainutlaatuisen ja syvällisen kokemuksen. Tule ja koe itse, miksi Pakasaivo on yksi Lapin kiehtovimmista kohteista!
+                </div>
+            </div>
+        </article>
+
+        <!-- KUERTUNTURI -->
+        <article class="spot-card reverse">
+            <div class="image-card">
+            <img src="images/kuertunturi.jpg" alt="Kuertunturi, Äkäslompolo">
+            <div class="image-overlay-text">Kuertunturi, Äkäslompolo</div>
+            </div>
+            <div class="spot-content">
+                <h2>Kuertunturi – Luonnon rauhaa ja maisemia</h2>
+            <div class="content-block">
+            <p>
+            Kuertunturi on yksi Ylläksen alueen helppopääsyisimmistä tuntureista, ja se tarjoaa upeita maisemia sekä rentouttavia retkeilykokemuksia. Tämä 446 metriä korkea tunturi sijaitsee Äkäslompolon kylän läheisyydessä, ja se on erinomainen kohde päiväretkille.
+            </p>
+
+            <div class="more-text">
+            <p>
+            Kuertunturin huipulle johtava reitti on noin 2 kilometriä pitkä ja mukavan loiva, mikä tekee siitä sopivan myös perheille ja aloittelijoille. Reitti on hyvin merkitty ja kulkee kauniiden metsien läpi, tarjoten mahdollisuuden nauttia Lapin luonnon rauhasta. Huipulle päästyäsi sinua odottavat upeat 360 asteen maisemat, jotka ovat erityisen kauniit auringonlaskun aikaan.
+            </p>
+            </div>
+
+                <button type="button" class="read-more-btn" onclick="toggleReadMore(this)">Lue lisää ▼</button>
+
+                <h3>Miksi kannattaa vierailla?</h3>
+                <ul>
+                    <li>Helppo ja saavutettava reitti. Sopii niin aloittelijoille kuin perheille.</li>
+                    <li>Upeat 360 asteen maisemat auringonlaskun aikaan.</li>
+                    <li>Toimii ympäri vuoden. Mahdollisuus patikointiin tai lumikenkäilyyn.</li>
+                    <li>Läheiset palvelut, kuten Velhon Kota retken lomassa</li>
+                </ul>
+
+                <!-- TEKSTILAATIKKO -->
+                <div class="callout">
+                    <strong>Täydellinen retkikohde!</strong>
+                    Kuertunturi on täydellinen kohde, jos haluat kokea Lapin luonnon kauneuden helposti ja mukavasti..
+                </div>
+            </div>
+        </article>
+       
+        <!-- PIRUNKURU -->
+<article class="spot-card"> <!-- Lisää 'reverse' luokan perään (esim. class="spot-card reverse"), jos haluat kuvan oikealle -->
+    
+        <div class="image-card">
+        <img src="images/pirunkuru.jpg" alt="Pirunkuru,Äkäslompolo">
+        <div class="image-overlay-text">Pirunkuru, Äkäslompolo</div>
+        </div>
+    <div class="spot-content">
+        <h2>Pirunkuru – tunturin villi voimanpesä</h2>
+        <div class="content-block"></div>
+        <p>
+            Kuvittele paikka, jossa tunturien karuus ja luonnon voima kohtaavat. Pirunkuru on yksi Ylläksen tunnetuimmista kuruista, jyrkkärinteinen rotkolaakso, jonka kivikkoiset seinämät ja vaikuttavat maisemat tekevät siitä unohtumattoman retkikohteen. Jokainen askel kurun rinteillä kertoo tarinaa jääkausien muovaamasta Lapista, jossa luonto näyttää voimansa kaikkein vaikuttavimmillaan. 
+        <div class="more-text">
+        <p>
+            Pirunkuru ei ole vain näyttävä luontokohde, vaan myös elämys, joka palkitsee kulkijansa. Nousun aikana avautuvat maisemat tuntureille ja laaksoihin muistuttavat siitä, kuinka pieni ihminen on suuren luonnon keskellä. 
+        </p>
+         </div>
+
+        <button type="button" class="read-more-btn" onclick="toggleReadMore(this)">Lue lisää ▼</button>
+
+        <h3>Mikä tekee tästä erityisen?</h3>
+        <ul>
+            <li><strong>Jylhät maisemat:</strong>Kurun kivikkoiset rinteet ja avarat tunturinäkymät tarjoavat unohtumattomia elämyksiä.</li>
+            <li><strong>Luonnon voima:</strong>Pirunkuru on näyttävä esimerkki Lapin karusta ja koskemattomasta luonnosta.</li>
+            <li><strong>Retkeilyn kohokohta:</strong> Reitti haastaa sopivasti ja palkitsee upeilla maisemilla sekä tunturien raikkaalla ilmalla.</li>
+        </ul>
+
+        <div class="callout">
+            <strong>Pirunkuru – Ylläksen ikoninen kuru</strong>
+            Kurussa jylhät maisemat, kivikkorinteet ja tunturien puhtain ilma tekevät retkestä elämyksen. Jyrkästä noususta huolimatta kurun polku on hyvin merkitty ja turvallinen, joten se sopii monentasoisille retkeilijöille.
+        </div>
+    </div>
+</article>
+
+<!-- UUSI KOHDE2 -->
+<article class="spot-card reverse"> <!-- Lisää 'reverse' luokan perään (esim. class="spot-card reverse"), jos haluat kuvan oikealle -->
+        <div class="image-card">
+        <img src="images/kellostapulinkuru.jpg" alt="Kellostapulinkuru, Ylläs">
+        <div class="image-overlay-text">Kellostapulinkuru, Äkäslompolo</div>
+        </div>    <div class="spot-content">
+        
+            <h2>Kellostapulinkuru – </h2>
+        <div class="content-block">
+        <p>
+        Kuvittele kulkevasi keskellä kivimerta, kahden tunturin välisessä luonnon muovaamassa käytävässä. Kellostapulinkuru sijaitsee Keskisenlaen ja Kellostapulitunturin välissä, aivan Ylläksen tunturialueen sydämessä. Jo ensimmäiset askeleet kertovat, ettei kyseessä ole tavallinen metsäpolku. Kurun molemmin puolin kohoavat jyrkät rakkarinteet ja ympärillä avautuu maisema, jonka karu kauneus jää mieleen pitkäksi aikaa. 
+        </p>
+        <div class="more-text">
+        <p>Kesällä ja syksyllä kurun halki kulkeva reitti houkuttelee patikoijia ja maastopyöräilijöitä kokemaan yhden Ylläksen vaikuttavimmista tunturimaisemista. Talvella sama reitti muuttuu osaksi laajaa latuverkostoa, jolloin lumipeitteinen kuru tarjoaa aivan uudenlaisen elämyksen.
+        </p>
+        <p>Kellostapulinkuru tunnetaan myös luonnon voimasta. Jyrkät rinteet keräävät talvisin valtavia lumimassoja, ja alueella esiintyvät lumivyöryt ovat vuosisatojen ajan muovanneet maisemaa nykyiseen muotoonsa. Ne muistuttavat, että vaikka kuru sijaitsee lähellä Ylläksen palveluita, luonto määrää täällä edelleen omat ehtonsa.
+        </p>
+        </div>
+        <button type="button" class="read-more-btn" onclick="toggleReadMore(this)">Lue lisää ▼</button>
+        <h3>Miksi sinun pitäisi vierailla?</h3>
+        <ul>
+            <li>Vaella keskellä vaikuttavaa rakkakivikkoa kahden tunturin välissä.</li>
+            <li>Koe täysin erilainen tunturimaisema kuin Ylläksen metsäreiteillä.</li>
+            <li>Retkeile, maastopyöräile tai hiihdä samalla reitillä eri vuodenaikoina.</li>
+            <li>Näe omin silmin, miten lumi, jää ja aika ovat muovanneet tunturiluontoa.</li>
+            </ul>
+
+        <!-- TÄMÄ ON OPTIONAALINEN: voit jättää pois tai pitää mukana -->
+        <div class="callout">
+            <strong>Erittäin vaikuttava paikka</strong>
+            Kellostapulinkuru on yksi Ylläksen erikoisimmista luontokohteista, jossa kivimeri, jyrkät rinteet ja tuntureiden avaruus kohtaavat ainutlaatuisella tavalla.
+        </div>
+    </div>
+</article>
+
+    </main>
+    <script>
+    function toggleReadMore(button) {
+    // Etsitään napin yläpuolella oleva piilotettu tekstiosio
+    const moreText = button.previousElementSibling;
+
+    // Vaihdetaan näkyvyyttä
+    if (moreText.classList.contains('is-open')) {
+        moreText.classList.remove('is-open');
+        button.textContent = 'Lue lisää ▼';
+    } else {
+        moreText.classList.add('is-open');
+        button.textContent = 'Näytä vähemmän ▲';
+    }
+    }
+    </script>
+
+        <!-- ALAPALKKI (FOOTER) -->
+    <footer>
+        <div class="footer-content">
+            <div class="site-title" style="font-size: 1.5rem;">Ylläsporho</div>
+            <ul class="footer-links">
+                <li><a href="index.html">Etusivu</a></li>
+                <li><a href="yllasporho.html">Majoitus</a></li>
+                <li><a href="mahdollisuudet.html">Mahdollisuudet</a></li>
+                <li><a href="yhteydenotto.html">Yhteystiedot</a></li>
+            </ul>
+            <p class="footer-copy">© Ylläsporho – Äkäslompolo, Ylläs. Kaikki oikeudet pidätetään.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

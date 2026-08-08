@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Varausehdot – Ylläsporho</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.6;
+            background-color: #fff;
+            color: #000000;
+            margin: 0;
+            padding: 0;
+        }
+
+        .terms-container {
+            max-width: 800px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+            text-align: left; /* Leipäteksti on huomattavasti luettavampaa vasemmalle tasattuna */
+        }
+
+        .terms-container h2 {
+            font-family: 'Merriweather', serif;
+            font-size: 1.4rem;
+            margin: 1.5rem 0 0.5rem 0;
+            color: #111;
+        }
+
+        .terms-container p {
+            margin-bottom: 1.2rem;
+            color: #333;
+            font-size: 0.95rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 2.5rem 1rem 1.5rem;
+            background-color: #ffffff;
+        }
+
+        .site-title {
+            font-family: 'Merriweather', serif;
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: #111;
+            letter-spacing: -0.5px;
+        }
+
+        .site-domain {
+            font-size: 0.85rem;
+            color: #777;
+            margin-bottom: 1.5rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #111;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+        }
+
+        nav a:hover {
+            color: #555;
+        }
+
+        .hero {
+            position: relative;
+            min-height: 40vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), 
+                        url(images/ulko_talvi.jpg) center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #ffffff;
+            padding: 3rem 1.5rem;
+        }
+
+        .hero-content {
+            max-width: 680px;
+        }
+
+        .hero h1 {
+            font-family: 'Merriweather', serif;
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            opacity: 0.95;
+            font-weight: 400;
+        }
+
+        .btn-reserve, 
+        .btn-close-tab {
+            background-color: #0f172a;
+            color: #ffffff !important;
+            padding: 0.8rem 1.6rem;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+        }
+
+        .btn-reserve:hover, 
+        .btn-close-tab:hover {
+            background-color: #1e293b;
+            color: #ffffff !important;
+            transform: translateY(-1px);
+        }
+
+        footer {
+            background-color: #ffffff;
+            border-top: 1px solid #eee;
+            padding: 2.5rem 1rem;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: #666;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .footer-links a:hover {
+            color: #111;
+        }
+
+        .footer-copy {
+            font-size: 0.85rem;
+            color: #888;
+        }
+
+        /* Responsiivisuus */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            nav ul {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="site-title">Ylläsporho</div>
+        <div class="site-domain">yllasporho.com</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Etusivu</a></li>
+                <li><a href="yllasporho.html">Majoitus</a></li>
+                <li><a href="mahdollisuudet.html">Mahdollisuudet</a></li>
+                <li><a href="yhteydenotto.html">Yhteystiedot</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="etusivu">
+        <div class="hero-content">
+            <h1>Varausehdot</h1>
+            <p>Tutustu varausehtoihimme ennen varausta.</p>
+            <p>Lomahuoneiston vuokrauksessa sovelletaan näitä sopimusehtoja. Nämä ehdot sitovat kumpaakin osapuolta sen jälkeen, kun asiakas on maksanut sopimusehdoissa mainitun varausmaksun tai koko vuokran yhdellä kertaa.</p>
+        </div>
+    </section>
+
+    <div style="text-align: center; margin: 1rem 0 0.5rem 0;">
+        <button onclick="window.close();" class="btn-reserve">
+            ✕ Sulje ehdot ja palaa varaukseen
+        </button>
+    </div>
+
+    <main class="terms-container">
+        <h2>Varauksen tekeminen ja maksu</h2>
+        <p>Varauksen tekijän tulee olla varausta tehdessään täysi-ikäinen (18 vuotta täyttänyt). Varauksen voi tehdä soittamalla, sähköpostilla tai muun hyväksyttävän kanavan kautta, jonka jälkeen asiakkaalle lähetetään varausehdot ja lasku.</p>
+        <p>Asiakkaan tulee maksaa aina vähintään varausmaksu (30 % lomakohteen vuokrasta) varauksen yhteydessä. Loppulasku lähetetään asiakkaan sähköpostiin varausmaksun maksamisen jälkeen. Asiakas voi maksaa varauksen kokonaisuudessaan heti, jolloin lopullinen vahvistus ja ajo-ohje lomakohteeseen lähetetään asiakkaan sähköpostiin. Alle 500 euron varauksissa maksetaan koko summa varauksen yhteydessä.</p>
+        <p>Varaus on vahvistettu, kun asiakas on maksanut varausmaksun (30 % lomakohteen vuokrasta) tai koko varauksen summan kerralla. Mikäli varauksen alkuun on 45 vuorokautta tai enemmän ja kokonaissumma on yli 500 euroa, maksetaan summa kahdessa erässä. Loppulasku maksetaan viimeistään 30 päivää ennen loman alkua. Mikäli varauksen alkuun on alle 45 vuorokautta tai vähemmän, maksetaan koko summa heti, jolloin myös varaus astuu voimaan. Mikäli asiakas ei hoida maksuja ajallaan, voidaan varaus peruuttaa ilman erillistä ilmoitusta.</p>
+
+        <h2>Varauksen peruuttaminen ja muuttaminen</h2>
+        <p>Peruutus on aina tehtävä kirjallisesti sähköpostilla osoitteeseen yllas.porho@gmail.com. Peruutus katsotaan tapahtuneeksi sillä hetkellä, jolloin tieto peruutuksesta on tullut sähköpostiin.</p>
+        <p>Jos asiakas peruuttaa varauksen, ei ennakkomaksun osuutta (30% vuokrasta, minimi 150e) palauteta. Mikäli asiakas peruuttaa varauksen vähintään 30 vuorokautta ennen vuokrauksen alkua, maksetut suoritukset palautetaan ennakkomaksun (30%, minimi 150e) ylittävältä osalta.</p>
+        <p>Mikäli varaus peruutetaan myöhemmin kuin 30 vuorokautta ennen vuokrauksen alkua, ei asiakkaan suorittamia maksuja palauteta lainkaan. Sairastumistilanteissa korvauksia voi hakea matkavakuutuksen kautta, joten suosittelemme lisäksi huolehtimaan oman matkavakuutuksen voimassaolosta ja selvittämään vakuutuksen ehdot omasta vakuutusyhtiöstä.</p>
+        <p>Jos lomahuoneistoa ei oteta vastaan, asiakkaalla ei ole oikeutta vuokran palautukseen. Jos asiakas keskeyttää varauksensa ja poistuu lomakohteesta ennen vuokra-ajan päättymistä, ei käyttämättä jääneeltä ajalta makseta korvausta eikä asiakas ole oikeutettu vuokranpalautukseen.</p>
+
+        <h2>Peruutukset COVID-19 tai vast. matkustusrajoitusten johdosta</h2>
+        <p>Matkustusrajoitukset eivät muodosta Force Majeure – tilannetta, koska epidemiassa / pandemiassa asetettavat kansainväliset ja/tai kansalliset matkustusrajoitukset eivät ole ennakoimattomia. Varatessaan mökin asiakas ymmärtää ja sitoutuu siihen, että peruutukseen ja saapumatta jäämiseen sovelletaan normaaleja varaus- ja peruutusehtoja.</p>
+        <p>Yllä todettua sovelletaan myös siinä tapauksessa, että asiakas ei pääse Suomeen/lomakohteeseen lentojen peruuntumisen tai aikataulujen muuttumisen takia. Varatessaan mökin asiakas on tietoinen, että lentoyhtiöt voivat peruuttaa ja muuttaa aikataulujaan epidemian tai pandemian takia eikä kyseessä ole ylivoimainen este, koska kyse ei ole ennakoimattomasta tilanteesta. Suosittelemme huolehtimaan oman matkavakuutuksen voimassaolosta ja selvittämään vakuutuksen ehdot omasta vakuutusyhtiöstä.</p>
+
+        <h2>Vuokranantajan oikeus peruuttaa varaus</h2>
+        <p>Mikäli kyseessä on ylivoimainen este (force majeure), vuokranantaja voi peruuttaa varauksen. Asiakkaalla on tällöin oikeus saada maksamansa summa takaisin kokonaisuudessaan. Jos varaus joudutaan keskeyttämään asiakkaan tai asiakkaan vieraan häiriökäyttäytymisen takia, niin maksuja ei palauteta.</p>
+        <p>Mikäli asiakas ei hoida maksuja ajallaan, voidaan varaus peruuttaa ilman erillistä ilmoitusta.</p>
+
+        <h2>Palvelutiedot lomakohteen kuvauksessa</h2>
+        <p>Lomakohteen kuvauksessa on mainintoja lähialueen palveluista (esim. rautatieasema, bussipysäkki, ravintola, kauppa, hiihtohissi jne.). Vuokranantaja ei vastaa lomakohteeseen kuulumattomien yleisten palveluiden tiedoista eikä niiden saatavuudesta.</p>
+
+        <h2>Oleskelu lomahuoneistossa</h2>
+        <p>Lomahuoneisto on asiakkaan <strong>käytettävissä tulopäivästä klo 16</strong> alkaen tai erikseen sovitusti. Lomahuoneiston luovutuskellonajasta sovitaan aina erikseen.</p>
+        <p>Lomahuoneistoon saapuminen tapahtuu ovikoodin avulla. Lomahuoneiston ovikoodi luovutetaan asiakkaalle hänen etukäteen sopimallaan tavalla viimeistään edellisenä päivänä ennen majoitusjakson alkua. Ovikoodi toimivat vuorokauden ympäri, mutta mahdollista teknistä tukea ei voida taata saapumispäivänä klo 21 jälkeen.</p>
+        <p>Vuokrausajan ulkopuolella lomahuoneistoa suojaa valvontakamerat, jotka eivät ole päällä vuokra-aikana. Noudatamme kameravalvonnan osalta Suomen henkilötietolain mukaisia säädöksiä. Vuokrausaikana kamerat ovat käännettynä pois ja ne ovat asetettu yksityisyydensuoja-tilaan. On tärkeää, ettei kameroita käännellä mekaanisesti, koska ne saattavat vaurioitua ja eivätkä sen jälkeen toimi valvontakäytössä vuokrausajan ulkopuolella.</p>
+        <p>Vuokraan sisältyy varatun lomakohteen käyttöoikeus varatulle ajalle. Normaalit energiakulut (sähkö- ja hybridiauton akkujen lataaminen lämmityspistokkeesta on kiellettyä), kalusteet, keitto- ja ruokailuastiat, ruokailuvälineet, patjat, peitot ja tyynyt sisältyvät hintaan.</p>
+        <p>Polttopuita on yleensä saatavilla vuokrauksen aikana, mutta niiden määrää voidaan kuitenkin rajoittaa tai ne voivat olla tilapäisesti kokonaan loppuneet. Tällöin vuokralainen huolehtii itse polttopuista. Astianpesuaineet, perusmausteet sekä wc- ja talouspaperit eivät sisälly vuokrahintaan.</p>
+        <p>Lakanat ja pyyhkeet eivät sisälly vuokraan. Asiakkaan on käytettävä lakanoita. Lakanat ja pyyhkeet voidaan myös tilata majoituksen tarjoajan tai ulkopuolisen toimijan kautta, mutta siitä on sovittava erikseen. Lomakohteen siivouksesta loman aikana huolehtii asiakas aina itse.</p>
+        <p>Lomahuoneistoa saa käyttää enimmillään se henkilömäärä, joka on ilmoitettu lomakohteen kuvauksessa vuodepaikkamääränä tai mitä lomahuoneistoa varattaessa on sovittu. Juhlista ja muista tilaisuuksista, joissa lomakohteen henkilömäärä tilapäisesti ylittyy, tulee sopia ennakkoon omistajan kanssa. Teltan ja asuntovaunun tai vuokrattavien välineiden (esim. kylpypalju) käyttö lomakohteen tontilla ilman omistajan lupaa on kielletty. Tupakointi on kielletty kaikissa lomahuoneiston sisätiloissa. Lomahuoneistossa on voimassa yöaikaan nk. yleinen hiljaisuus, jota asiakkaan tulee noudattaa.</p>
+        <p>Lemmikkieläimen tuominen lomakohteeseen ei ole sallittu. Mahdollisesta kiellon rikkomisesta voidaan määrätä erillinen lisämaksu (850e/vko).</p>
+        <p>Sähköauton ja hybridiauton lataaminen on kielletty. Mahdollisesta kiellon rikkomisesta voidaan määrätä erillinen lisämaksu ja lisäksi lataamisesta voidaan periä lisämaksu. Lämmitystolppia ei ole mitoitettu ko. autojen lataamiseen ja voi pahimmillaan aiheuttaa liasta kuormituksesta johtuvan palovaaran. Sähkökulutusta seurataan reaaliaikaisella kulutusseurannalla.</p>
+
+        <h2>Asiakkaan velvollisuudet ja luovutus lähtöpäivänä</h2>
+        <p>Asiakas <strong>luovuttaa lomahuoneiston lähtöpäivänä klo 11</strong> ellei erikseen ole muuta sovittu. Avaimet jätetään huoneiston sisälle samaan paikkaan, josta ne on otettu käyttöön. Poikkeavasta luovutuskellonajasta on maininta laskussa, jonka asiakas on velvollinen tarkastamaan. Jos asiakas lähtee muuna aikana, on luovutuksesta sovittava omistajan kanssa hyvissä ajoin etukäteen.</p>
+        <p>Asiakas on vastuussa lomakohteessa aiheuttamistaan vahingoista. Aiheutuneesta vahingosta on heti ilmoitettava lomahuoneiston omistajalle. Asiakas on velvollinen korvaamaan aiheuttamansa vahingot lomakohteen omistajalle.</p>
+        <p>Lomakohteen siivouksesta loman lopussa huolehtii asiakas itse, ellei erikseen muuta ole sovittu. Loppusiivouksen mahdollisuudesta voi kysyä varauksen yhteydessä.</p>
+        <p>Loppusiivoukseen kuuluu, että astiat tiskataan ja laitetaan paikalleen, roskat viedään jätepisteeseen, tyhjät juomapullot ja – tölkit viedään pois, huonekalut laitetaan paikoilleen. Ruokatarvikkeet viedään pois tai ne viedään jätepisteeseen. Matot ja lattiat imuroidaan. Lattiat pyyhitään kostealla mopilla, pöydät ja tasot pyyhitään kostealla liinalla, vuodevaatteet tuuletetaan ulkona, sauna sekä WC pestään. Piha-alue ja grillipaikka jätetään siistiin kuntoon. Loppusiivous tulee tehdä kokonaisuudessaan vasta lähtöpäivänä. Tarkempi ohje siivouksesta toimitetaan muiden ohjeiden yhteydessä.</p>
+        <p>Tilattuun loppusiivoukseen tai lomakohteen vuokrahintaan sisältyvään loppusiivoukseen ei sisälly astioiden tiskaus, astioiden paikalleen laitto ja roskien vienti. Lisäksi asiakkaan on vietävä tyhjät pullot ja tölkit pois ja laitettava huonekalut paikoilleen. Ruokatarvikkeet on vietävä pois tai ne on vietävä jätepisteeseen.</p>
+        <p>Mikäli asiakas on vuokrannut lakanat ja pyyhkeet tai ne sisältyvät vuokrahintaan, tulee ne jättää pinoon sängyn päälle.</p>
+        <p>Tupakointi on kielletty kaikissa lomakohteen sisätiloissa. Lomahuoneisto on poistuttaessa jätettävä siistiin kuntoon. Asiakas on velvollinen maksamaan lomakohteen siivoamisesta aiheutuvat kulut siinä tapauksessa, että lomakohteen sisätiloissa on tupakoitu tai siivousta ei ole suoritettu tai se on suoritettu puutteellisesti ja lomakohteen omistaja joutuu huolehtimaan siitä ennen seuraavan asiakkaan saapumista.</p>
+
+        <h2>Ylivoimainen este</h2>
+        <p>Omistaja ei vastaa sellaisesta asiakkaalle aiheutuneesta vahingosta, joka aiheutuu ennalta arvaamattomasta ylivoimaisesta esteestä (force majeure) tai vastaavasta syystä (esim. sähkökatkot tai luonnonilmiöt kuten leväesiintymät, tai eläimet, kuten hiiret ja hyönteiset), joka ei ole johtunut omistajasta ja jonka seurauksia omistaja ei kohtuudella ole voinut estää.</p>
+        <p>Omistaja ei myöskään vastaa vahingoista tai seurauksista, jotka aiheutuvat normaaleista luonnonilmiöistä.</p>
+
+        <h2>Huomautukset ja valitukset</h2>
+        <p>Kaikki lomahuoneistoon liittyvät huomautukset ja valitukset on osoitettava viipymättä niiden aiheen ilmaannuttua ja varauksen aikana suoraan lomahuoneiston omistajalle. Jos asiakas ja omistaja eivät pääse asiassa yhteisymmärrykseen, asiakas voi saattaa asian kuluttajariitalautakunnan (<a href="https://www.kuluttajariita.fi" target="_blank" rel="noopener">www.kuluttajariita.fi</a>) ratkaistavaksi. Tätä ennen asiakkaan tulee olla yhteydessä kuluttajaneuvontaan (<a href="https://www.kuluttajaneuvonta.fi" target="_blank" rel="noopener">www.kuluttajaneuvonta.fi</a>). Asiaa koskevan lainsäädännön mukaan kuluttajariitalautakunta voi jättää valituksen käsittelemättä, jos kuluttaja ei ole ensin ollut yhteydessä kuluttajaneuvontaan.</p>
+        <p>Jos asiakas ei ilmoita havaitsemiaan puutteita heti vuokra-aikana omistajalle, katsotaan lomakohteen olevan sopimuksen mukaisessa kunnossa. Vasta vuokra-ajan jälkeen ilmoitettuja puutteita ei voida yhdessä todeta, eikä omistaja ole niistä korvausvelvollinen.</p>
+        <p>Jos asiakas keskeyttää varauksensa ja poistuu lomakohteesta ennen vuokra-ajan päättymistä, ei käyttämättä jääneeltä ajalta makseta korvausta eikä asiakas ole oikeutettu vuokranpalautukseen.</p>
+
+        <h2>Sovellettava laki ja riitojen oikeuspaikka</h2>
+        <p>Sopijapuolet pyrkivät ratkaisemaan sopimuksesta syntyneet riidat keskinäisin neuvotteluin. Mikäli neuvotteluissa ei päästä sopimukseen, riidat ratkaistaan Oulun käräjäoikeudessa. Sopimukseen sovelletaan Suomen lakia.</p>
+    </main>
+
+    <div style="text-align: center; margin: 3rem 0 2rem 0;">
+        <button onclick="window.close();" class="btn-reserve">
+            ✕ Sulje ehdot ja palaa varaukseen
+        </button>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="site-title" style="font-size: 1.5rem;">Ylläsporho</div>
+            <ul class="footer-links">
+                <li><a href="index.html">Etusivu</a></li>
+                <li><a href="yllasporho.html">Majoitus</a></li>
+                <li><a href="mahdollisuudet.html">Mahdollisuudet</a></li>
+                <li><a href="yhteydenotto.html">Yhteystiedot</a></li>
+            </ul>
+            <p class="footer-copy">© Ylläsporho – Äkäslompolo, Ylläs. Kaikki oikeudet pidätetään.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

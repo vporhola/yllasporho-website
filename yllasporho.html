@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mökki Ylläsporho – Vuokramökki Ylläksellä (Kohde 639597)</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script>
+    function onBookingSubmit(token) {
+        document.getElementById("booking-form").submit();
+    }
+    </script>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #333;
+            background-color: #f9f9f9;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Merriweather', serif;
+            color: #111;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 2.5rem 1rem 1.5rem;
+            background-color: #ffffff;
+            border-bottom: 1px solid #eee;
+        }
+
+        .site-title {
+            font-family: 'Merriweather', serif;
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: #111;
+            letter-spacing: -0.5px;
+        }
+
+        .site-domain {
+            font-size: 0.85rem;
+            color: #777;
+            margin-bottom: 1.5rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #111;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+        }
+
+        nav a:hover, nav a.active {
+            color: #555;
+        }
+
+        main.container {
+            flex: 1 0 auto;
+            margin-top: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .hero-section {
+            padding: 1rem 0 1.5rem 0;
+        }
+        .hero-title-wrap {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .location-tag {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 0.3rem;
+        }
+        
+        .btn-reserve {
+            display: inline-block;
+            background-color: #111111;
+            color: #ffffff;
+            padding: 0.8rem 1.6rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: center;
+        }
+        .btn-reserve:hover {
+            background-color: #333333;
+            transform: translateY(-2px);
+        }
+
+        .gallery-container {
+            position: relative;
+            margin-bottom: 3rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            grid-template-rows: repeat(2, 220px);
+            gap: 10px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.04);
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            background: #eee;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease, filter 0.3s ease;
+            display: block;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.03);
+            filter: brightness(0.95);
+        }
+
+        .gallery-item-main {
+            grid-row: span 2;
+        }
+
+        .gallery-item-more {
+            position: relative;
+        }
+        .more-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: background 0.2s ease;
+        }
+        .gallery-item-more:hover .more-overlay {
+            background: rgba(0, 0, 0, 0.25);
+        }
+
+        .btn-show-photos {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.95);
+            color: #111;
+            padding: 0.6rem 1.1rem;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            border: 1px solid rgba(0,0,0,0.1);
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            z-index: 2;
+        }
+
+        .btn-show-photos:hover {
+            background: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+        }
+
+        .lightbox-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.92);
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            backdrop-filter: blur(5px);
+            user-select: none;
+        }
+
+        .lightbox-modal.active {
+            display: flex;
+        }
+
+        .lightbox-content-wrapper {
+            position: relative;
+            max-width: 90%;
+            max-height: 85vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .lightbox-content {
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            object-fit: contain;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.2s;
+            line-height: 1;
+            z-index: 1001;
+        }
+
+        .lightbox-close:hover {
+            color: #ccc;
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+            border: none;
+            font-size: 2rem;
+            padding: 0.8rem 1.2rem;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: all 0.2s ease;
+            z-index: 1001;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+        }
+
+        .lightbox-nav:hover {
+            background: rgba(255, 255, 255, 0.35);
+            color: #ffffff;
+        }
+
+        .lightbox-prev { left: 20px; }
+        .lightbox-next { right: 20px; }
+
+        .lightbox-caption {
+            margin-top: 12px;
+            color: #fff;
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 0.4rem 1.2rem;
+            border-radius: 20px;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+        .specs-bar {
+            display: flex;
+            gap: 2rem;
+            padding: 1.2rem 0;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 2rem;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+        .spec-item span {
+            display: block;
+            color: #777;
+            font-size: 0.8rem;
+            font-weight: 400;
+        }
+        .description p {
+            margin-bottom: 1.2rem;
+            color: #4a5568;
+        }
+        .features-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+        .features-list li::before {
+            content: "✓ ";
+            color: #111;
+            font-weight: bold;
+        }
+
+        .info-card {
+            background: #fff;
+            padding: 1.8rem;
+            border-radius: 12px;
+            border: 1px solid #eaeaea;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.04);
+            position: sticky;
+            top: 20px;
+        }
+        .price-highlight {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #111;
+            margin-bottom: 0.5rem;
+        }
+        .price-highlight span {
+            font-size: 0.9rem;
+            color: #666;
+            font-weight: 400;
+        }
+
+        .calendar-section {
+            background: #fff;
+            padding: 2.5rem 2rem;
+            border-radius: 12px;
+            border: 1px solid #eaeaea;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.04);
+            margin-bottom: 2rem;
+        }
+        
+        .season-info-box {
+            background-color: #f0f7ff;
+            border-left: 4px solid #0284c7;
+            padding: 1rem 1.2rem;
+            border-radius: 6px;
+            margin: 1.2rem 0;
+            font-size: 0.92rem;
+            color: #1e3a8a;
+        }
+
+        .weeks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+        }
+        
+        .week-card {
+            background: #ffffff;
+            border: 2px solid #e5e5e5;
+            border-radius: 10px;
+            padding: 1.2rem;
+            text-align: center;
+            transition: all 0.2s ease;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .week-card.available {
+            cursor: pointer;
+        }
+        .week-card.available:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+        }
+
+        .year-badge {
+            background: #111111;
+            color: #ffffff;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 2px 7px;
+            border-radius: 4px;
+            letter-spacing: 0.5px;
+        }
+
+        .week-card.available.season-kevat {
+            border-color: #d97706;
+            background: #fffdfa;
+        }
+        .week-card.available.season-kevat .status-badge {
+            background-color: #fef3c7;
+            color: #92400e;
+        }
+
+        .week-card.available.season-ruska {
+            border-color: #ea580c;
+            background: #fffaf8;
+        }
+        .week-card.available.season-ruska .status-badge {
+            background-color: #ffedd5;
+            color: #9a3412;
+        }
+
+        .week-card.available.season-ensilumi {
+            border-color: #64748b;
+            background: #f8fafc;
+        }
+        .week-card.available.season-ensilumi .status-badge {
+            background-color: #e2e8f0;
+            color: #334155;
+        }
+
+        .week-card.available.season-lumiaika {
+            border-color: #0284c7;
+            background: #f0f9ff;
+        }
+        .week-card.available.season-lumiaika .status-badge {
+            background-color: #e0f2fe;
+            color: #075985;
+        }
+
+        .week-card.available.season-kesa {
+            border-color: #16a34a;
+            background: #f6fbf6;
+        }
+        .week-card.available.season-kesa .status-badge {
+            background-color: #dcfce7;
+            color: #166534;
+        }
+
+        .week-card.booked {
+            background-color: #f9f9f9 !important;
+            border-color: #e2e8f0 !important;
+            opacity: 0.65;
+            cursor: not-allowed;
+        }
+        .status-badge.booked-badge {
+            background-color: #fee2e2;
+            color: #991b1b;
+        }
+
+        .season-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .season-tag {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #64748b;
+        }
+
+        .week-number {
+            font-family: 'Merriweather', serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+        .week-dates {
+            font-size: 0.82rem;
+            color: #666;
+            margin: 0.2rem 0 0.8rem 0;
+        }
+        .week-price {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #111;
+            margin-bottom: 0.8rem;
+        }
+        .status-badge {
+            display: inline-block;
+            font-size: 0.78rem;
+            font-weight: 700;
+            padding: 0.35rem 0.6rem;
+            border-radius: 5px;
+        }
+
+        #varausosio {
+            margin-top: 3rem;
+            background: #fdfdfd;
+            padding: 2rem;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+            display: none;
+        }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+        }
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-family: inherit;
+        }
+
+        footer {
+            background-color: #ffffff;
+            border-top: 1px solid #eee;
+            padding: 2.5rem 1rem;
+            text-align: center;
+            margin-top: auto;
+            flex-shrink: 0;
+        }
+
+        .footer-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: #666;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .footer-links a:hover {
+            color: #111;
+        }
+
+        .footer-copy {
+            font-size: 0.85rem;
+            color: #888;
+        }
+
+        @media (max-width: 850px) {
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: repeat(3, 160px);
+            }
+            .gallery-item-main {
+                grid-column: span 2;
+                grid-row: span 1;
+            }
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            .info-card {
+                position: static;
+            }
+            .features-list {
+                grid-template-columns: 1fr;
+            }
+            .lightbox-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 1.5rem;
+            }
+            .lightbox-prev { left: 10px; }
+            .lightbox-next { right: 10px; }
+        }
+        .year-badge {
+        background: #111111;
+        color: #ffffff;
+        font-size: 0.7rem;
+        font-weight: 700;
+        padding: 2px 7px;
+        border-radius: 4px;
+        letter-spacing: 0.5px;
+        }
+
+        .year-badge-next {
+        background: #0284c7; 
+        color: #ffffff;
+        font-size: 0.7rem;
+        font-weight: 700;
+        padding: 2px 7px;
+        border-radius: 4px;
+        letter-spacing: 0.5px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="site-title">Ylläsporho</div>
+        <div class="site-domain">yllasporho.com</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Etusivu</a></li>
+                <li><a href="yllasporho.html" class="active">Majoitus</a></li>
+                <li><a href="mahdollisuudet.html">Mahdollisuudet</a></li>
+                <li><a href="yhteydenotto.html">Yhteystiedot</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        
+        <section class="hero-section">
+            <div class="hero-title-wrap">
+                <div>
+                    <h1>Ylläsporho</h1>
+                    <div class="location-tag">📍 Äkäslompolo, Ylläs, Lappi | <strong>Kohde: 639597</strong></div>
+                </div>
+                <a href="#kalenteri" class="btn-reserve">Katso vapaat viikot ja varaa</a>
+            </div>
+
+            <div class="gallery-container">
+                <div class="gallery-grid">
+                    <div class="gallery-item gallery-item-main" onclick="openLightbox(0)">
+                        <img src="images/ulko_kesa.jpg" alt="Mökki Ylläsporho ulkoa">
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox(1)">
+                        <img src="images/makuuhuone.jpg" alt="Makuuhuone">
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox(2)">
+                        <img src="images/olohuone.jpg" alt="Olohuone">
+                    </div>
+                    <div class="gallery-item" onclick="openLightbox(3)">
+                        <img src="images/keittio.jpg" alt="Keittiö">
+                    </div>
+                    <div class="gallery-item gallery-item-more" onclick="openLightbox(4)">
+                        <img src="images/sauna.jpg" alt="Sauna">
+                        <div class="more-overlay" id="more-photos-tag">+5 lisää</div>
+                    </div>
+                </div>
+                <button class="btn-show-photos" onclick="openLightbox(0)">
+                    📷 Katso kaikki kuvat (<span id="total-photo-count">10</span>)
+                </button>
+            </div>
+
+        </section>
+
+        <div id="lightbox" class="lightbox-modal" onclick="closeLightboxOnBg(event)">
+            <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+            
+            <button class="lightbox-nav lightbox-prev" onclick="prevImage(event)">&#10094;</button>
+            
+            <div class="lightbox-content-wrapper">
+                <img class="lightbox-content" id="lightbox-img" alt="Suurennettu kuva">
+                <div class="lightbox-caption" id="lightbox-caption"></div>
+            </div>
+            
+            <button class="lightbox-nav lightbox-next" onclick="nextImage(event)">&#10095;</button>
+        </div>
+
+        <div class="content-grid" id="esittely">
+            
+            <!-- VASEN PUOLI -->
+            <div>
+                <div class="specs-bar">
+                    <div class="spec-item">Kohdenumero <span>639597</span></div>
+                    <div class="spec-item">Pinta-ala <span>46 m²</span></div>
+                    <div class="spec-item">Henkilömäärä <span>2 + 4 hlö</span></div>
+                    <div class="spec-item">Materiaali <span>Kelo</span></div>
+                </div>
+
+                <div class="description">
+                    <h2>Viihtyisä hirsimökki tunturimaisemissa</h2>
+                    <p style="margin-top: 1rem;">
+                        Ylläsporho tarjoaa laadukasta ja mukavaa majoitusta Äkäslompolon rauhallisella alueella, 
+                        lähellä Ylläksen monipuolisia reittejä ja palveluita. Mökki soveltuu erinomaisesti niin 
+                        perheille kuin latuelämyksiä ja tunturiluontoa etsiville ryhmille.
+                    </p>
+                    <p>
+                        Avarassa olohuoneessa voit nauttia varaavan takan lämmöstä hiihtopäivän jälkeen. 
+                        Täysin varustellussa keittiössä valmistuvat illalliset helposti isommallekin porukalle. 
+                        Latu- ja pyöräilyverkosto lähtee lähes kotiovelta.
+                    </p>
+                </div>
+
+                <hr style="border:0; border-top:1px solid #eee; margin: 2rem 0;">
+
+                <div id="varustelu">
+                    <h3 style="margin-bottom: 1rem;">Mökin varustelu</h3>
+                    <ul class="features-list">
+                        <li>Täysin varusteltu keittiö</li> 
+                        <li>astianpesukone</li>
+                        <li>Sähkösauna</li>
+                        <li>Varaava takka</li>
+                        <li>Kuivauskaappi</li>
+                        <li>Nopea Wi-Fi</li>
+                        <li>Pyykinpesukone</li>
+                        <li>Autopaikka & lämmityspistoke</li>
+                        <li>Lämmin suksienhuoltotila käytössä</li>
+                        <li>Grillikota käytössä</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div>
+                <div class="info-card">
+                    <div class="price-highlight">
+                        alkaen 390 € <span>/ viikko</span>
+                    </div>
+                    <p style="font-size: 0.85rem; color: #666; margin-bottom: 1.5rem;">
+                        Sesonkihinnat määräytyvät viikon mukaan. Vaihtopäivä lauantai (tai sopimuksen mukaan).
+                    </p>
+                    
+                    <ul style="list-style: none; font-size: 0.9rem; margin-bottom: 1.5rem; color: #444;">
+                        <li style="margin-bottom: 0.5rem;">ℹ️ <strong>Loppusiivous:</strong> Ei sisälly hintaan</li>
+                        <li>ℹ️ <strong>Liinavaatteet:</strong> 25 €/hlö (tai omat)</li>
+                    <!--   <li style="margin-bottom: 0.5rem;">✔️ <strong>Polttopuita</strong> saatavilla</li> -->
+                        
+                    </ul>
+
+                    <a href="#kalenteri" class="btn-reserve" style="display: block; text-align: center;">Tarkista varaustilanne</a>
+                </div>
+            </div>
+
+        </div>
+
+        <section class="calendar-section" id="kalenteri">
+            <h2>Varaustilanne & Hinnasto</h2>
+            <p style="color: #666; margin-top: 0.3rem;">Valitse sopiva viikko ja lähetä varauspyyntö. Lähetämme vahvistuksen sähköpostitse.
+            </p> 
+            
+            <div class="season-info-box">
+                💡 <strong>Vinkki:</strong> Matalasesongin aikana (kevät, kesä ja syksy) voit tiedustella myös viikkoa lyhyempiä vuokra-aikoja (esim. viikonloppuja tai arkipäiviä).
+            </div>
+
+            <div class="calendar-filters" style="display: flex; gap: 1rem; margin: 1.5rem 0; flex-wrap: wrap;">
+                <select id="filter-season" onchange="applyFilters()" style="padding: 0.6rem; border-radius: 6px; border: 1px solid #ccc; font-size: 0.95rem; background: #fff;">
+                <option value="all">Kaikki sesongit</option>
+                <option value="kevat">⛷️ Kevätsesonki (vk 7–16)</option>
+                <option value="kesa">🌱 Matalasesonki (vk 17–34)</option>
+                <option value="ruska">🍂 Ruskasesonki (vk 35–39)</option>
+                <option value="ensilumi">🍁 Ensilumi / Syksy (vk 40–43)</option>
+                <option value="lumiaika">❄️ Lumiaika / Talvi (vk 44–6)</option>
+                </select>
+
+                <select id="filter-month" onchange="applyFilters()" style="padding: 0.6rem; border-radius: 6px; border: 1px solid #ccc; font-size: 0.95rem; background: #fff;">
+                    <option value="all">Kaikki kuukaudet</option>
+                    <option value="1">Tammikuu</option>
+                    <option value="2">Helmikuu</option>
+                    <option value="3">Maaliskuu</option>
+                    <option value="4">Huhtikuu</option>
+                    <option value="5">Toukokuu</option>
+                    <option value="6">Kesäkuu</option>
+                    <option value="7">Heinäkuu</option>
+                    <option value="8">Elokuu</option>
+                    <option value="9">Syyskuu</option>
+                    <option value="10">Lokakuu</option>
+                    <option value="11">Marraskuu</option>
+                    <option value="12">Joulukuu</option>
+                </select>
+
+                <select id="filter-year" onchange="applyFilters()" style="padding: 0.6rem; border-radius: 6px; border: 1px solid #ccc; font-size: 0.95rem; background: #fff;">
+                    <option value="all">Kaikki vuodet</option>
+                    <option value="2026">2026</option>
+                    <option value="2027">2027</option>
+                </select>
+            </div>
+            <p style="color: #666; margin-top: 0.3rem; font-size: 0.75rem;">
+            <strong>Hinnat laskettu 2 hengen majoitukselle (sis. alaikäiset lapset). Loppusiivous ei kuulu hintaan, mutta on ostettavissa ennakkoon hintaan 115 €.</strong>
+            </p>
+
+            <div class="weeks-grid" id="weeks-container">
+                <p style="grid-column: 1/-1; text-align: center; padding: 2rem; color: #666;">Ladataan varaustilannetta...</p>
+            </div>
+
+            <div style="text-align: center; margin-top: 1.5rem;" id="load-more-container">
+                <button id="btn-show-more" onclick="showAllWeeks()" style="padding: 0.75rem 1.5rem; background: #f0f4f8; color: #1e293b; border: 1px solid #cbd5e1; border-radius: 6px; font-weight: 600; cursor: pointer;">
+                    Näytä lisää viikkoja ↓
+                </button>
+            </div>
+
+        <div id="varausosio">
+        <h3 style="margin-bottom: 1rem;">Lähetä varauspyyntö kohteesta Ylläsporho (Kohde 639597)</h3>
+    
+      <form id="booking-form" action="https://formspree.io/f/xnjekjbe" method="POST">
+    
+    <input type="hidden" name="kohde_id" value="639597">
+    <input type="hidden" name="kohde_nimi" value="Ylläsporho">
+
+    <div class="form-group">
+        <label>Valittu ajankohta</label>
+        <input type="text" id="valittu_viikko" name="valittu_viikko" readonly class="form-control" style="background:#eef2f7; font-weight:700;">
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+        <div class="form-group">
+            <label>Nimesi *</label>
+            <input type="text" name="nimi" required class="form-control" placeholder="Etunimi Sukunimi" >
+        </div>
+        <div class="form-group">
+            <label>Puhelinnumero *</label>
+            <input type="tel" name="puhelin" required class="form-control" placeholder="040 123 4567">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Sähköpostiosoite *</label>
+        <input type="email" name="_replyto" required class="form-control" placeholder="etunimi.sukunimi@esimerkki.fi">
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+        <div class="form-group">
+            <label>Aikuiset *</label>
+            <select name="aikuiset" required class="form-control">
+                <option value="1">1 aikuinen</option>
+                <option value="2" selected>2 aikuista</option>
+                <option value="3">3 aikuista</option>
+                <option value="4">4 aikuista</option>
+                <option value="5">5 aikuista</option>
+		<option value="6">6 aikuista</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Lapset (alle 16v)</label>
+            <select name="lapset" class="form-control">
+                <option value="0" selected>Ei lapsia</option>
+                <option value="1">1 lapsi</option>
+                <option value="2">2 lasta</option>
+                <option value="3">3 lasta</option>
+                <option value="4">4 lasta</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group" style="background: #f8fafc; padding: 1rem; border-radius: 8px; border: 1px solid #e2e8f0; margin-bottom: 1rem;">
+        <label style="font-weight: 700; display: block; margin-bottom: 0.5rem;">Lisäpalvelut</label>
+        
+        <label style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.5rem; cursor: pointer; font-weight: normal;">
+            <input type="checkbox" name="lisapalvelu_siivous" value="Kyllä (115 €)" style="width: 18px; height: 18px;">
+            <span>Loppusiivous (<strong>115 €</strong>)</span>
+        </label>
+
+        <label style="display: flex; align-items: center; gap: 0.6rem; cursor: pointer; font-weight: normal;">
+            <input type="checkbox" name="lisapalvelu_lakanat" value="Kyllä (25 €/hlö)" style="width: 18px; height: 18px;">
+            <span>Liinavaatteet & pyyhkeet (<strong>25 € / henkilö</strong>)</span>
+        </label>
+    </div>
+
+    <div class="form-group">
+        <label>Lisätiedot / Kysymykset</label>
+        <textarea name="viesti" rows="3" class="form-control" placeholder="Kerro toiveista tai jos kyseessä on esim. lyhyempi varaus jakso..."></textarea>
+    </div>
+    <div style="margin-bottom: 1.2rem; font-size: 0.85rem; color: #64748b; text-align: center;">
+    Tutustu 
+    <a href="varausehdot.html" target="_blank" rel="noopener" style="color: #0284c7; font-weight: 600; text-decoration: underline;">
+        varausehtoihimme tästä
+    </a>
+    <br>
+    <span style="color: #64748b; font-size: 0.75rem; display: inline-block; margin-top: 0.2rem;">
+        (avautuu uuteen välilehteen)
+    </span>
+    </div>
+
+<button class="btn-reserve g-recaptcha" 
+        data-sitekey="6LcfEnAtAAAAAHG8WU-7ovUMRPgIVP8lG80f7kig" 
+        data-callback="onBookingSubmit" 
+        data-action="submit" 
+        style="width: 100%; border: none; font-size: 1.05rem; cursor: pointer;">
+    Lähetä varauspyyntö →
+</button>
+</form>
+    </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="site-title" style="font-size: 1.5rem;">Ylläsporho</div>
+            <ul class="footer-links">
+                <li><a href="index.html">Etusivu</a></li>
+                <li><a href="yllasporho.html">Majoitus</a></li>
+                <li><a href="mahdollisuudet.html">Mahdollisuudet</a></li>
+                <li><a href="yhteydenotto.html">Yhteystiedot</a></li>
+            </ul>
+            <p class="footer-copy">© Ylläsporho – Äkäslompolo, Ylläs. Kaikki oikeudet pidätetään.</p>
+        </div>
+    </footer>
+
+    <script>
+        const galleryImages = [
+            { src: 'images/ulko_kesa.jpg', title: 'Näkymä ulkoa' },
+            { src: 'images/makuuhuone.jpg', title: 'Makuuhuone' },
+            { src: 'images/olohuone.jpg', title: 'Olohuone' },
+            { src: 'images/keittio.jpg', title: 'Keittiö' },
+            { src: 'images/sauna.jpg', title: 'Sauna' },
+            { src: 'images/ylakuva.jpg', title: 'Näkymä parvelta' },
+            { src: 'images/parvi.jpg', title: 'Parvi' },
+            { src: 'images/kota_ulko.jpg', title: 'Kota ulkoa' },
+            { src: 'images/kota_sisa.jpg', title: 'Kota sisältä' },
+            { src: 'images/suksihuolto.jpg', title: 'Suksihuolto' }
+        ];
+
+        let currentImageIndex = 0;
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const totalCount = galleryImages.length;
+            document.getElementById('total-photo-count').textContent = totalCount;
+            if (totalCount > 5) {
+                document.getElementById('more-photos-tag').textContent = `+${totalCount - 4} lisää`;
+            } else {
+                document.getElementById('more-photos-tag').style.display = 'none';
+            }
+        });
+
+        function openLightbox(index) {
+            currentImageIndex = index;
+            updateLightboxImage();
+            document.getElementById('lightbox').classList.add('active');
+        }
+
+        function updateLightboxImage() {
+            const img = document.getElementById('lightbox-img');
+            const caption = document.getElementById('lightbox-caption');
+            const current = galleryImages[currentImageIndex];
+            
+            img.src = current.src;
+            caption.textContent = `${current.title} (${currentImageIndex + 1}/${galleryImages.length})`;
+        }
+
+        function nextImage(event) {
+            if(event) event.stopPropagation();
+            currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+            updateLightboxImage();
+        }
+
+        function prevImage(event) {
+            if(event) event.stopPropagation();
+            currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
+            updateLightboxImage();
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+        }
+
+        function closeLightboxOnBg(event) {
+            if (event.target.id === 'lightbox') {
+                closeLightbox();
+            }
+        }
+
+        document.addEventListener('keydown', function(event) {
+            const lightbox = document.getElementById('lightbox');
+            if (lightbox && lightbox.classList.contains('active')) {
+                if (event.key === "Escape") {
+                    closeLightbox();
+                } else if (event.key === "ArrowRight") {
+                    nextImage();
+                } else if (event.key === "ArrowLeft") {
+                    prevImage();
+                }
+            }
+        });
+    </script>
+
+    <script>
+        const GOOGLE_SHEET_API_URL = "https://script.google.com/macros/s/AKfycbyU-ANmzwMksQMGumLOy814KFm1BRD5pjtbpHvQ2Z-uMAxS_1aMO1yr7LJKV2mLgA6n/exec";
+
+        let allWeeksData = []; 
+        let limitToFour = true; 
+
+        function parseDate(dateString) {
+            if (!dateString) return null;
+            const d = new Date(dateString);
+            if (!isNaN(d.getTime())) return d;
+            
+            const parts = dateString.split('.');
+            if (parts.length === 3) {
+                return new Date(parts[2], parts[1] - 1, parts[0]);
+            }
+            return null;
+        }
+
+        function formatDate(dateString) {
+            const d = parseDate(dateString);
+            if (!d) return dateString;
+            return `${d.getDate()}.${d.getMonth() + 1}.${d.getFullYear()}`;
+        }
+
+        function getSeasonInfo(item) {
+            let weekNum = parseInt(item.viikko.replace(/\D/g, ''), 10);
+            
+            if (isNaN(weekNum)) {
+                const startDate = parseDate(item.alkupvm);
+                if (startDate) {
+                    const firstJan = new Date(startDate.getFullYear(), 0, 1);
+                    weekNum = Math.ceil((((startDate - firstJan) / 86400000) + firstJan.getDay() + 1) / 7);
+                }
+            }
+
+            if (weekNum >= 7 && weekNum <= 16) {
+                return { key: "kevat", label: "⛷️ Kevätsesonki", class: "season-kevat" };
+            } else if (weekNum >= 35 && weekNum <= 39) {
+                return { key: "ruska", label: "🍂 Ruskasesonki", class: "season-ruska" };
+            } else if (weekNum >= 40 && weekNum <= 43) {
+                return { key: "ensilumi", label: "🍁 Ensilumi / Syksy", class: "season-ensilumi" };
+            } else if (weekNum >= 17 && weekNum <= 34) {
+                return { key: "kesa", label: "🌱 Matalasesonki", class: "season-kesa" };
+            } else {
+                return { key: "lumiaika", label: "❄️ Lumiaika / Talvi", class: "season-lumiaika" };
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch(GOOGLE_SHEET_API_URL)
+                .then(response => response.json())
+                .then(data => {
+                    allWeeksData = data;
+                    renderWeeks();
+                })
+                .catch(error => {
+                    console.error("Virhe haettaessa tietoja taulukosta:", error);
+                    document.getElementById("weeks-container").innerHTML = 
+                        "<p style='color:red;'>Varaustietojen lataaminen epäonnistui. Ole hyvä ja yritä myöhemmin uudelleen.</p>";
+                });
+        });
+
+        function renderWeeks() {
+            const container = document.getElementById("weeks-container");
+            const loadMoreBtn = document.getElementById("load-more-container");
+            const selectedSeason = document.getElementById("filter-season").value;
+            const selectedMonth = document.getElementById("filter-month").value;
+            const selectedYear = document.getElementById("filter-year").value;
+
+            container.innerHTML = "";
+
+            let filteredData = allWeeksData.filter(item => {
+                const startDate = parseDate(item.alkupvm);
+                const seasonInfo = getSeasonInfo(item);
+
+                const seasonMatches = (selectedSeason === "all") || (seasonInfo.key === selectedSeason);
+                const monthMatches = (selectedMonth === "all") || (startDate && (startDate.getMonth() + 1).toString() === selectedMonth);
+                const yearMatches = (selectedYear === "all") || (startDate && startDate.getFullYear().toString() === selectedYear);
+
+                return seasonMatches && monthMatches && yearMatches;
+            });
+
+            if (filteredData.length === 0) {
+                container.innerHTML = "<p style='grid-column: 1/-1; text-align: center; color: #666;'>Ei löytynyt viikkoja valitulla hakuehdolla.</p>";
+                loadMoreBtn.style.display = "none";
+                return;
+            }
+
+            let displayData = filteredData;
+            if (limitToFour && selectedSeason === "all" && selectedMonth === "all" && selectedYear === "all") {
+                displayData = filteredData.slice(0, 4);
+                loadMoreBtn.style.display = filteredData.length > 4 ? "block" : "none";
+            } else {
+                loadMoreBtn.style.display = "none";
+            }
+            
+            displayData.forEach(item => {
+                const isAvailable = item.tila.toString().trim().toLowerCase() === "vapaa";
+                const seasonInfo = getSeasonInfo(item);
+                const card = document.createElement("div");
+
+                const startDate = parseDate(item.alkupvm);
+                const itemYear = startDate ? startDate.getFullYear() : null;
+                const yearText = itemYear ? itemYear : "";
+
+                const currentYear = new Date().getFullYear();
+                const badgeClass = (itemYear && itemYear > currentYear) ? "year-badge-next" : "year-badge";
+
+                const startFormatted = formatDate(item.alkupvm);
+                const endFormatted = formatDate(item.loppupvm);
+                const dateText = `${startFormatted} – ${endFormatted}`;
+
+                if (isAvailable) {
+                    card.className = `week-card available ${seasonInfo.class}`;
+                    card.onclick = () => selectWeek(`${item.viikko} / ${yearText} (${dateText})`, item.hinta);
+                    card.innerHTML = `
+                        <div>
+                            <div class="season-header">
+                                <span class="season-tag">${seasonInfo.label}</span>
+                                <span class="${badgeClass}">${yearText}</span>
+                            </div>
+                            <div class="week-number">${item.viikko}</div>
+                            <div class="week-dates">${dateText}</div>
+                        </div>
+                        <div>
+                            <div class="week-price">${item.hinta}</div>
+                            <span class="status-badge">Vapaa – Varaa</span>
+                        </div>
+                    `;
+                } else {
+                    card.className = "week-card booked";
+                    card.innerHTML = `
+                        <div>
+                            <div class="season-header">
+                                <span class="season-tag">${seasonInfo.label}</span>
+                                <span class="${badgeClass}">${yearText}</span>
+                            </div>
+                            <div class="week-number">${item.viikko}</div>
+                            <div class="week-dates">${dateText}</div>
+                        </div>
+                        <div>
+                            <div class="week-price">${item.hinta}</div>
+                            <span class="status-badge booked-badge">VARATTU</span>
+                        </div>
+                    `;
+                }
+                container.appendChild(card);
+            });
+        }
+
+        function applyFilters() {
+            limitToFour = false;
+            renderWeeks();
+        }
+
+        function showAllWeeks() {
+            limitToFour = false;
+            renderWeeks();
+        }
+
+        function selectWeek(viikko, hinta) {
+            const varausosio = document.getElementById('varausosio');
+            varausosio.style.display = 'block';
+            document.getElementById('valittu_viikko').value = viikko + " (Hinta: " + hinta + ")";
+            varausosio.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+
+</body>
+</html>
