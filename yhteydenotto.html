@@ -127,7 +127,7 @@
         }
 
         .contact-section {
-            background-color: #b0b7bd; /* Ruutukaappauksen harmaa tausta */
+            background-color: #b0b7bd; /* Harmaa tausta */
             padding: 4rem 1.5rem;
             color: #111;
         }
@@ -135,15 +135,20 @@
         .contact-container {
             max-width: 1000px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
         }
 
-        .contact-form h3, .contact-info h3 {
+        .contact-section h3 {
             font-family: 'Merriweather', serif;
             font-size: 1.5rem;
             margin-bottom: 1.5rem;
+        }
+
+        /* 2-sarakkeinen asettelu */
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
         }
 
         .form-group {
@@ -166,17 +171,47 @@
             background-color: #fff;
         }
 
-        .btn-whatsapp {
+        /* Oikea sarake: Kohdistus ekan laatikon tasolle ja ISOMPI VÄLIMATKA NAPEILLE */
+        .contact-buttons-wrapper {
+            margin-top: 1.55rem; 
+            display: flex;
+            flex-direction: column;
+            gap: 36px; /* Kasvatettu välimatkaa huomattavasti ilmavammaksi */
+            width: 100%;
+            max-width: 380px;
+        }
+
+        .btn-contact {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            background-color: #25D366;
-            color: white;
-            padding: 0.75rem 1.25rem;
-            border-radius: 6px;
+            justify-content: center;
+            width: 100%;            
+            padding: 14px 20px;
+            background-color: #000000;
+            color: #ffffff;
             text-decoration: none;
             font-weight: 600;
-            margin: 1.5rem 0;
+            border-radius: 6px;
+            text-align: center;
+            white-space: nowrap;
+            box-sizing: border-box;
+            transition: background-color 0.2s ease, opacity 0.2s ease;
+        }
+
+        .btn-contact:hover {
+            background-color: #222222;
+            color: #ffffff;
+        }
+
+        /* WhatsApp-napille oma vihreä väri */
+        .btn-whatsapp-custom {
+            background-color: #25D366;
+            color: #ffffff;
+        }
+
+        .btn-whatsapp-custom:hover {
+            background-color: #1da851;
+            color: #ffffff;
         }
 
         footer {
@@ -220,8 +255,13 @@
         }
 
         @media (max-width: 768px) {
-            .contact-container {
+            .contact-layout {
                 grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .contact-buttons-wrapper {
+                margin-top: 1rem; 
+                gap: 20px;
             }
             .hero h1 {
                 font-size: 2rem;
@@ -230,6 +270,7 @@
                 gap: 1rem;
             }
         }
+
     </style>
 </head>
 <body>
@@ -258,51 +299,51 @@
         </div>
     </section>
 
-        <section class="contact-section" id="yhteystiedot">
+    <section class="contact-section" id="yhteystiedot">
         <div class="contact-container">
+            <h3>Jätä viesti</h3>
             
-            <!-- Vasen sarake: Lomake -->
-            <div class="contact-form">
-                <h3>Jätä viesti</h3>
+            <div class="contact-layout">
+                <!-- Vasen sarake: Lomake -->
                 <form id="contact-form" action="https://formspree.io/f/xkodlobe" method="POST">
-    
-        <div class="form-group">
-        <label for="name">Nimi / Name (Vaaditaan)</label>
-        <input type="text" id="name" name="nimi" required>
-        </div>
+                    <div class="form-group">
+                        <label for="name">Nimi / Name (Vaaditaan)</label>
+                        <input type="text" id="name" name="nimi" required>
+                    </div>
 
-        <div class="form-group">
-        <label for="email">Email (Vaaditaan)</label>
-        <input type="email" id="email" name="_replyto" required>
-        </div>
+                    <div class="form-group">
+                        <label for="email">Email (Vaaditaan)</label>
+                        <input type="email" id="email" name="_replyto" required>
+                    </div>
 
-        <div class="form-group">
-        <label for="message">Viesti</label>
-        <textarea id="message" name="viesti" rows="4"></textarea>
-        </div>
+                    <div class="form-group">
+                        <label for="message">Viesti</label>
+                        <textarea id="message" name="viesti" rows="4"></textarea>
+                    </div>
 
-        <button class="btn-primary g-recaptcha" 
-            data-sitekey="6LcfEnAtAAAAAHG8WU-7ovUMRPgIVP8lG80f7kig  " 
-            data-callback="onContactSubmit" 
-            data-action="submit" 
-            style="border:none; cursor:pointer;">
-        Lähetä
-        </button>
-        </form>
-            </div>
+                    <button class="btn-primary g-recaptcha" 
+                        data-sitekey="6LcfEnAtAAAAAHG8WU-7ovUMRPgIVP8lG80f7kig  " 
+                        data-callback="onContactSubmit" 
+                        data-action="submit" 
+                        style="border:none; cursor:pointer;">
+                    Lähetä
+                    </button>
+                </form>
 
-            <div class="contact-info">
-                <h3>Ylläsporho</h3>
-                
-                <p><strong>Email</strong></p>
-                <p style="margin-bottom: 1rem;">yllas.porho(@)gmail.com</p>
+                <!-- Oikea sarake: Napit isommalla välimatkalla -->
+                <div class="contact-buttons-wrapper">
+                    <a href="tel:+358400893439" class="btn btn-contact">
+                        📞 Soita: 040 089 3439
+                    </a>
 
-                <a href="https://wa.me/358401234567" class="btn-whatsapp" target="_blank">
-                    💬 Chat on WhatsApp
-                </a>
+                    <a href="mailto:info@yllasporho.com" class="btn btn-contact">
+                        ✉️ info@yllasporho.com
+                    </a>
 
-                <p style="margin-top: 1rem;"><strong>Puhelin / Phone</strong></p>
-                <p>+358 40 123 4567</p>
+                    <a href="https://wa.me/358400893439" target="_blank" rel="noopener noreferrer" class="btn btn-contact btn-whatsapp-custom">
+                        💬 WhatsApp: 040 089 3439
+                    </a>
+                </div>
             </div>
 
         </div>
