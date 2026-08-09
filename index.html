@@ -9,6 +9,97 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,700;0,900;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.0.0/dist/cookieconsent.css">
+
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+
+    gtag('consent', 'default', {
+        'analytics_storage': 'denied',
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied'
+    });
+    </script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EFSD1E0WZP"></script>
+    <script>
+    gtag('js', new Date());
+    gtag('config', 'G-EFSD1E0WZP');
+    </script>
+
+    <script type="module">
+    import * as CookieConsent from 'https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.0.0/dist/cookieconsent.esm.js';
+
+    CookieConsent.run({
+        guiOptions: {
+        consentModal: {
+            layout: 'box',
+            position: 'bottom right',
+            equalWeightButtons: true
+        }
+        },
+        categories: {
+        necessary: {
+            readOnly: true,
+            enabled: true
+        },
+        analytics: {
+            enabled: false
+        }
+        },
+        language: {
+        default: 'fi',
+        translations: {
+            fi: {
+            consentModal: {
+                title: 'Käytämme evästeitä',
+                description: 'Käytämme evästeitä parantaaksemme sivuston käyttökokemusta ja analysoidaksemme liikennettä.',
+                acceptAllBtn: 'Hyväksy kaikki',
+                acceptNecessaryBtn: 'Vain välttämättömät',
+                showPreferencesBtn: 'Asetukset'
+            },
+            preferencesModal: {
+                title: 'Evästeasetukset',
+                acceptAllBtn: 'Hyväksy kaikki',
+                acceptNecessaryBtn: 'Vain välttämättömät',
+                savePreferencesBtn: 'Tallenna valinnat',
+                sections: [
+                {
+                    title: 'Välttämättömät evästeet',
+                    description: 'Nämä evästeet ovat välttämättömiä sivuston toiminnan kannalta.',
+                    linkedCategory: 'necessary'
+                },
+                {
+                    title: 'Analyysievästeet',
+                    description: 'Näiden evästeiden avulla ymmärrämme, miten kävijät käyttävät sivustoamme ja mistä kanavista he saapuvat.',
+                    linkedCategory: 'analytics'
+                }
+                ]
+            }
+            }
+        }
+        },
+
+        onConsent: ({cookie}) => {
+        if (CookieConsent.acceptedCategory('analytics')) {
+            gtag('consent', 'update', {
+            'analytics_storage': 'granted'
+            });
+        }
+        },
+
+        onChange: ({cookie, changedCategories}) => {
+        if (changedCategories.includes('analytics')) {
+            gtag('consent', 'update', {
+            'analytics_storage': CookieConsent.acceptedCategory('analytics') ? 'granted' : 'denied'
+            });
+        }
+        }
+        });
+        </script>
+    
     <style>
         * {
             box-sizing: border-box;
