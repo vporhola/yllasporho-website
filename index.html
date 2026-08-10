@@ -163,6 +163,60 @@
             background-color: #333333;
         }
 
+        /* Koko ilmoituspalkki klikattavana linkkinä */
+        .hero-announcement-link {
+            display: block;
+            text-decoration: none;
+            width: 100%;
+        }
+
+        .hero-announcement-bar {
+            width: 100%;
+            background-color: #111111;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.55rem 1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            transition: background-color 0.2s ease;
+            cursor: pointer;
+        }
+
+        .hero-announcement-link:hover .hero-announcement-bar {
+            background-color: #222222;
+        }
+
+        .hero-announcement-link:hover .marquee-text {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+            width: 100%;
+            position: relative;
+            mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
+        }
+
+        .marquee-text {
+            display: inline-block;
+            padding-left: 100%;
+            animation: marquee 18s linear infinite;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            color: #f0f0f0;
+            transition: color 0.2s ease;
+        }
+
+        @keyframes marquee {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-100%, 0); }
+        }
+
         .hero {
             position: relative;
             min-height: 75vh;
@@ -493,6 +547,13 @@
             .section-header h2 {
                 font-size: 1.8rem;
             }
+            .hero-announcement-bar {
+                padding: 0.5rem;
+            }
+            .marquee-text {
+                font-size: 0.8rem;
+                animation-duration: 14s;
+            }
         }
     </style>
 </head>
@@ -511,6 +572,17 @@
             </ul>
         </nav>
     </header>
+
+    <!-- Koko ilmoituspalkki klikattavana linkkinä -->
+    <a href="yllasporho.html" class="hero-announcement-link">
+        <div class="hero-announcement-bar">
+            <div class="marquee-container">
+                <span class="marquee-text">
+                    ❄️ Ensilumen ja talvikauden varaukset käynnissä — Varmista oma tunturiviikkosi Äkäslompolossa! Klikkaa tästä ja katso vapaat viikot →
+                </span>
+            </div>
+        </div>
+    </a>
 
     <section class="hero" id="etusivu">
         <video autoplay muted loop playsinline defaultMuted poster="images/kuertunturi2.jpg" class="hero-video">
