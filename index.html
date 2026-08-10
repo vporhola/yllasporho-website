@@ -19,81 +19,81 @@
             'ad_user_data': 'denied',
             'ad_personalization': 'denied'
         });
-        </script>
+    </script>
 
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-EFSD1E0WZP"></script>
-        <script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EFSD1E0WZP"></script>
+    <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
 
         gtag('config', 'G-EFSD1E0WZP');
-        </script>
+    </script>
 
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.0.0/dist/cookieconsent.css">
-        <script type="module">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.0.0/dist/cookieconsent.css">
+    <script type="module">
         import * as CookieConsent from 'https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.0.0/dist/cookieconsent.esm.js';
 
         CookieConsent.run({
             guiOptions: {
-            consentModal: {
-                layout: 'box',
-                position: 'bottom right',
-                equalWeightButtons: true
-            }
+                consentModal: {
+                    layout: 'box',
+                    position: 'bottom right',
+                    equalWeightButtons: true
+                }
             },
             categories: {
-            necessary: { readOnly: true, enabled: true },
-            analytics: { enabled: false }
+                necessary: { readOnly: true, enabled: true },
+                analytics: { enabled: false }
             },
             language: {
-            default: 'fi',
-            translations: {
-                fi: {
-                consentModal: {
-                    title: 'Käytämme evästeitä',
-                    description: 'Käytämme evästeitä parantaaksemme sivuston käyttökokemusta ja analysoidaksemme liikennettä.',
-                    acceptAllBtn: 'Hyväksy kaikki',
-                    acceptNecessaryBtn: 'Vain välttämättömät',
-                    showPreferencesBtn: 'Asetukset'
-                },
-                preferencesModal: {
-                    title: 'Evästeasetukset',
-                    acceptAllBtn: 'Hyväksy kaikki',
-                    acceptNecessaryBtn: 'Vain välttämättömät',
-                    savePreferencesBtn: 'Tallenna valinnat',
-                    sections: [
-                    {
-                        title: 'Välttämättömät evästeet',
-                        description: 'Nämä evästeet ovat välttämättömiä sivuston toiminnan kannalta.',
-                        linkedCategory: 'necessary'
-                    },
-                    {
-                        title: 'Analyysievästeet',
-                        description: 'Näiden evästeiden avulla ymmärrämme, miten kävijät käyttävät sivustoamme ja mistä kanavista he saapuvat.',
-                        linkedCategory: 'analytics'
+                default: 'fi',
+                translations: {
+                    fi: {
+                        consentModal: {
+                            title: 'Käytämme evästeitä',
+                            description: 'Käytämme evästeitä parantaaksemme sivuston käyttökokemusta ja analysoidaksemme liikennettä.',
+                            acceptAllBtn: 'Hyväksy kaikki',
+                            acceptNecessaryBtn: 'Vain välttämättömät',
+                            showPreferencesBtn: 'Asetukset'
+                        },
+                        preferencesModal: {
+                            title: 'Evästeasetukset',
+                            acceptAllBtn: 'Hyväksy kaikki',
+                            acceptNecessaryBtn: 'Vain välttämättömät',
+                            savePreferencesBtn: 'Tallenna valinnat',
+                            sections: [
+                                {
+                                    title: 'Välttämättömät evästeet',
+                                    description: 'Nämä evästeet ovat välttämättömiä sivuston toiminnan kannalta.',
+                                    linkedCategory: 'necessary'
+                                },
+                                {
+                                    title: 'Analyysievästeet',
+                                    description: 'Näiden evästeiden avulla ymmärrämme, miten kävijät käyttävät sivustoamme ja mistä kanavista he saapuvat.',
+                                    linkedCategory: 'analytics'
+                                }
+                            ]
+                        }
                     }
-                    ]
                 }
-                }
-            }
             },
             onConsent: ({cookie}) => {
-            if (CookieConsent.acceptedCategory('analytics')) {
-                gtag('consent', 'update', {
-                'analytics_storage': 'granted'
-                });
-            }
+                if (CookieConsent.acceptedCategory('analytics')) {
+                    gtag('consent', 'update', {
+                        'analytics_storage': 'granted'
+                    });
+                }
             },
             onChange: ({cookie, changedCategories}) => {
-            if (changedCategories.includes('analytics')) {
-                gtag('consent', 'update', {
-                'analytics_storage': CookieConsent.acceptedCategory('analytics') ? 'granted' : 'denied'
-                });
-            }
+                if (changedCategories.includes('analytics')) {
+                    gtag('consent', 'update', {
+                        'analytics_storage': CookieConsent.acceptedCategory('analytics') ? 'granted' : 'denied'
+                    });
+                }
             }
         });
-        </script>    
+    </script>    
     <style>
         * {
             box-sizing: border-box;
@@ -106,6 +106,9 @@
             color: #222;
             line-height: 1.7;
             background-color: #fcfcfc;
+            
+            letter-spacing: 0.2px;
+            -webkit-font-smoothing: antialiased;
         }
 
         header {
@@ -163,7 +166,6 @@
             background-color: #333333;
         }
 
-        /* Koko ilmoituspalkki klikattavana linkkinä */
         .hero-announcement-link {
             display: block;
             text-decoration: none;
@@ -282,42 +284,54 @@
             flex-wrap: wrap;
         }
 
+        .btn-hero {
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            box-sizing: border-box !important;
+            
+            height: 54px !important;
+            min-height: 54px !important;
+            max-height: 54px !important;
+            
+            min-width: 280px;
+            padding: 0 1.8rem !important;
+            margin: 0 !important;
+            
+            border-radius: 6px !important;
+            text-decoration: none !important;
+            font-weight: 700 !important;
+            font-size: 0.95rem !important;
+            line-height: 1 !important;
+            white-space: nowrap !important;
+            transition: all 0.2s ease !important;
+        }
+
         .btn-primary {
-            display: inline-block;
-            background-color: #ffffff;
+            background-color: #ffffff !important;
             color: #111111 !important;
-            padding: 1rem 2.2rem;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.05rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            transition: all 0.2s ease;
+            border: 2px solid #111111 !important;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
         }
 
         .btn-primary:hover {
-            background-color: #f0f0f0;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
-        }
+            background-color: #f0f0f0 !important;
+            border-color: #111111 !important;
+            transform: translateY(-2px) !important;
+    }
 
-        .btn-hero-secondary {
-            display: inline-block;
-            background-color: rgba(17, 17, 17, 0.75);
+        .btn-hero-dark {
+            background-color: rgba(17, 17, 17, 0.75) !important;
             color: #ffffff !important;
-            padding: 1rem 2rem;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1rem;
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(4px);
-            transition: all 0.2s ease;
+            border: 1px solid rgba(255, 255, 255, 0.4) !important;
+            backdrop-filter: blur(4px) !important;
+            box-shadow: none !important;
         }
 
-        .btn-hero-secondary:hover {
-            background-color: rgba(17, 17, 17, 0.95);
-            transform: translateY(-2px);
+        .btn-hero-dark:hover {
+            background-color: rgba(17, 17, 17, 0.95) !important;
+            border-color: rgba(255, 255, 255, 0.6) !important;
+            transform: translateY(-2px) !important;
         }
 
         .btn-secondary {
@@ -532,8 +546,9 @@
                 flex-direction: column;
                 width: 100%;
             }
-            .btn-primary, .btn-hero-secondary {
-                width: 100%;
+            .btn-hero {
+                width: 100% !important;
+                min-width: 0 !important;
             }
             .accommodation-teaser {
                 grid-template-columns: 1fr;
@@ -568,13 +583,12 @@
                 <li><a href="yllasporho.html">Majoitus</a></li>
                 <li><a href="mahdollisuudet.html">Mahdollisuudet</a></li>
                 <li><a href="yhteydenotto.html">Yhteystiedot</a></li>
-                <li><a href="yllasporho.html" class="nav-cta">Varaa majoitus</a></li>
+                <li><a href="yllasporho.html?utm_content=nav_cta" class="nav-cta">Varaa majoitus</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- Koko ilmoituspalkki klikattavana linkkinä -->
-    <a href="yllasporho.html" class="hero-announcement-link">
+    <a href="yllasporho.html?utm_content=announcement_bar" class="hero-announcement-link">
         <div class="hero-announcement-bar">
             <div class="marquee-container">
                 <span class="marquee-text">
@@ -596,10 +610,14 @@
             <p class="subtitle">Astu ulos arjesta ja anna Lapin seitsemän tunturin muistuttaa, miltä aito hiljaisuus ja vapaat maastot tuntuvat.</p>
             
             <div class="hero-cta-group">
-                <a href="yllasporho.html" class="btn-primary">Katso vapaat viikot & varaa →</a>
-                <a href="mahdollisuudet.html" class="btn-hero-secondary">Tutustu Ylläksen elämyksiin</a>
-            </div>
+            <a href="yllasporho.html?utm_content=hero_primary_cta" class="btn-hero btn-primary">
+                Katso vapaat viikot & varaa →
+            </a>
+            <a href="mahdollisuudet.html" class="btn-hero btn-hero-dark">
+                Tutustu Ylläksen elämyksiin
+            </a>
         </div>
+
     </section>
 
     <main class="container">
@@ -667,7 +685,7 @@
                     <p>
                         Tarjoamme laadukkaita ja tunnelmallisia majoitusvaihtoehtoja paikoissa, joissa on helppo viihtyä ja vetää henkeä.
                     </p>
-                    <a href="yllasporho.html" class="btn-secondary">Tutustu majoitusvaihtoehtoihin →</a>
+                    <a href="yllasporho.html?utm_content=body_teaser_cta" class="btn-secondary">Tutustu majoitusvaihtoehtoihin →</a>
                 </div>
             </div>
 
