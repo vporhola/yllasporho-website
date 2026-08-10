@@ -133,6 +133,7 @@
             list-style: none;
             display: flex;
             justify-content: center;
+            align-items: center;
             gap: 2rem;
             flex-wrap: wrap;
         }
@@ -149,9 +150,22 @@
             color: #666;
         }
 
+        .nav-cta {
+            background-color: #111111;
+            color: #ffffff !important;
+            padding: 0.5rem 1.2rem;
+            border-radius: 4px;
+            font-size: 0.88rem !important;
+            transition: background-color 0.2s ease;
+        }
+
+        .nav-cta:hover {
+            background-color: #333333;
+        }
+
         .hero {
             position: relative;
-            min-height: 70vh;
+            min-height: 75vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -185,7 +199,7 @@
         .hero-content {
             position: relative;
             z-index: 3;
-            max-width: 800px;
+            max-width: 850px;
             margin: 0 auto;
         }
 
@@ -201,29 +215,55 @@
         .hero-content p.subtitle {
             font-size: 1.25rem;
             font-weight: 400;
-            margin-bottom: 2rem;
+            margin-bottom: 2.2rem;
             opacity: 0.95;
             text-shadow: 0 1px 6px rgba(0,0,0,0.6);
         }
 
+        .hero-cta-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
         .btn-primary {
             display: inline-block;
-            background-color: #111111;
-            color: #ffffff !important;
-            padding: 0.95rem 2.2rem;
+            background-color: #ffffff;
+            color: #111111 !important;
+            padding: 1rem 2.2rem;
             border-radius: 6px;
             text-decoration: none;
             font-weight: 700;
-            font-size: 1rem;
-            border: 1px solid rgba(255, 255, 255, 0.25);
+            font-size: 1.05rem;
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
             transition: all 0.2s ease;
         }
 
         .btn-primary:hover {
-            background-color: #2a2a2a;
+            background-color: #f0f0f0;
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+        }
+
+        .btn-hero-secondary {
+            display: inline-block;
+            background-color: rgba(17, 17, 17, 0.75);
+            color: #ffffff !important;
+            padding: 1rem 2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(4px);
+            transition: all 0.2s ease;
+        }
+
+        .btn-hero-secondary:hover {
+            background-color: rgba(17, 17, 17, 0.95);
+            transform: translateY(-2px);
         }
 
         .btn-secondary {
@@ -434,6 +474,13 @@
             .hero-content p.subtitle {
                 font-size: 1.05rem;
             }
+            .hero-cta-group {
+                flex-direction: column;
+                width: 100%;
+            }
+            .btn-primary, .btn-hero-secondary {
+                width: 100%;
+            }
             .accommodation-teaser {
                 grid-template-columns: 1fr;
                 padding: 1.8rem;
@@ -460,6 +507,7 @@
                 <li><a href="yllasporho.html">Majoitus</a></li>
                 <li><a href="mahdollisuudet.html">Mahdollisuudet</a></li>
                 <li><a href="yhteydenotto.html">Yhteystiedot</a></li>
+                <li><a href="yllasporho.html" class="nav-cta">Varaa majoitus</a></li>
             </ul>
         </nav>
     </header>
@@ -474,13 +522,16 @@
         <div class="hero-content">
             <h1>Kuule omat ajatuksesi.</h1>
             <p class="subtitle">Astu ulos arjesta ja anna Lapin seitsemän tunturin muistuttaa, miltä aito hiljaisuus ja vapaat maastot tuntuvat.</p>
-            <a href="mahdollisuudet.html" class="btn-primary">Tutustu Ylläksen elämyksiin →</a>
+            
+            <div class="hero-cta-group">
+                <a href="yllasporho.html" class="btn-primary">Katso vapaat viikot & varaa →</a>
+                <a href="mahdollisuudet.html" class="btn-hero-secondary">Tutustu Ylläksen elämyksiin</a>
+            </div>
         </div>
     </section>
 
     <main class="container">
         
-        <!-- TEKSTI: Miksi Ylläs? -->
         <section class="feel-section">
             <h2>Pysähdy. Hengitä. Hae tunturista voimaa.</h2>
             <p>
