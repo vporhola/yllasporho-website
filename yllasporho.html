@@ -638,6 +638,61 @@
             font-family: inherit;
         }
 
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+        }
+        .form-control {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-family: inherit;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .form-row .form-group {
+            flex: 1;
+            margin-bottom: 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .checkbox-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin-top: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .checkbox-group label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: normal;
+            cursor: pointer;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 1.2rem;
+            height: 1.2rem;
+            cursor: pointer;
+        }
+
         footer {
             background-color: #ffffff;
             border-top: 1px solid #eee;
@@ -938,6 +993,22 @@
         <input type="email" name="_replyto" required class="form-control" placeholder="etunimi.sukunimi@esimerkki.fi">
     </div>
 
+    <div class="form-group">
+        <label for="katuosoite">Katuosoite *</label>
+        <input type="text" id="katuosoite" name="katuosoite" class="form-control" required placeholder="Esim. Esimerkkikatu 12 A 3">
+        </div>
+
+        <div class="form-row">
+        <div class="form-group">
+            <label for="postinumero">Postinumero *</label>
+            <input type="text" id="postinumero" name="postinumero" class="form-control" required placeholder="00100">
+        </div>
+        <div class="form-group">
+            <label for="postitoimipaikka">Postitoimipaikka *</label>
+            <input type="text" id="postitoimipaikka" name="postitoimipaikka" class="form-control" required placeholder="Helsinki">
+        </div>
+        </div>
+    
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
         <div class="form-group">
             <label>Aikuiset *</label>
@@ -980,24 +1051,32 @@
         <label>Lisätiedot / Kysymykset</label>
         <textarea name="viesti" rows="3" class="form-control" placeholder="Kerro toiveista tai jos kyseessä on esim. lyhyempi varaus jakso..."></textarea>
     </div>
+    
     <div style="margin-bottom: 1.2rem; font-size: 0.85rem; color: #64748b; text-align: center;">
-    Tutustu 
-    <a href="varausehdot.html" target="_blank" rel="noopener" style="color: #0284c7; font-weight: 600; text-decoration: underline;">
-        varausehtoihimme tästä
-    </a>
-    <br>
-    <span style="color: #64748b; font-size: 0.75rem; display: inline-block; margin-top: 0.2rem;">
-        (avautuu uuteen välilehteen)
-    </span>
+        Tutustu 
+        <a href="varausehdot.html" target="_blank" rel="noopener" style="color: #0284c7; font-weight: 600; text-decoration: underline;">
+            varausehtoihimme tästä
+        </a>
+        <br>
+        <span style="color: #64748b; font-size: 0.75rem; display: inline-block; margin-top: 0.2rem;">
+            (avautuu uuteen välilehteen)
+        </span>
     </div>
 
-<button class="btn-reserve g-recaptcha" 
-        data-sitekey="6LcfEnAtAAAAAHG8WU-7ovUMRPgIVP8lG80f7kig" 
-        data-callback="onBookingSubmit" 
-        data-action="submit" 
-        style="width: 100%; border: none; font-size: 1.05rem; cursor: pointer;">
-    Lähetä varauspyyntö →
-</button>
+    <div class="form-group checkbox-group">
+        <label>
+            <input type="checkbox" name="varausehdot_hyvaksytty" value="Kyllä" required>
+            Olen lukenut ja hyväksyn varausehdot *
+        </label>
+    </div>
+
+    <button class="btn-reserve g-recaptcha" 
+            data-sitekey="6LcfEnAtAAAAAHG8WU-7ovUMRPgIVP8lG80f7kig" 
+            data-callback="onBookingSubmit" 
+            data-action="submit" 
+            style="width: 100%; border: none; font-size: 1.05rem; cursor: pointer;">
+        Lähetä varauspyyntö →
+    </button>
 </form>
     </div>
         </section>
