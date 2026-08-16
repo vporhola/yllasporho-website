@@ -913,12 +913,27 @@
             <h2>Varaustilanne & Hinnasto</h2>
             <p style="color: #666; margin-top: 0.3rem;">Valitse sopiva viikko ja lähetä varauspyyntö. Lähetämme vahvistuksen sähköpostitse.
             </p> 
-            
-            <div class="season-info-box">
-                💡 <strong>Vinkki:</strong> Matalasesongin aikana (kesä ja syksy) voit tiedustella myös viikkoa lyhyempiä vuokra-aikoja (esim. viikonloppuja tai arkipäiviä).
-            </div>
-
-            <div class="calendar-filters" style="display: flex; gap: 1rem; margin: 1.5rem 0; flex-wrap: wrap;">
+                    
+                <div class="season-info-box" style="display: flex; gap: 0.6rem; align-items: flex-start; padding: 1rem; background-color: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; margin-bottom: 1.5rem;">
+        
+                    <span style="font-size: 1.1rem; line-height: 1;">💡</span>
+                    
+                    <div style="font-size: 0.88rem; color: #334155; line-height: 1.45;">
+                        <strong>Vinkki:</strong> Matalasesonkien aikana (Matalasesonki, Ensilumi/Syksy ja Lumiaika/Talvi) voit tiedustella myös viikkoa lyhyempiä vuokra-aikoja (esim. viikonloppuja tai arkipäiviä).
+                        
+                        <div style="margin-top: 0.4rem; color: #475569;">
+                            Kysy lisää: 
+                            <a href="mailto:info@yllasporho.com" style="color: #0284c7; font-weight: 600; text-decoration: underline;">
+                                info@yllasporho.com
+                            </a> 
+                            tai 
+                            <a href="tel:+358400893439" style="color: #0284c7; font-weight: 600; text-decoration: underline; white-space: nowrap;">
+                                0400 893 439
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="calendar-filters" style="display: flex; gap: 1rem; margin: 1.5rem 0; flex-wrap: wrap;">
                 <select id="filter-season" onchange="applyFilters()" style="padding: 0.6rem; border-radius: 6px; border: 1px solid #ccc; font-size: 0.95rem; background: #fff;">
                 <option value="all">Kaikki sesongit</option>
                 <option value="kevat">⛷️ Kevätsesonki (vk 7–16)</option>
@@ -1068,6 +1083,21 @@
             <input type="checkbox" name="varausehdot_hyvaksytty" value="Kyllä" required>
             Olen lukenut ja hyväksyn varausehdot *
         </label>
+    </div>
+
+    <div style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 0.85rem 1rem; text-align: center; margin-bottom: 1.2rem;">
+        <span style="font-size: 0.8rem; color: #475569; display: block; margin-bottom: 0.5rem; font-weight: 500;">
+            Mietityttääkö jokin ennen varauksen tekemistä?
+        </span>
+        
+        <div style="display: flex; justify-content: center; gap: 0.5rem; max-width: 380px; margin: 0 auto; flex-wrap: wrap;">
+            <a href="mailto:info@yllasporho.com" style="flex: 1; min-width: 140px; display: inline-flex; align-items: center; justify-content: center; gap: 0.35rem; padding: 0.45rem 0.65rem; background-color: #0f172a; color: #ffffff; border: 1px solid #0f172a; border-radius: 6px; font-size: 0.8rem; font-weight: 600; text-decoration: none; box-sizing: border-box;">
+                ✉️ info@yllasporho.com
+            </a>
+            <a href="tel:+358400893439" style="flex: 1; min-width: 140px; display: inline-flex; align-items: center; justify-content: center; gap: 0.35rem; padding: 0.45rem 0.65rem; background-color: #0f172a; color: #ffffff; border: 1px solid #0f172a; border-radius: 6px; font-size: 0.8rem; font-weight: 600; text-decoration: none; box-sizing: border-box;">
+                📞 0400 893 439
+            </a>
+        </div>
     </div>
 
     <button class="btn-reserve g-recaptcha" 
