@@ -972,8 +972,8 @@
                 <p style="grid-column: 1/-1; text-align: center; padding: 2rem; color: #666;">Ladataan varaustilannetta...</p>
             </div>
 
-            <div style="text-align: center; margin-top: 1.5rem;" id="load-more-container">
-                <button id="btn-show-more" onclick="showAllWeeks()" style="padding: 0.75rem 1.5rem; background: #f0f4f8; color: #1e293b; border: 1px solid #cbd5e1; border-radius: 6px; font-weight: 600; cursor: pointer;">
+            <div id="load-more-container" style="text-align: center; margin-top: 1.5rem; display: none;">
+                <button id="btn-show-more" onclick="showAllWeeks()" style="background-color: #0f172a; color: #ffffff; border: none; padding: 0.75rem 1.5rem; font-size: 1rem; font-weight: 600; border-radius: 6px; cursor: pointer;">
                     Näytä lisää viikkoja ↓
                 </button>
             </div>
@@ -1210,172 +1210,228 @@
     </script>
 
     <script>
-        const GOOGLE_SHEET_API_URL = "https://script.google.com/macros/s/AKfycbyU-ANmzwMksQMGumLOy814KFm1BRD5pjtbpHvQ2Z-uMAxS_1aMO1yr7LJKV2mLgA6n/exec";
+    const GOOGLE_SHEET_API_URL = "https://script.google.com/macros/s/AKfycbyU-ANmzwMksQMGumLOy814KFm1BRD5pjtbpHvQ2Z-uMAxS_1aMO1yr7LJKV2mLgA6n/exec";
 
-        let allWeeksData = []; 
-        let limitToFour = true; 
+    let allWeeksData = []; 
+    let limitToEight = true; 
 
-        function parseDate(dateString) {
-            if (!dateString) return null;
-            const d = new Date(dateString);
-            if (!isNaN(d.getTime())) return d;
-            
-            const parts = dateString.split('.');
-            if (parts.length === 3) {
-                return new Date(parts[2], parts[1] - 1, parts[0]);
-            }
-            return null;
-        }
+    // Muuntaa päivämäärän oikein Suomen kalenteripäiväksi
+    function parseDate(dateString) {
+        if (!dateString) return null;
 
-        function formatDate(dateString) {
-            const d = parseDate(dateString);
-            if (!d) return dateString;
-            return `${d.getDate()}.${d.getMonth() + 1}.${d.getFullYear()}`;
-        }
+        if (typeof dateString === 'string') {
+            const cleanStr = dateString.trim();
 
-        function getSeasonInfo(item) {
-            let weekNum = parseInt(item.viikko.replace(/\D/g, ''), 10);
-            
-            if (isNaN(weekNum)) {
-                const startDate = parseDate(item.alkupvm);
-                if (startDate) {
-                    const firstJan = new Date(startDate.getFullYear(), 0, 1);
-                    weekNum = Math.ceil((((startDate - firstJan) / 86400000) + firstJan.getDay() + 1) / 7);
+            if (cleanStr.includes('T')) {
+                const d = new Date(cleanStr);
+                if (!isNaN(d.getTime())) {
+                    const localDate = new Date(d.getTime() + (3 * 60 * 60 * 1000));
+                    return new Date(localDate.getUTCFullYear(), localDate.getUTCMonth(), localDate.getUTCDate(), 0, 0, 0, 0);
                 }
             }
 
-            if (weekNum >= 7 && weekNum <= 16) {
-                return { key: "kevat", label: "⛷️ Kevätsesonki", class: "season-kevat" };
-            } else if (weekNum >= 35 && weekNum <= 39) {
-                return { key: "ruska", label: "🍂 Ruskasesonki", class: "season-ruska" };
-            } else if (weekNum >= 40 && weekNum <= 43) {
-                return { key: "ensilumi", label: "🍁 Ensilumi / Syksy", class: "season-ensilumi" };
-            } else if (weekNum >= 17 && weekNum <= 34) {
-                return { key: "kesa", label: "🌱 Matalasesonki", class: "season-kesa" };
-            } else {
-                return { key: "lumiaika", label: "❄️ Lumiaika / Talvi", class: "season-lumiaika" };
+            if (cleanStr.includes('.')) {
+                const parts = cleanStr.split('.');
+                if (parts.length === 3) {
+                    return new Date(parseInt(parts[2], 10), parseInt(parts[1], 10) - 1, parseInt(parts[0], 10), 0, 0, 0, 0);
+                }
+            } else if (cleanStr.includes('-')) {
+                const parts = cleanStr.split('-');
+                if (parts.length === 3) {
+                    return new Date(parseInt(parts[0], 10), parseInt(parts[1], 10) - 1, parseInt(parts[2], 10), 0, 0, 0, 0);
+                }
             }
         }
 
-        document.addEventListener("DOMContentLoaded", function () {
-            fetch(GOOGLE_SHEET_API_URL)
-                .then(response => response.json())
-                .then(data => {
-                    allWeeksData = data;
-                    renderWeeks();
-                })
-                .catch(error => {
-                    console.error("Virhe haettaessa tietoja taulukosta:", error);
-                    document.getElementById("weeks-container").innerHTML = 
-                        "<p style='color:red;'>Varaustietojen lataaminen epäonnistui. Ole hyvä ja yritä myöhemmin uudelleen.</p>";
-                });
+        const d = new Date(dateString);
+        if (!isNaN(d.getTime())) {
+            return new Date(d.getFullYear(), d.getMonth(), d.getDate(), 0, 0, 0, 0);
+        }
+
+        return null;
+    }
+
+    function formatDate(dateString) {
+        const d = parseDate(dateString);
+        if (!d) return dateString;
+        return `${d.getDate()}.${d.getMonth() + 1}.${d.getFullYear()}`;
+    }
+    
+    function getActiveUpcomingWeeks(allWeeks) {
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+
+        return allWeeks.filter(item => {
+            // Käytetään loppupäivää katkon laskemiseen
+            const endDateStr = item.loppupvm || item.endDate;
+            
+            // Jos loppupäivää ei ole, käytetään alkupäivää + 7 päivää
+            let endDate = parseDate(endDateStr);
+            if (!endDate) {
+                const startDateStr = item.alkupvm || item.startDate;
+                const startDate = parseDate(startDateStr);
+                if (!startDate) return true;
+                endDate = new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate() + 7);
+            }
+
+            // Cutoff: Loppupäivä (lauantai) - 2 päivää = samaisen viikon torstai klo 23:59:59
+            // Esim. Viikon 36 loppupäivä 5.9. -> Cutoff 3.9.2026 klo 23:59:59
+            const cutoffDate = new Date(endDate.getFullYear(), endDate.getMonth(), endDate.getDate() - 2, 23, 59, 59, 999);
+
+            return today <= cutoffDate;
+        });
+    }
+
+    function getSeasonInfo(item) {
+        let weekNum = parseInt(item.viikko.toString().replace(/\D/g, ''), 10);
+        
+        if (isNaN(weekNum)) {
+            const startDate = parseDate(item.alkupvm);
+            if (startDate) {
+                const firstJan = new Date(startDate.getFullYear(), 0, 1);
+                weekNum = Math.ceil((((startDate - firstJan) / 86400000) + firstJan.getDay() + 1) / 7);
+            }
+        }
+
+        if (weekNum >= 7 && weekNum <= 16) {
+            return { key: "kevat", label: "⛷️ Kevätsesonki", class: "season-kevat" };
+        } else if (weekNum >= 35 && weekNum <= 39) {
+            return { key: "ruska", label: "🍂 Ruskasesonki", class: "season-ruska" };
+        } else if (weekNum >= 40 && weekNum <= 43) {
+            return { key: "ensilumi", label: "🍁 Ensilumi / Syksy", class: "season-ensilumi" };
+        } else if (weekNum >= 17 && weekNum <= 34) {
+            return { key: "kesa", label: "🌱 Matalasesonki", class: "season-kesa" };
+        } else {
+            return { key: "lumiaika", label: "❄️ Lumiaika / Talvi", class: "season-lumiaika" };
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        fetch(GOOGLE_SHEET_API_URL)
+            .then(response => response.json())
+            .then(data => {
+                allWeeksData = data;
+                renderWeeks();
+            })
+            .catch(error => {
+                console.error("Virhe haettaessa tietoja taulukosta:", error);
+                document.getElementById("weeks-container").innerHTML = 
+                    "<p style='color:red;'>Varaustietojen lataaminen epäonnistui. Ole hyvä ja yritä myöhemmin uudelleen.</p>";
+            });
+    });
+
+    function renderWeeks() {
+        const container = document.getElementById("weeks-container");
+        const loadMoreBtn = document.getElementById("load-more-container");
+        const selectedSeason = document.getElementById("filter-season") ? document.getElementById("filter-season").value : "all";
+        const selectedMonth = document.getElementById("filter-month") ? document.getElementById("filter-month").value : "all";
+        const selectedYear = document.getElementById("filter-year") ? document.getElementById("filter-year").value : "all";
+
+        container.innerHTML = "";
+
+        // 1. Vanhentuneet pois (vuokrausviikon torstai-cutoff)
+        const activeWeeks = getActiveUpcomingWeeks(allWeeksData);
+
+        // 2. Käyttäjän rajaukset
+        let filteredData = activeWeeks.filter(item => {
+            const startDate = parseDate(item.alkupvm);
+            const seasonInfo = getSeasonInfo(item);
+
+            const seasonMatches = (selectedSeason === "all") || (seasonInfo.key === selectedSeason);
+            const monthMatches = (selectedMonth === "all") || (startDate && (startDate.getMonth() + 1).toString() === selectedMonth);
+            const yearMatches = (selectedYear === "all") || (startDate && startDate.getFullYear().toString() === selectedYear);
+
+            return seasonMatches && monthMatches && yearMatches;
         });
 
-        function renderWeeks() {
-            const container = document.getElementById("weeks-container");
-            const loadMoreBtn = document.getElementById("load-more-container");
-            const selectedSeason = document.getElementById("filter-season").value;
-            const selectedMonth = document.getElementById("filter-month").value;
-            const selectedYear = document.getElementById("filter-year").value;
+        if (filteredData.length === 0) {
+            container.innerHTML = "<p style='grid-column: 1/-1; text-align: center; color: #666;'>Ei löytynyt viikkoja valitulla hakuehdolla.</p>";
+            if (loadMoreBtn) loadMoreBtn.style.display = "none";
+            return;
+        }
 
-            container.innerHTML = "";
+        let displayData = filteredData;
 
-            let filteredData = allWeeksData.filter(item => {
-                const startDate = parseDate(item.alkupvm);
-                const seasonInfo = getSeasonInfo(item);
+        if (limitToEight && selectedSeason === "all" && selectedMonth === "all" && selectedYear === "all") {
+            displayData = filteredData.slice(0, 8);
+            if (loadMoreBtn) loadMoreBtn.style.display = filteredData.length > 8 ? "block" : "none";
+        } else {
+            if (loadMoreBtn) loadMoreBtn.style.display = "none";
+        }
+        
+        displayData.forEach(item => {
+            const isAvailable = item.tila && item.tila.toString().trim().toLowerCase() === "vapaa";
+            const seasonInfo = getSeasonInfo(item);
+            const card = document.createElement("div");
 
-                const seasonMatches = (selectedSeason === "all") || (seasonInfo.key === selectedSeason);
-                const monthMatches = (selectedMonth === "all") || (startDate && (startDate.getMonth() + 1).toString() === selectedMonth);
-                const yearMatches = (selectedYear === "all") || (startDate && startDate.getFullYear().toString() === selectedYear);
+            const startDate = parseDate(item.alkupvm);
+            const itemYear = startDate ? startDate.getFullYear() : null;
+            const yearText = itemYear ? itemYear : "";
 
-                return seasonMatches && monthMatches && yearMatches;
-            });
+            const currentYear = new Date().getFullYear();
+            const badgeClass = (itemYear && itemYear > currentYear) ? "year-badge-next" : "year-badge";
 
-            if (filteredData.length === 0) {
-                container.innerHTML = "<p style='grid-column: 1/-1; text-align: center; color: #666;'>Ei löytynyt viikkoja valitulla hakuehdolla.</p>";
-                loadMoreBtn.style.display = "none";
-                return;
-            }
+            const startFormatted = formatDate(item.alkupvm);
+            const endFormatted = formatDate(item.loppupvm);
+            const dateText = `${startFormatted} – ${endFormatted}`;
 
-            let displayData = filteredData;
-            if (limitToFour && selectedSeason === "all" && selectedMonth === "all" && selectedYear === "all") {
-                displayData = filteredData.slice(0, 4);
-                loadMoreBtn.style.display = filteredData.length > 4 ? "block" : "none";
+            if (isAvailable) {
+                card.className = `week-card available ${seasonInfo.class}`;
+                card.onclick = () => selectWeek(`${item.viikko} / ${yearText} (${dateText})`, item.hinta);
+                card.innerHTML = `
+                    <div>
+                        <div class="season-header">
+                            <span class="season-tag">${seasonInfo.label}</span>
+                            <span class="${badgeClass}">${yearText}</span>
+                        </div>
+                        <div class="week-number">${item.viikko}</div>
+                        <div class="week-dates">${dateText}</div>
+                    </div>
+                    <div>
+                        <div class="week-price">${item.hinta}</div>
+                        <span class="status-badge">Vapaa – Varaa</span>
+                    </div>
+                `;
             } else {
-                loadMoreBtn.style.display = "none";
+                card.className = "week-card booked";
+                card.innerHTML = `
+                    <div>
+                        <div class="season-header">
+                            <span class="season-tag">${seasonInfo.label}</span>
+                            <span class="${badgeClass}">${yearText}</span>
+                        </div>
+                        <div class="week-number">${item.viikko}</div>
+                        <div class="week-dates">${dateText}</div>
+                    </div>
+                    <div>
+                        <div class="week-price">${item.hinta}</div>
+                        <span class="status-badge booked-badge">VARATTU</span>
+                    </div>
+                `;
             }
-            
-            displayData.forEach(item => {
-                const isAvailable = item.tila.toString().trim().toLowerCase() === "vapaa";
-                const seasonInfo = getSeasonInfo(item);
-                const card = document.createElement("div");
+            container.appendChild(card);
+        });
+    }
 
-                const startDate = parseDate(item.alkupvm);
-                const itemYear = startDate ? startDate.getFullYear() : null;
-                const yearText = itemYear ? itemYear : "";
+    function applyFilters() {
+        limitToEight = false;
+        renderWeeks();
+    }
 
-                const currentYear = new Date().getFullYear();
-                const badgeClass = (itemYear && itemYear > currentYear) ? "year-badge-next" : "year-badge";
+    function showAllWeeks() {
+        limitToEight = false;
+        renderWeeks();
+    }
 
-                const startFormatted = formatDate(item.alkupvm);
-                const endFormatted = formatDate(item.loppupvm);
-                const dateText = `${startFormatted} – ${endFormatted}`;
-
-                if (isAvailable) {
-                    card.className = `week-card available ${seasonInfo.class}`;
-                    card.onclick = () => selectWeek(`${item.viikko} / ${yearText} (${dateText})`, item.hinta);
-                    card.innerHTML = `
-                        <div>
-                            <div class="season-header">
-                                <span class="season-tag">${seasonInfo.label}</span>
-                                <span class="${badgeClass}">${yearText}</span>
-                            </div>
-                            <div class="week-number">${item.viikko}</div>
-                            <div class="week-dates">${dateText}</div>
-                        </div>
-                        <div>
-                            <div class="week-price">${item.hinta}</div>
-                            <span class="status-badge">Vapaa – Varaa</span>
-                        </div>
-                    `;
-                } else {
-                    card.className = "week-card booked";
-                    card.innerHTML = `
-                        <div>
-                            <div class="season-header">
-                                <span class="season-tag">${seasonInfo.label}</span>
-                                <span class="${badgeClass}">${yearText}</span>
-                            </div>
-                            <div class="week-number">${item.viikko}</div>
-                            <div class="week-dates">${dateText}</div>
-                        </div>
-                        <div>
-                            <div class="week-price">${item.hinta}</div>
-                            <span class="status-badge booked-badge">VARATTU</span>
-                        </div>
-                    `;
-                }
-                container.appendChild(card);
-            });
-        }
-
-        function applyFilters() {
-            limitToFour = false;
-            renderWeeks();
-        }
-
-        function showAllWeeks() {
-            limitToFour = false;
-            renderWeeks();
-        }
-
-        function selectWeek(viikko, hinta) {
-            const varausosio = document.getElementById('varausosio');
+    function selectWeek(viikko, hinta) {
+        const varausosio = document.getElementById('varausosio');
+        if (varausosio) {
             varausosio.style.display = 'block';
             document.getElementById('valittu_viikko').value = viikko + " (Hinta: " + hinta + ")";
             varausosio.scrollIntoView({ behavior: 'smooth' });
         }
-    </script>
+    }
+</script>
 
 </body>
 </html>
