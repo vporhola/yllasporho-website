@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ylläs – Kuule omat ajatuksesi | Ylläsporho</title>
+    <title>Lomahuoneisto Ylläksellä | Kuule omat ajatuksesi | Ylläsporho</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -153,19 +153,6 @@
             color: #666;
         }
 
-        .nav-cta {
-            background-color: #111111;
-            color: #ffffff !important;
-            padding: 0.5rem 1.2rem;
-            border-radius: 4px;
-            font-size: 0.88rem !important;
-            transition: background-color 0.2s ease;
-        }
-
-        .nav-cta:hover {
-            background-color: #333333;
-        }
-
         .hero-announcement-link {
             display: block;
             text-decoration: none;
@@ -307,30 +294,36 @@
             transition: all 0.2s ease !important;
         }
 
+        /* Tumma nappi */
         .btn-primary {
-            background-color: #ffffff !important;
-            color: #111111 !important;
-            border: 2px solid #111111 !important;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
-        }
-
-        .btn-primary:hover {
-            background-color: #f0f0f0 !important;
-            border-color: #111111 !important;
-            transform: translateY(-2px) !important;
-    }
-
-        .btn-hero-dark {
-            background-color: rgba(17, 17, 17, 0.75) !important;
+            background-color: #111111 !important;
             color: #ffffff !important;
             border: 1px solid rgba(255, 255, 255, 0.4) !important;
             backdrop-filter: blur(4px) !important;
             box-shadow: none !important;
         }
 
-        .btn-hero-dark:hover {
-            background-color: rgba(17, 17, 17, 0.95) !important;
-            border-color: rgba(255, 255, 255, 0.6) !important;
+        .btn-primary:hover,
+        .btn-primary:focus {
+            background-color: #333333 !important;
+            color: #ffffff !important;
+            border-color: rgba(255, 255, 255, 0.8) !important;
+            transform: translateY(-2px) !important;
+        }
+
+        /* Valkoinen nappi */
+        .btn-hero-dark {
+            background-color: #ffffff !important;
+            color: #111111 !important;
+            border: 2px solid #111111 !important;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+        }
+
+        .btn-hero-dark:hover,
+        .btn-hero-dark:focus {
+            background-color: #f0f0f0 !important;
+            color: #111111 !important;
+            border-color: #111111 !important;
             transform: translateY(-2px) !important;
         }
 
@@ -571,6 +564,7 @@
             }
         }
     </style>
+    
 </head>
 <body>
 
@@ -583,7 +577,6 @@
                 <li><a href="yllasporho.html">Majoitus</a></li>
                 <li><a href="mahdollisuudet.html">Mahdollisuudet</a></li>
                 <li><a href="yhteydenotto.html">Yhteystiedot</a></li>
-                <li><a href="yllasporho.html?utm_content=nav_cta" class="nav-cta">Varaa majoitus</a></li>
             </ul>
         </nav>
     </header>
