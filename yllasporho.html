@@ -9,7 +9,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,700;0,900;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <script>
     window.dataLayer = window.dataLayer || [];
@@ -105,680 +105,1088 @@
     </script>
 
     <style>
+            html {
+                scroll-behavior: smooth;
+            }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-        
-        html, body {
-            height: 100%;
-        }
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
 
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            color: #333;
-            background-color: #f9f9f9;
-            line-height: 1.6;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
+            body {
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                color: #222222;
+                line-height: 1.7;
+                background-color: #fcfcfc;
+                letter-spacing: 0.2px;
+                -webkit-font-smoothing: antialiased;
+                min-height: 100vh;
+            }
 
-        h1, h2, h3 {
-            font-family: 'Merriweather', serif;
-            color: #111;
-        }
+            #kalenteri {
+                scroll-margin-top: 2rem;
+            }
 
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
+            h1, h2, h3 {
+                font-family: 'Merriweather', serif;
+                color: #111;
+            }
 
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-        }
+            a {
+                color: inherit;
+                text-decoration: none;
+            }
 
-        header {
-            text-align: center;
-            padding: 2.5rem 1rem 1.5rem;
-            background-color: #ffffff;
-            border-bottom: 1px solid #eee;
-        }
+            .container {
+                max-width: 1100px;
+                margin: 0 auto;
+                padding: 0 1.5rem;
+            }
 
-        .site-title {
-            font-family: 'Merriweather', serif;
-            font-size: 2.2rem;
-            font-weight: 900;
-            color: #111;
-            letter-spacing: -0.5px;
-        }
+            .btn-reserve,
+            .btn-show-more {
+                display: inline-flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                box-sizing: border-box !important;
+                
+                background-color: #111111 !important;
+                color: #ffffff !important;
+                border: 2px solid #111111 !important;
+                border-radius: 6px !important;
+                
+                padding: 0.55rem 1.2rem !important;
+                font-weight: 700 !important;
+                font-size: 0.95rem !important;
+                text-decoration: none !important;
+                cursor: pointer !important;
+                transition: all 0.2s ease !important;
+                text-align: center !important;
+            }
 
-        .site-domain {
-            font-size: 0.85rem;
-            color: #777;
-            margin-bottom: 1.5rem;
-        }
+            .btn-reserve:hover,
+            .btn-reserve:focus,
+            .btn-show-more:hover,
+            .btn-show-more:focus {
+                background-color: #ffffff !important;
+                color: #111111 !important;
+                border-color: #111111 !important;
+                transform: translateY(-2px) !important;
+            }
 
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
+            .btn-primary,
+            .hero-compact .btn-primary,
+            .bottom-banner-content .btn-primary,
+            .btn-secondary,
+            .btn-video-modal,
+            .btn-select-week {
+                display: inline-flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                box-sizing: border-box !important;
+                
+                background-color: #ffffff !important;
+                color: #111111 !important;
+                border: 2px solid #111111 !important;
+                border-radius: 6px !important;
+                
+                padding: 0.55rem 1.2rem !important;
+                font-weight: 700 !important;
+                font-size: 0.95rem !important;
+                text-decoration: none !important;
+                cursor: pointer !important;
+                transition: all 0.2s ease !important;
+                text-align: center !important;
+            }
 
-        nav a {
-            text-decoration: none;
-            color: #111;
-            font-weight: 700;
-            font-size: 0.95rem;
-            transition: color 0.2s ease;
-        }
+            .btn-primary:hover,
+            .hero-compact .btn-primary:hover,
+            .bottom-banner-content .btn-primary:hover,
+            .btn-secondary:hover,
+            .btn-video-modal:hover,
+            .btn-select-week:hover {
+                background-color: #111111 !important;
+                color: #ffffff !important;
+                border-color: #111111 !important;
+                transform: translateY(-2px) !important;
+            }
 
-        nav a:hover, nav a.active {
-            color: #555;
-        }
+            .btn-video-modal {
+                width: 100% !important;
+                gap: 0.5rem !important;
+                padding: 0.55rem 1rem !important;
+                font-size: 0.85rem !important;
+                font-weight: 600 !important;
+                margin-bottom: 0.75rem !important;
+            }
 
-        main.container {
-            flex: 1 0 auto;
-            margin-top: 1.5rem;
-            margin-bottom: 3rem;
-        }
+            .btn-select-week {
+                width: 100% !important;
+                padding: 0.55rem 1rem !important;
+                font-size: 0.88rem !important;
+            }
 
-        .hero-section {
-            padding: 1rem 0 1.5rem 0;
-        }
-        .hero-title-wrap {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            margin-bottom: 1.5rem;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-        .location-tag {
-            font-size: 0.9rem;
-            color: #666;
-            margin-top: 0.3rem;
-        }
-        
-        .btn-reserve {
-            display: inline-block;
-            background-color: #111111;
-            color: #ffffff;
-            padding: 0.8rem 1.6rem;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.95rem;
-            border: none;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            text-align: center;
-        }
-        .btn-reserve:hover {
-            background-color: #333333;
-            transform: translateY(-2px);
-        }
+            .btn-show-photos {
+                position: absolute !important;
+                bottom: 15px !important;
+                right: 15px !important;
+                
+                background: #ffffff !important;
+                color: #111111 !important;
+                border: 1px solid rgba(0, 0, 0, 0.1) !important;
+                
+                padding: 0.55rem 1.1rem !important;
+                font-weight: 700 !important;
+                font-size: 0.85rem !important;
+                border-radius: 6px !important;
+                cursor: pointer !important;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+                transition: all 0.2s ease !important;
+                display: flex !important;
+                align-items: center !important;
+                gap: 0.5rem !important;
+                z-index: 2 !important;
+                width: auto !important;
+            }
 
-        .gallery-container {
-            position: relative;
-            margin-bottom: 3rem;
-        }
+            .btn-show-photos:hover,
+            .btn-show-photos:focus {
+                background: #111111 !important;
+                color: #ffffff !important;
+                border-color: #111111 !important;
+                transform: translateY(-2px) !important;
+                box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2) !important;
+            }
+                        
+            .btn-booking-submit {
+                width: 100% !important;
+                padding: 0.55rem 1.2rem !important;
+                font-size: 1rem !important;
+                font-weight: 700 !important;
+                background-color: #111111 !important;
+                color: #ffffff !important;
+                border: 2px solid #111111 !important;
+                border-radius: 6px !important;
+                cursor: pointer !important;
+                transition: all 0.2s ease !important;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+                box-sizing: border-box !important;
+            }
 
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            grid-template-rows: repeat(2, 220px);
-            gap: 10px;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.04);
-        }
+            .btn-booking-submit:hover,
+            .btn-booking-submit:focus {
+                background-color: #ffffff !important;
+                color: #111111 !important;
+                border-color: #111111 !important;
+                transform: translateY(-2px) !important;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15) !important;
+            }
 
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
-            background: #eee;
-            cursor: pointer;
-        }
+            .booking-inquiry-box {
+                background-color: #f8fafc;
+                border: 1px solid #e2e8f0;
+                border-radius: 8px;
+                padding: 0.85rem 1rem;
+                text-align: center;
+                margin-bottom: 1.2rem;
+            }
 
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease, filter 0.3s ease;
-            display: block;
-        }
+            .booking-inquiry-title {
+                font-size: 0.8rem;
+                color: #475569;
+                display: block;
+                margin-bottom: 0.5rem;
+                font-weight: 500;
+            }
 
-        .gallery-item:hover img {
-            transform: scale(1.03);
-            filter: brightness(0.95);
-        }
+            .booking-inquiry-buttons {
+                display: flex;
+                justify-content: center;
+                gap: 0.5rem;
+                max-width: 380px;
+                margin: 0 auto;
+                flex-wrap: wrap;
+            }
 
-        .gallery-item-main {
-            grid-row: span 2;
-        }
+            .btn-contact-mini {
+                flex: 1;
+                min-width: 140px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.35rem;
+                padding: 0.45rem 0.65rem !important;
+                background-color: #111111 !important;
+                color: #ffffff !important;
+                border: 1px solid #111111 !important;
+                border-radius: 6px !important;
+                font-size: 0.8rem !important;
+                font-weight: 600 !important;
+                text-decoration: none !important;
+                box-sizing: border-box !important;
+                transition: all 0.2s ease !important;
+            }
 
-        .gallery-item-more {
-            position: relative;
-        }
-        .more-overlay {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.4);
-            color: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 1.1rem;
-            transition: background 0.2s ease;
-        }
-        .gallery-item-more:hover .more-overlay {
-            background: rgba(0, 0, 0, 0.25);
-        }
+            .btn-contact-mini:hover,
+            .btn-contact-mini:focus {
+                background-color: #ffffff !important;
+                color: #111111 !important;
+                border-color: #111111 !important;
+                transform: translateY(-2px) !important;
+                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12) !important;
+            }
 
-        .btn-show-photos {
-            position: absolute;
-            bottom: 15px;
-            right: 15px;
-            background: rgba(255, 255, 255, 0.95);
-            color: #111;
-            padding: 0.6rem 1.1rem;
-            border-radius: 6px;
-            font-weight: 700;
-            font-size: 0.85rem;
-            border: 1px solid rgba(0,0,0,0.1);
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            transition: all 0.2s ease;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            z-index: 2;
-        }
+            header {
+                text-align: center;
+                padding: 2rem 1rem 1.2rem;
+                background-color: #ffffff;
+                border-bottom: 1px solid #eee;
+            }
 
-        .btn-show-photos:hover {
-            background: #ffffff;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(0,0,0,0.2);
-        }
+            .site-title {
+                font-family: 'Merriweather', serif;
+                font-size: 2.2rem;
+                font-weight: 900;
+                color: #111;
+                letter-spacing: -0.5px;
+            }
 
-        .lightbox-modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.92);
-            justify-content: center;
-            align-items: center;
-            padding: 2rem;
-            backdrop-filter: blur(5px);
-            user-select: none;
-        }
+            .site-domain {
+                font-size: 0.85rem;
+                color: #777;
+                margin-bottom: 1.2rem;
+            }
 
-        .lightbox-modal.active {
-            display: flex;
-        }
+            nav ul {
+                list-style: none;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 2rem;
+                flex-wrap: wrap;
+                margin: 0;
+                padding: 0;
+            }
 
-        .lightbox-content-wrapper {
-            position: relative;
-            max-width: 90%;
-            max-height: 85vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+            nav a {
+                text-decoration: none;
+                color: #111111;
+                font-weight: 700;
+                font-size: 0.95rem;
+                transition: color 0.2s ease;
+            }
 
-        .lightbox-content {
-            max-width: 100%;
-            max-height: 80vh;
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            object-fit: contain;
-        }
+            nav a:hover, 
+            nav a.active {
+                color: #555555;
+            }
 
-        .lightbox-close {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            color: #fff;
-            font-size: 40px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: color 0.2s;
-            line-height: 1;
-            z-index: 1001;
-        }
+            main.container {
+                flex: 1 0 auto;
+                margin-top: 0.5rem;
+                margin-bottom: 3rem;
+            }
 
-        .lightbox-close:hover {
-            color: #ccc;
-        }
+            .hero-section {
+                padding: 1rem 0 1.5rem 0;
+            }
+            
+            .hero-title-wrap {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-end;
+                margin-bottom: 1.5rem;
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
 
-        .lightbox-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.15);
-            color: #ffffff;
-            border: none;
-            font-size: 2rem;
-            padding: 0.8rem 1.2rem;
-            cursor: pointer;
-            border-radius: 50%;
-            transition: all 0.2s ease;
-            z-index: 1001;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-        }
+            .location-tag {
+                font-size: 0.9rem;
+                color: #666;
+                margin-top: 0.3rem;
+            }
 
-        .lightbox-nav:hover {
-            background: rgba(255, 255, 255, 0.35);
-            color: #ffffff;
-        }
+            .hero-compact {
+                position: relative;
+                width: 100%;
+                height: 50vh;
+                min-height: 50vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                color: #ffffff;
+                padding: 3rem 1.5rem;
+                box-sizing: border-box;
+                overflow: hidden;
+            }
 
-        .lightbox-prev { left: 20px; }
-        .lightbox-next { right: 20px; }
+            .hero-compact h1 {
+                font-family: 'Merriweather', serif;
+                color: #ffffff;
+                font-size: 2.8rem;
+                margin-bottom: 0.5rem;
+            }
 
-        .lightbox-caption {
-            margin-top: 12px;
-            color: #fff;
-            font-size: 0.95rem;
-            font-weight: 500;
-            text-align: center;
-            background: rgba(0, 0, 0, 0.6);
-            padding: 0.4rem 1.2rem;
-            border-radius: 20px;
-        }
+            .hero-compact h2 {
+                color: #ffffff; 
+                font-size: 1.25rem;
+                font-weight: 600;
+                margin-bottom: 1.5rem;
+            }
 
-        .content-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 3rem;
-            margin-bottom: 4rem;
-        }
-        .specs-bar {
-            display: flex;
-            gap: 2rem;
-            padding: 1.2rem 0;
-            border-top: 1px solid #eee;
-            border-bottom: 1px solid #eee;
-            margin-bottom: 2rem;
-            font-weight: 500;
-            font-size: 0.95rem;
-        }
-        .spec-item span {
-            display: block;
-            color: #777;
-            font-size: 0.8rem;
-            font-weight: 400;
-        }
-        .description p {
-            margin-bottom: 1.2rem;
-            color: #4a5568;
-        }
-        .features-list {
-            list-style: none;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0.8rem;
-            margin-top: 1rem;
-        }
-        .features-list li::before {
-            content: "✓ ";
-            color: #111;
-            font-weight: bold;
-        }
+            .hero-compact p {
+                color: #ffffff;
+                font-size: 0.95rem;
+                margin-bottom: 2rem;
+                opacity: 0.95;
+                font-weight: 400;
+            }
 
-        .info-card {
-            background: #fff;
-            padding: 1.8rem;
-            border-radius: 12px;
-            border: 1px solid #eaeaea;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.04);
-            position: sticky;
-            top: 20px;
-        }
-        .price-highlight {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #111;
-            margin-bottom: 0.5rem;
-        }
-        .price-highlight span {
-            font-size: 0.9rem;
-            color: #666;
-            font-weight: 400;
-        }
+            .hero-video {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 100%;
+                height: 100%;
+                z-index: 1;
+                transform: translate(-50%, -50%);
+                object-fit: cover;
+            }
 
-        .calendar-section {
-            background: #fff;
-            padding: 2.5rem 2rem;
-            border-radius: 12px;
-            border: 1px solid #eaeaea;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.04);
-            margin-bottom: 2rem;
-        }
-        
-        .season-info-box {
-            background-color: #f0f7ff;
-            border-left: 4px solid #0284c7;
-            padding: 1rem 1.2rem;
-            border-radius: 6px;
-            margin: 1.2rem 0;
-            font-size: 0.92rem;
-            color: #1e3a8a;
-        }
+            .hero-overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.65);
+                z-index: 2;
+            }
 
-        .weeks-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-            gap: 1.2rem;
-            margin-top: 1.5rem;
-        }
-        
-        .week-card {
-            background: #ffffff;
-            border: 2px solid #e5e5e5;
-            border-radius: 10px;
-            padding: 1.2rem;
-            text-align: center;
-            transition: all 0.2s ease;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
+            .hero-content-compact {
+                position: relative;
+                z-index: 3;
+                max-width: 850px;
+                margin: 0 auto;
+            }
 
-        .week-card.available {
-            cursor: pointer;
-        }
-        .week-card.available:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
-        }
+            .hero-specs-badge {
+                display: inline-flex;
+                gap: 1.5rem;
+                background: rgba(17, 17, 17, 0.75);
+                backdrop-filter: blur(8px);
+                padding: 0.65rem 1.4rem;
+                border-radius: 8px;
+                border: 1px solid rgba(255, 255, 255, 0.25);
+                font-size: 0.88rem;
+                color: #f0f0f0;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
 
-        .year-badge {
-            background: #111111;
-            color: #ffffff;
-            font-size: 0.7rem;
-            font-weight: 700;
-            padding: 2px 7px;
-            border-radius: 4px;
-            letter-spacing: 0.5px;
-        }
+            .hero-specs-badge span strong {
+                color: #ffffff;
+            }
 
-        .week-card.available.season-kevat {
-            border-color: #d97706;
-            background: #fffdfa;
-        }
-        .week-card.available.season-kevat .status-badge {
-            background-color: #fef3c7;
-            color: #92400e;
-        }
+            .gallery-container {
+                position: relative;
+                margin-bottom: 3rem;
+            }
 
-        .week-card.available.season-ruska {
-            border-color: #ea580c;
-            background: #fffaf8;
-        }
-        .week-card.available.season-ruska .status-badge {
-            background-color: #ffedd5;
-            color: #9a3412;
-        }
-
-        .week-card.available.season-ensilumi {
-            border-color: #64748b;
-            background: #f8fafc;
-        }
-        .week-card.available.season-ensilumi .status-badge {
-            background-color: #e2e8f0;
-            color: #334155;
-        }
-
-        .week-card.available.season-lumiaika {
-            border-color: #0284c7;
-            background: #f0f9ff;
-        }
-        .week-card.available.season-lumiaika .status-badge {
-            background-color: #e0f2fe;
-            color: #075985;
-        }
-
-        .week-card.available.season-kesa {
-            border-color: #16a34a;
-            background: #f6fbf6;
-        }
-        .week-card.available.season-kesa .status-badge {
-            background-color: #dcfce7;
-            color: #166534;
-        }
-
-        .week-card.booked {
-            background-color: #f9f9f9 !important;
-            border-color: #e2e8f0 !important;
-            opacity: 0.65;
-            cursor: not-allowed;
-        }
-        .status-badge.booked-badge {
-            background-color: #fee2e2;
-            color: #991b1b;
-        }
-
-        .season-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 0.5rem;
-        }
-
-        .season-tag {
-            font-size: 0.72rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: #64748b;
-        }
-
-        .week-number {
-            font-family: 'Merriweather', serif;
-            font-size: 1.25rem;
-            font-weight: 700;
-        }
-        .week-dates {
-            font-size: 0.82rem;
-            color: #666;
-            margin: 0.2rem 0 0.8rem 0;
-        }
-        .week-price {
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: #111;
-            margin-bottom: 0.8rem;
-        }
-        .status-badge {
-            display: inline-block;
-            font-size: 0.78rem;
-            font-weight: 700;
-            padding: 0.35rem 0.6rem;
-            border-radius: 5px;
-        }
-
-        #varausosio {
-            margin-top: 3rem;
-            background: #fdfdfd;
-            padding: 2rem;
-            border-radius: 10px;
-            border: 1px solid #e2e8f0;
-            display: none;
-        }
-        .form-group {
-            margin-bottom: 1rem;
-        }
-        .form-group label {
-            display: block;
-            font-weight: 600;
-            font-size: 0.9rem;
-            margin-bottom: 0.3rem;
-        }
-        .form-control {
-            width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            font-family: inherit;
-        }
-
-        .form-group {
-            margin-bottom: 1rem;
-        }
-        .form-group label {
-            display: block;
-            font-weight: 600;
-            font-size: 0.9rem;
-            margin-bottom: 0.3rem;
-        }
-        .form-control {
-            width: 100%;
-            box-sizing: border-box;
-            padding: 0.8rem;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            font-family: inherit;
-        }
-
-        .form-row {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-        .form-row .form-group {
-            flex: 1;
-            margin-bottom: 0;
-        }
-
-        .text-center {
-            text-align: center;
-        }
-
-        .checkbox-group {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            margin-top: 0.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .checkbox-group label {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-weight: normal;
-            cursor: pointer;
-        }
-
-        .checkbox-group input[type="checkbox"] {
-            width: 1.2rem;
-            height: 1.2rem;
-            cursor: pointer;
-        }
-
-        footer {
-            background-color: #ffffff;
-            border-top: 1px solid #eee;
-            padding: 2.5rem 1rem;
-            text-align: center;
-            margin-top: auto;
-            flex-shrink: 0;
-        }
-
-        .footer-content {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 1.5rem;
-            list-style: none;
-        }
-
-        .footer-links a {
-            color: #666;
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        .footer-links a:hover {
-            color: #111;
-        }
-
-        .footer-copy {
-            font-size: 0.85rem;
-            color: #888;
-        }
-
-        @media (max-width: 850px) {
             .gallery-grid {
-                grid-template-columns: 1fr 1fr;
-                grid-template-rows: repeat(3, 160px);
+                display: grid;
+                grid-template-columns: 2fr 1fr 1fr;
+                grid-template-rows: repeat(2, 220px);
+                gap: 10px;
+                border-radius: 12px;
+                overflow: hidden;
+                box-shadow: 0 6px 20px rgba(0,0,0,0.04);
             }
-            .gallery-item-main {
-                grid-column: span 2;
-                grid-row: span 1;
-            }
-            .content-grid {
-                grid-template-columns: 1fr;
-            }
-            .info-card {
-                position: static;
-            }
-            .features-list {
-                grid-template-columns: 1fr;
-            }
-            .lightbox-nav {
-                width: 40px;
-                height: 40px;
-                font-size: 1.5rem;
-            }
-            .lightbox-prev { left: 10px; }
-            .lightbox-next { right: 10px; }
-        }
-        .year-badge {
-        background: #111111;
-        color: #ffffff;
-        font-size: 0.7rem;
-        font-weight: 700;
-        padding: 2px 7px;
-        border-radius: 4px;
-        letter-spacing: 0.5px;
-        }
 
-        .year-badge-next {
-        background: #0284c7; 
-        color: #ffffff;
-        font-size: 0.7rem;
-        font-weight: 700;
-        padding: 2px 7px;
-        border-radius: 4px;
-        letter-spacing: 0.5px;
-        }
+            .gallery-grid .gallery-item:nth-child(1) {
+                grid-column: 1;
+                grid-row: 1 / span 2;
+            }
+
+            .gallery-grid .gallery-item:nth-child(2) {
+                grid-column: 2;
+                grid-row: 1;
+            }
+
+            .gallery-grid .gallery-item:nth-child(3) {
+                grid-column: 3;
+                grid-row: 1;
+            }
+
+            .gallery-grid .gallery-item:nth-child(4) {
+                grid-column: 2;
+                grid-row: 2;
+            }
+
+            .gallery-grid .gallery-item:nth-child(5) {
+                grid-column: 3;
+                grid-row: 2;
+            }
+
+            .gallery-item {
+                position: relative;
+                overflow: hidden;
+                background: #eee;
+                cursor: pointer;
+                transition: filter 0.3s ease;
+                width: 100%;
+                height: 100%;
+            }
+
+            .gallery-item img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                filter: brightness(0.7);
+                transition: transform 0.3s ease, filter 0.3s ease;
+                display: block;
+            }
+
+            .gallery-item:hover img {
+                transform: scale(1.03);
+                filter: brightness(1);
+            }
+
+            .gallery-item-main {
+                grid-column: 1;
+                grid-row: 1 / span 2;
+            }
+
+            .more-overlay {
+                position: absolute;
+                top: 0; left: 0; width: 100%; height: 100%;
+                background: rgba(0, 0, 0, 0.4);
+                color: #fff;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: 700;
+                font-size: 1.1rem;
+                transition: background 0.2s ease;
+            }
+
+            .gallery-item-more:hover .more-overlay {
+                background: rgba(0, 0, 0, 0.25);
+            }
+
+            .btn-show-photos {
+                position: absolute;
+                bottom: 15px;
+                right: 15px;
+                background: rgba(255, 255, 255, 0.95);
+                color: #111;
+                padding: 0.6rem 1.1rem;
+                border-radius: 6px;
+                font-weight: 700;
+                font-size: 0.85rem;
+                border: 1px solid rgba(0,0,0,0.1);
+                cursor: pointer;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                transition: all 0.2s ease;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                z-index: 2;
+            }
+
+            .btn-show-photos:hover {
+                background: #ffffff;
+                transform: translateY(-2px);
+                box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+            }
+
+            .lightbox-modal {
+                display: none;
+                position: fixed;
+                z-index: 1000;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.92);
+                justify-content: center;
+                align-items: center;
+                padding: 2rem;
+                backdrop-filter: blur(5px);
+                user-select: none;
+            }
+
+            .lightbox-modal.active {
+                display: flex;
+            }
+
+            .lightbox-content-wrapper {
+                position: relative;
+                max-width: 90%;
+                max-height: 85vh;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .lightbox-content {
+                max-width: 100%;
+                max-height: 80vh;
+                border-radius: 8px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+                object-fit: contain;
+            }
+
+            .lightbox-close {
+                position: absolute;
+                top: 20px;
+                right: 30px;
+                color: #fff;
+                font-size: 40px;
+                font-weight: bold;
+                cursor: pointer;
+                transition: color 0.2s;
+                line-height: 1;
+                z-index: 1001;
+            }
+
+            .lightbox-close:hover {
+                color: #ccc;
+            }
+
+            .lightbox-nav {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                background: rgba(255, 255, 255, 0.15);
+                color: #ffffff;
+                border: none;
+                font-size: 2rem;
+                padding: 0.8rem 1.2rem;
+                cursor: pointer;
+                border-radius: 50%;
+                transition: all 0.2s ease;
+                z-index: 1001;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 50px;
+                height: 50px;
+            }
+
+            .lightbox-nav:hover {
+                background: rgba(255, 255, 255, 0.35);
+                color: #ffffff;
+            }
+
+            .lightbox-prev { left: 20px; }
+            .lightbox-next { right: 20px; }
+
+            .lightbox-caption {
+                margin-top: 12px;
+                color: #fff;
+                font-size: 0.95rem;
+                font-weight: 500;
+                text-align: center;
+                background: rgba(0, 0, 0, 0.6);
+                padding: 0.4rem 1.2rem;
+                border-radius: 20px;
+            }
+
+            .content-grid {
+                display: grid;
+                grid-template-columns: 2fr 1fr;
+                gap: 3rem;
+                margin-bottom: 4rem;
+            }
+
+            .specs-bar {
+                display: flex;
+                gap: 2rem;
+                padding: 1.2rem 0;
+                border-top: 1px solid #eee;
+                border-bottom: 1px solid #eee;
+                margin-bottom: 2rem;
+                font-weight: 500;
+                font-size: 0.95rem;
+            }
+
+            .spec-item span {
+                display: block;
+                color: #777;
+                font-size: 0.8rem;
+                font-weight: 400;
+            }
+
+            .description p {
+                margin-bottom: 1.2rem;
+                color: #4a5568;
+            }
+
+            .features-list {
+                list-style: none;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 0.8rem;
+                margin-top: 1rem;
+            }
+
+            .features-list li::before {
+                content: "✓ ";
+                color: #111;
+                font-weight: bold;
+            }
+
+            .info-card {
+                background: #fff;
+                padding: 1.8rem;
+                border-radius: 12px;
+                border: 1px solid #eaeaea;
+                box-shadow: 0 6px 20px rgba(0,0,0,0.04);
+                position: sticky;
+                top: 20px;
+            }
+
+            .price-highlight {
+                font-size: 1.5rem;
+                font-weight: 700;
+                color: #111;
+                margin-bottom: 0.5rem;
+            }
+
+            .price-highlight span {
+                font-size: 0.9rem;
+                color: #666;
+                font-weight: 400;
+            }
+
+            .calendar-section {
+                background: #fff;
+                padding: 2.5rem 2rem;
+                border-radius: 12px;
+                border: 1px solid #eaeaea;
+                box-shadow: 0 6px 20px rgba(0,0,0,0.04);
+                margin-bottom: 2rem;
+            }
+            
+            .season-info-box {
+                background-color: #f0f7ff;
+                border-left: 4px solid #0284c7;
+                padding: 1rem 1.2rem;
+                border-radius: 6px;
+                margin: 1.2rem 0;
+                font-size: 0.92rem;
+                color: #1e3a8a;
+            }
+
+            .weeks-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+                gap: 1.2rem;
+                margin-top: 1.5rem;
+            }
+            
+            .week-card {
+                background: #ffffff;
+                border: 2px solid #e5e5e5;
+                border-radius: 10px;
+                padding: 1.2rem;
+                text-align: center;
+                transition: all 0.2s ease;
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+
+            .week-card.available {
+                cursor: pointer;
+            }
+
+            .week-card.available:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+            }
+
+            .year-badge {
+                background: #111111;
+                color: #ffffff;
+                font-size: 0.7rem;
+                font-weight: 700;
+                padding: 2px 7px;
+                border-radius: 4px;
+                letter-spacing: 0.5px;
+            }
+
+            .year-badge-next {
+                background: #0284c7; 
+                color: #ffffff;
+                font-size: 0.7rem;
+                font-weight: 700;
+                padding: 2px 7px;
+                border-radius: 4px;
+                letter-spacing: 0.5px;
+            }
+
+            .week-card.available.season-kevat {
+                border-color: #d97706;
+                background: #fffdfa;
+            }
+            .week-card.available.season-kevat .status-badge {
+                background-color: #fef3c7;
+                color: #92400e;
+            }
+
+            .week-card.available.season-ruska {
+                border-color: #ea580c;
+                background: #fffaf8;
+            }
+            .week-card.available.season-ruska .status-badge {
+                background-color: #ffedd5;
+                color: #9a3412;
+            }
+
+            .week-card.available.season-ensilumi {
+                border-color: #64748b;
+                background: #f8fafc;
+            }
+            .week-card.available.season-ensilumi .status-badge {
+                background-color: #e2e8f0;
+                color: #334155;
+            }
+
+            .week-card.available.season-lumiaika {
+                border-color: #0284c7;
+                background: #f0f9ff;
+            }
+            .week-card.available.season-lumiaika .status-badge {
+                background-color: #e0f2fe;
+                color: #075985;
+            }
+
+            .week-card.available.season-kesa {
+                border-color: #16a34a;
+                background: #f6fbf6;
+            }
+            .week-card.available.season-kesa .status-badge {
+                background-color: #dcfce7;
+                color: #166534;
+            }
+
+            .week-card.booked {
+                background-color: #f9f9f9 !important;
+                border-color: #e2e8f0 !important;
+                opacity: 0.65;
+                cursor: not-allowed;
+            }
+
+            .status-badge.booked-badge {
+                background-color: #fee2e2;
+                color: #991b1b;
+            }
+
+            .season-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 0.5rem;
+            }
+
+            .season-tag {
+                font-size: 0.72rem;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                color: #64748b;
+            }
+
+            .week-number {
+                font-family: 'Merriweather', serif;
+                font-size: 1.25rem;
+                font-weight: 700;
+            }
+
+            .week-dates {
+                font-size: 0.82rem;
+                color: #666;
+                margin: 0.2rem 0 0.8rem 0;
+            }
+
+            .week-price {
+                font-size: 1.15rem;
+                font-weight: 700;
+                color: #111;
+                margin-bottom: 0.8rem;
+            }
+
+            .status-badge {
+                display: inline-block;
+                font-size: 0.78rem;
+                font-weight: 700;
+                padding: 0.35rem 0.6rem;
+                border-radius: 5px;
+            }
+
+            #varausosio {
+                margin-top: 3rem;
+                background: #fdfdfd;
+                padding: 2rem;
+                border-radius: 10px;
+                border: 1px solid #e2e8f0;
+                display: none;
+            }
+
+            .form-group {
+                margin-bottom: 1rem;
+            }
+
+            .form-group label {
+                display: block;
+                font-weight: 600;
+                font-size: 0.9rem;
+                margin-bottom: 0.3rem;
+            }
+
+            .form-control {
+                width: 100%;
+                box-sizing: border-box;
+                padding: 0.8rem;
+                border: 1px solid #ccc;
+                border-radius: 6px;
+                font-family: inherit;
+            }
+
+            .form-row {
+                display: flex;
+                gap: 1rem;
+                margin-bottom: 1rem;
+            }
+
+            .form-row .form-group {
+                flex: 1;
+                margin-bottom: 0;
+            }
+
+            .text-center {
+                text-align: center;
+            }
+
+            .checkbox-group {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                margin-top: 0.5rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .checkbox-group label {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.5rem;
+                font-weight: normal;
+                cursor: pointer;
+            }
+
+            .checkbox-group input[type="checkbox"] {
+                width: 1.2rem;
+                height: 1.2rem;
+                cursor: pointer;
+            }
+
+            .hero-announcement-link {
+                display: block !important;
+                text-decoration: none !important;
+                color: inherit !important;
+                width: 100%;
+                background-color: #0f172a;
+                position: relative;
+                z-index: 999;
+                cursor: pointer;
+            }
+
+            .hero-announcement-bar {
+                width: 100%;
+                background-color: #111111;
+                color: #ffffff;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 0.3rem 1rem;
+                border-top: 1px solid #111111;
+                border-bottom: 1.5px solid #111111;
+                transition: background-color 0.2s ease;
+                cursor: pointer;
+            }
+
+            .hero-announcement-link:hover .hero-announcement-bar {
+                background-color: #ffffff;
+                color: #111111;
+            }
+
+            .hero-announcement-link:hover .marquee-text {
+                color: #111111;
+                text-decoration: underline;
+            }
+
+            .marquee-container {
+                overflow: hidden;
+                white-space: nowrap;
+                width: 100%;
+            }
+
+            .marquee-text {
+                display: inline-block;
+                padding-left: 100%;
+                animation: marquee-scroll 22s linear infinite;
+                font-size: 0.85rem;
+                font-weight: 500;
+                letter-spacing: 0.3px;
+                color: #f0f0f0;
+                transition: color 0.2s ease;
+                pointer-events: auto;
+            }
+
+            @keyframes marquee-scroll {
+                0% { transform: translate(0, 0); }
+                100% { transform: translate(-100%, 0); }
+            }
+
+            .bottom-banner-hero {
+                position: relative;
+                width: 100%;
+                height: 500px;
+                min-height: 250px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                color: #ffffff;
+                padding: 2rem 1.5rem;
+                box-sizing: border-box;
+                overflow: hidden;
+                margin-top: 0.1rem;
+            }
+
+            .bottom-banner-img {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 100%;
+                height: 100%;
+                z-index: 1;
+                transform: translate(-50%, -50%);
+                object-fit: cover;
+                object-position: center 83%;
+            }
+
+            .bottom-banner-overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.65);
+                z-index: 2;
+            }
+
+            .bottom-banner-content {
+                position: relative;
+                z-index: 3;
+                max-width: 800px;
+                margin: 0 auto;
+            }
+
+            .bottom-banner-content h2 {
+                font-family: 'Merriweather', serif;
+                color: #ffffff;
+                font-size: 1.8rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .bottom-banner-content p {
+                color: #ffffff;
+                font-size: 1rem;
+                opacity: 0.95;
+                font-weight: 400;
+                margin-bottom: 1.25rem;
+            }
+
+            footer {
+                background-color: #ffffff;
+                border-top: 1px solid #eee;
+                padding: 2.5rem 1rem;
+                text-align: center;
+                margin-top: auto;
+                flex-shrink: 0;
+            }
+
+            .footer-content {
+                max-width: 1100px;
+                margin: 0 auto;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .footer-links {
+                display: flex;
+                gap: 1.5rem;
+                list-style: none;
+            }
+
+            .footer-links a {
+                color: #666;
+                text-decoration: none;
+                font-size: 0.9rem;
+                font-weight: 500;
+            }
+
+            .footer-links a:hover {
+                color: #111;
+            }
+
+            .footer-copy {
+                font-size: 0.85rem;
+                color: #888;
+            }
+
+            @media (max-width: 850px) {
+                .gallery-grid {
+                    grid-template-columns: 1fr 1fr;
+                    grid-template-rows: repeat(3, 160px);
+                }
+                .gallery-item-main {
+                    grid-column: span 2;
+                    grid-row: span 1;
+                }
+                .content-grid {
+                    grid-template-columns: 1fr;
+                }
+                .info-card {
+                    position: static;
+                }
+                .features-list {
+                    grid-template-columns: 1fr;
+                }
+                .lightbox-nav {
+                    width: 40px;
+                    height: 40px;
+                    font-size: 1.5rem;
+                }
+                .lightbox-prev { left: 10px; }
+                .lightbox-next { right: 10px; }
+                .hero-video-container {
+                    max-height: 320px;
+                }
+            }
     </style>
 </head>
 <body>
@@ -796,58 +1204,79 @@
         </nav>
     </header>
 
+    <a href="yllasporho.html?utm_content=announcement_bar#kalenteri" class="hero-announcement-link">
+        <div class="hero-announcement-bar">
+            <div class="marquee-container">
+                <span class="marquee-text">
+                    ❄️ Ensilumen ja talvikauden varaukset käynnissä — Varmista oma tunturiviikkosi Äkäslompolossa! Klikkaa tästä ja katso vapaat viikot →
+                </span>
+            </div>
+        </div>
+    </a>
+
+    <section class="hero-compact">
+        <video autoplay muted loop playsinline poster="images/ulko_talvi.jpg" class="hero-video">
+            <source src="videos/yllas_ruska.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+
+     <div class="hero-content-compact">
+        <h1>Ylläsporho</h1>
+        <p style="font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; opacity: 0.95;">
+            Hyvin varusteltu kelohuoneisto Äkäslompolossa
+        </p>
+        <p style="font-size: 0.95rem; margin-bottom: 2rem; opacity: 0.9; font-weight: 400;">
+            Tasokas ja tyylikkäästi sisustettu lomahuoneisto Ylläksellä. Nauti Lapin rauhasta ja laadukkaasta asumisesta kaikkien palveluiden äärellä.
+        </p>
+        <a href="#kalenteri" class="btn-primary">Katso vapaat viikot ja varaa</a>
+    </div>
+    </section>
+
     <main class="container">
         
-        <section class="hero-section">
-            <div class="hero-title-wrap">
-                <div>
-                    <h1>Ylläsporho</h1>
-                    <div class="location-tag">📍 Äkäslompolo, Ylläs, Lappi | <strong>Kohde: 639597</strong></div>
-                </div>
-                <a href="#kalenteri" class="btn-reserve">Katso vapaat viikot ja varaa</a>
+        <section class="gallery-header" style="margin: 1rem 0 1rem 0; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem;">
+            <div>
+                <h2 style="font-size: 1.6rem; font-family: 'Merriweather', serif; color: #111; margin-bottom: 0.2rem;">Tutustu huoneistoon</h2>
+                <div style="font-size: 0.9rem; color: #666;">📍 Äkäslompolo, Ylläs | Kohde 639597</div>
             </div>
-
-            <div class="gallery-container">
-                <div class="gallery-grid">
-                    <div class="gallery-item gallery-item-main" onclick="openLightbox(0)">
-                        <img src="images/ulko_kesa.jpg" alt="Mökki Ylläsporho ulkoa">
-                    </div>
-                    <div class="gallery-item" onclick="openLightbox(1)">
-                        <img src="images/makuuhuone.jpg" alt="Makuuhuone">
-                    </div>
-                    <div class="gallery-item" onclick="openLightbox(2)">
-                        <img src="images/olohuone.jpg" alt="Olohuone">
-                    </div>
-                    <div class="gallery-item" onclick="openLightbox(3)">
-                        <img src="images/keittio.jpg" alt="Keittiö">
-                    </div>
-                    <div class="gallery-item gallery-item-more" onclick="openLightbox(4)">
-                        <img src="images/sauna.jpg" alt="Sauna">
-                        <div class="more-overlay" id="more-photos-tag">+5 lisää</div>
-                    </div>
-                </div>
-                <button class="btn-show-photos" onclick="openLightbox(0)">
-                    📷 Katso kaikki kuvat (<span id="total-photo-count">10</span>)
-                </button>
-            </div>
-
+            <a href="#kalenteri" class="btn-reserve">Katso vapaat viikot</a>
         </section>
+        
+        <div class="gallery-container"> 
+            <div class="gallery-grid">
+                <div class="gallery-item gallery-item-main" onclick="openLightbox(0)">
+                    <img src="images/ulko_kesa.jpg" alt="Kelohuoneisto Ylläsporho ulkoa">
+                </div>
+                <div class="gallery-item" onclick="openLightbox(1)">
+                    <img src="images/makuuhuone.jpg" alt="Makuuhuone">
+                </div>
+                <div class="gallery-item" onclick="openLightbox(2)">
+                    <img src="images/olohuone.jpg" alt="Olohuone">
+                </div>
+                <div class="gallery-item" onclick="openLightbox(3)">
+                    <img src="images/keittio.jpg" alt="Keittiö">
+                </div>
+                <div class="gallery-item gallery-item-more" onclick="openLightbox(4)">
+                    <img src="images/sauna.jpg" alt="Sauna">
+                    <div class="more-overlay" id="more-photos-tag">+5 lisää</div>
+                </div>
+            </div>
+            <button class="btn-show-photos" onclick="openLightbox(0)">
+                📷 Katso kaikki kuvat (<span id="total-photo-count">10</span>)
+            </button>
+        </div>
 
         <div id="lightbox" class="lightbox-modal" onclick="closeLightboxOnBg(event)">
             <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
-            
             <button class="lightbox-nav lightbox-prev" onclick="prevImage(event)">&#10094;</button>
-            
             <div class="lightbox-content-wrapper">
                 <img class="lightbox-content" id="lightbox-img" alt="Suurennettu kuva">
                 <div class="lightbox-caption" id="lightbox-caption"></div>
             </div>
-            
             <button class="lightbox-nav lightbox-next" onclick="nextImage(event)">&#10095;</button>
         </div>
 
         <div class="content-grid" id="esittely">
-            
             <div>
                 <div class="specs-bar">
                     <div class="spec-item">Kohdenumero <span>639597</span></div>
@@ -875,7 +1304,7 @@
                     <h3 style="margin-bottom: 1rem;">Mökin varustelu</h3>
                     <ul class="features-list">
                         <li>Täysin varusteltu keittiö</li> 
-                        <li>astianpesukone</li>
+                        <li>Astianpesukone</li>
                         <li>Sähkösauna</li>
                         <li>Varaava takka</li>
                         <li>Kuivauskaappi</li>
@@ -897,50 +1326,46 @@
                         Sesonkihinnat määräytyvät viikon mukaan. Vaihtopäivä lauantai (tai sopimuksen mukaan).
                     </p>
                     
-                    <ul style="list-style: none; font-size: 0.9rem; margin-bottom: 1.5rem; color: #444;">
+                    <ul style="list-style: none; font-size: 0.9rem; margin-bottom: 1.25rem; color: #444;">
                         <li style="margin-bottom: 0.5rem;">ℹ️ <strong>Loppusiivous:</strong> Ei sisälly hintaan</li>
                         <li>ℹ️ <strong>Liinavaatteet:</strong> 25 €/hlö (tai omat)</li>
-                        
                     </ul>
+
+                    <button type="button" class="btn-video-modal" onclick="openVideoModal()">
+                        🎬 Katso huoneiston videoesittely
+                    </button>
 
                     <a href="#kalenteri" class="btn-reserve" style="display: block; text-align: center;">Tarkista varaustilanne</a>
                 </div>
             </div>
+        </div> 
 
-        </div>
-
-        <section class="calendar-section" id="kalenteri">
-            <h2>Varaustilanne & Hinnasto</h2>
-            <p style="color: #666; margin-top: 0.3rem;">Valitse sopiva viikko ja lähetä varauspyyntö. Lähetämme vahvistuksen sähköpostitse.
-            </p> 
-                    
-                <div class="season-info-box" style="display: flex; gap: 0.6rem; align-items: flex-start; padding: 1rem; background-color: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; margin-bottom: 1.5rem;">
         
-                    <span style="font-size: 1.1rem; line-height: 1;">💡</span>
+        <section class="calendar-section" id="kalenteri" style="width: 100%; clear: both; margin-top: 3rem;">
+            <h2>Varaustilanne & Hinnasto</h2>
+            <p style="color: #666; margin-top: 0.3rem;"><strong>Klikkaa haluamaasi viikkoa</strong> alla olevasta kalenterista valitaksesi ajankohdan ja täytä sitten varauspyyntö.</p>
                     
-                    <div style="font-size: 0.88rem; color: #334155; line-height: 1.45;">
-                        <strong>Vinkki:</strong> Matalasesonkien aikana (Matalasesonki, Ensilumi/Syksy ja Lumiaika/Talvi) voit tiedustella myös viikkoa lyhyempiä vuokra-aikoja (esim. viikonloppuja tai arkipäiviä).
-                        
-                        <div style="margin-top: 0.4rem; color: #475569;">
-                            Kysy lisää: 
-                            <a href="mailto:info@yllasporho.com" style="color: #0284c7; font-weight: 600; text-decoration: underline;">
-                                info@yllasporho.com
-                            </a> 
-                            tai 
-                            <a href="tel:+358400893439" style="color: #0284c7; font-weight: 600; text-decoration: underline; white-space: nowrap;">
-                                0400 893 439
-                            </a>
-                        </div>
+            <div class="season-info-box" style="display: flex; gap: 0.6rem; align-items: flex-start; padding: 1rem; background-color: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; margin-bottom: 1.5rem;">
+                <span style="font-size: 1.1rem; line-height: 1;">💡</span>
+                <div style="font-size: 0.88rem; color: #334155; line-height: 1.45;">
+                    <strong>Vinkki:</strong> Matalasesonkien aikana (Matalasesonki, Ensilumi/Syksy ja Lumiaika/Talvi) voit tiedustella myös viikkoa lyhyempiä vuokra-aikoja (esim. viikonloppuja tai arkipäiviä).
+                    <div style="margin-top: 0.4rem; color: #475569;">
+                        Kysy lisää: 
+                        <a href="mailto:info@yllasporho.com" style="color: #0284c7; font-weight: 600; text-decoration: underline;">info@yllasporho.com</a> 
+                        tai 
+                        <a href="tel:+358400893439" style="color: #0284c7; font-weight: 600; text-decoration: underline; white-space: nowrap;">0400 893 439</a>
                     </div>
                 </div>
-                <div class="calendar-filters" style="display: flex; gap: 1rem; margin: 1.5rem 0; flex-wrap: wrap;">
+            </div>
+
+            <div class="calendar-filters" style="display: flex; gap: 1rem; margin: 1.5rem 0; flex-wrap: wrap;">
                 <select id="filter-season" onchange="applyFilters()" style="padding: 0.6rem; border-radius: 6px; border: 1px solid #ccc; font-size: 0.95rem; background: #fff;">
-                <option value="all">Kaikki sesongit</option>
-                <option value="kevat">⛷️ Kevätsesonki (vk 7–16)</option>
-                <option value="kesa">🌱 Matalasesonki (vk 17–34)</option>
-                <option value="ruska">🍂 Ruskasesonki (vk 35–39)</option>
-                <option value="ensilumi">🍁 Ensilumi / Syksy (vk 40–43)</option>
-                <option value="lumiaika">❄️ Lumiaika / Talvi (vk 44–6)</option>
+                    <option value="all">Kaikki sesongit</option>
+                    <option value="kevat">⛷️ Kevätsesonki (vk 7–16)</option>
+                    <option value="kesa">🌱 Matalasesonki (vk 17–34)</option>
+                    <option value="ruska">🍂 Ruskasesonki (vk 35–39)</option>
+                    <option value="ensilumi">🍁 Ensilumi / Syksy (vk 40–43)</option>
+                    <option value="lumiaika">❄️ Lumiaika / Talvi (vk 44–6)</option>
                 </select>
 
                 <select id="filter-month" onchange="applyFilters()" style="padding: 0.6rem; border-radius: 6px; border: 1px solid #ccc; font-size: 0.95rem; background: #fff;">
@@ -965,8 +1390,9 @@
                     <option value="2027">2027</option>
                 </select>
             </div>
+
             <p style="color: #666; margin-top: 0.3rem; font-size: 0.75rem;">
-            <strong>Hinnat laskettu 2 hengen majoitukselle (sis. 2 alle 16v. lasta). Loppusiivous ei kuulu hintaan, mutta on ostettavissa ennakkoon hintaan 115 €.</strong>
+                <strong>Hinnat laskettu 2 hengen majoitukselle (sis. 2 alle 16v. lasta). Loppusiivous ei kuulu hintaan, mutta on ostettavissa ennakkoon hintaan 115 €.</strong>
             </p>
 
             <div class="weeks-grid" id="weeks-container">
@@ -974,153 +1400,160 @@
             </div>
 
             <div id="load-more-container" style="text-align: center; margin-top: 1.5rem; display: none;">
-                <button id="btn-show-more" onclick="showAllWeeks()" style="background-color: #0f172a; color: #ffffff; border: none; padding: 0.75rem 1.5rem; font-size: 1rem; font-weight: 600; border-radius: 6px; cursor: pointer;">
+                <button id="btn-show-more" class="btn-show-more" onclick="showAllWeeks()">
                     Näytä lisää viikkoja ↓
                 </button>
             </div>
-
-<div id="varausosio">
-    <h3 style="margin-bottom: 1rem;">Lähetä varauspyyntö kohteesta Ylläsporho (Kohde 639597)</h3>
-
-    <form id="booking-form" action="https://formspree.io/f/xnjekjbe" method="POST">
-
-        <input type="hidden" name="kohde_id" value="639597">
-        <input type="hidden" name="kohde_nimi" value="Ylläsporho">
-
-        <div class="form-group">
-            <label for="valittu_viikko">Valittu ajankohta</label>
-            <input type="text" id="valittu_viikko" name="valittu_viikko" readonly class="form-control" style="background:#eef2f7; font-weight:700;">
-        </div>
-
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-            <div class="form-group">
-                <label for="nimi">Nimesi *</label>
-                <input type="text" id="nimi" name="nimi" required class="form-control" placeholder="Etunimi Sukunimi">
             </div>
-            <div class="form-group">
-                <label for="puhelin">Puhelinnumero *</label>
-                <input type="tel" id="puhelin" name="puhelin" required class="form-control" placeholder="040 123 4567">
+
+            <div id="varausosio" style="margin-top: 2.5rem;">
+                <h3 style="margin-bottom: 1rem;">Lähetä varauspyyntö kohteesta Ylläsporho (Kohde 639597)</h3>
+
+                <form id="booking-form" action="https://formspree.io/f/xnjekjbe" method="POST">
+                    <input type="hidden" name="kohde_id" value="639597">
+                    <input type="hidden" name="kohde_nimi" value="Ylläsporho">
+
+                    <div class="form-group">
+                        <label for="valittu_viikko">Valittu ajankohta</label>
+                        <input type="text" id="valittu_viikko" name="valittu_viikko" readonly class="form-control" style="background:#eef2f7; font-weight:700;">
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div class="form-group">
+                            <label for="nimi">Nimesi *</label>
+                            <input type="text" id="nimi" name="nimi" required class="form-control" placeholder="Etunimi Sukunimi">
+                        </div>
+                        <div class="form-group">
+                            <label for="puhelin">Puhelinnumero *</label>
+                            <input type="tel" id="puhelin" name="puhelin" required class="form-control" placeholder="040 123 4567">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Sähköpostiosoite *</label>
+                        <input type="email" id="email" name="_replyto" required class="form-control" placeholder="etunimi.sukunimi@esimerkki.fi">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="katuosoite">Katuosoite *</label>
+                        <input type="text" id="katuosoite" name="katuosoite" class="form-control" required placeholder="Esim. Esimerkkikatu 12 A 3">
+                    </div>
+
+                    <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div class="form-group">
+                            <label for="postinumero">Postinumero *</label>
+                            <input type="text" id="postinumero" name="postinumero" class="form-control" required placeholder="00100">
+                        </div>
+                        <div class="form-group">
+                            <label for="postitoimipaikka">Postitoimipaikka *</label>
+                            <input type="text" id="postitoimipaikka" name="postitoimipaikka" class="form-control" required placeholder="Helsinki">
+                        </div>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                        <div class="form-group">
+                            <label for="aikuiset">Aikuiset *</label>
+                            <select id="aikuiset" name="aikuiset" required class="form-control">
+                                <option value="1">1 aikuinen</option>
+                                <option value="2" selected>2 aikuista</option>
+                                <option value="3">3 aikuista</option>
+                                <option value="4">4 aikuista</option>
+                                <option value="5">5 aikuista</option>
+                                <option value="6">6 aikuista</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="lapset">Lapset (alle 16v)</label>
+                            <select id="lapset" name="lapset" class="form-control">
+                                <option value="0" selected>Ei lapsia</option>
+                                <option value="1">1 lapsi</option>
+                                <option value="2">2 lasta</option>
+                                <option value="3">3 lasta</option>
+                                <option value="4">4 lasta</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="background: #f8fafc; padding: 1rem; border-radius: 8px; border: 1px solid #e2e8f0; margin-bottom: 1rem;">
+                        <label style="font-weight: 700; display: block; margin-bottom: 0.5rem;">Lisäpalvelut</label>
+                        
+                        <label style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.5rem; cursor: pointer; font-weight: normal;">
+                            <input type="checkbox" name="lisapalvelu_siivous" value="Kyllä (115 €)" style="width: 18px; height: 18px;">
+                            <span>Loppusiivous (<strong>115 €</strong>)</span>
+                        </label>
+
+                        <label style="display: flex; align-items: center; gap: 0.6rem; cursor: pointer; font-weight: normal;">
+                            <input type="checkbox" name="lisapalvelu_lakanat" value="Kyllä (25 €/hlö)" style="width: 18px; height: 18px;">
+                            <span>Liinavaatteet & pyyhkeet (<strong>25 € / henkilö</strong>)</span>
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="viesti">Lisätiedot / Kysymykset</label>
+                        <textarea id="viesti" name="viesti" rows="3" class="form-control" placeholder="Kerro toiveistasi tai anna palautetta meille"></textarea>
+                    </div>
+
+                    <div class="booking-inquiry-box">
+                        <span class="booking-inquiry-title">
+                            Mietityttääkö jokin ennen varauksen tekemistä?
+                        </span>
+                        
+                        <div class="booking-inquiry-buttons">
+                            <a href="mailto:info@yllasporho.com" class="btn-contact-mini">
+                                ✉️ info@yllasporho.com
+                            </a>
+                            <a href="tel:+358400893439" class="btn-contact-mini">
+                                📞 0400 893 439
+                            </a>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 1.2rem; font-size: 0.85rem; color: #64748b; text-align: center;">
+                        Tutustu 
+                        <a href="varausehdot.html" target="_blank" rel="noopener" style="color: #0284c7; font-weight: 600; text-decoration: underline;">
+                            varausehtoihimme tästä
+                        </a>
+                        <br>
+                        <span style="color: #64748b; font-size: 0.75rem; display: inline-block; margin-top: 0.2rem;">
+                            (avautuu uuteen välilehteen)
+                        </span>
+                    </div>
+
+                    <div class="form-group checkbox-group" style="margin-bottom: 0.5rem;">
+                        <label style="cursor: pointer;">
+                            <input type="checkbox" name="varausehdot_hyvaksytty" value="Kyllä" required>
+                            Olen lukenut ja hyväksyn varausehdot *
+                        </label>
+                    </div>
+
+                    <div class="form-group checkbox-group" style="margin-bottom: 1.5rem;">
+                        <label style="cursor: pointer;">
+                            <input type="checkbox" name="taysi_ikainen" value="Kyllä" required>
+                            Vakuutan olevani täysi-ikäinen *
+                        </label>
+                    </div>
+
+                    <button class="g-recaptcha btn-booking-submit"
+                            data-sitekey="6LcfEnAtAAAAAHG8WU-7ovUMRPgIVP8lG80f7kig" 
+                            data-callback="onBookingSubmit" 
+                            data-action="submit" 
+                            style="width: 100%; padding: 0.8rem; font-size: 1.1rem; font-weight: 700; background-color: #000000; color: #ffffff; border: none; border-radius: 6px; cursor: pointer;">
+                        Lähetä varauspyyntö
+                    </button>
+                </form>
             </div>
-        </div>
-
-        <div class="form-group">
-            <label for="email">Sähköpostiosoite *</label>
-            <input type="email" id="email" name="_replyto" required class="form-control" placeholder="etunimi.sukunimi@esimerkki.fi">
-        </div>
-
-        <div class="form-group">
-            <label for="katuosoite">Katuosoite *</label>
-            <input type="text" id="katuosoite" name="katuosoite" class="form-control" required placeholder="Esim. Esimerkkikatu 12 A 3">
-        </div>
-
-        <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-            <div class="form-group">
-                <label for="postinumero">Postinumero *</label>
-                <input type="text" id="postinumero" name="postinumero" class="form-control" required placeholder="00100">
-            </div>
-            <div class="form-group">
-                <label for="postitoimipaikka">Postitoimipaikka *</label>
-                <input type="text" id="postitoimipaikka" name="postitoimipaikka" class="form-control" required placeholder="Helsinki">
-            </div>
-        </div>
-
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
-            <div class="form-group">
-                <label for="aikuiset">Aikuiset *</label>
-                <select id="aikuiset" name="aikuiset" required class="form-control">
-                    <option value="1">1 aikuinen</option>
-                    <option value="2" selected>2 aikuista</option>
-                    <option value="3">3 aikuista</option>
-                    <option value="4">4 aikuista</option>
-                    <option value="5">5 aikuista</option>
-                    <option value="6">6 aikuista</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="lapset">Lapset (alle 16v)</label>
-                <select id="lapset" name="lapset" class="form-control">
-                    <option value="0" selected>Ei lapsia</option>
-                    <option value="1">1 lapsi</option>
-                    <option value="2">2 lasta</option>
-                    <option value="3">3 lasta</option>
-                    <option value="4">4 lasta</option>
-                </select>
-            </div>
-        </div>
-
-        <div class="form-group" style="background: #f8fafc; padding: 1rem; border-radius: 8px; border: 1px solid #e2e8f0; margin-bottom: 1rem;">
-            <label style="font-weight: 700; display: block; margin-bottom: 0.5rem;">Lisäpalvelut</label>
-            
-            <label style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.5rem; cursor: pointer; font-weight: normal;">
-                <input type="checkbox" name="lisapalvelu_siivous" value="Kyllä (115 €)" style="width: 18px; height: 18px;">
-                <span>Loppusiivous (<strong>115 €</strong>)</span>
-            </label>
-
-            <label style="display: flex; align-items: center; gap: 0.6rem; cursor: pointer; font-weight: normal;">
-                <input type="checkbox" name="lisapalvelu_lakanat" value="Kyllä (25 €/hlö)" style="width: 18px; height: 18px;">
-                <span>Liinavaatteet & pyyhkeet (<strong>25 € / henkilö</strong>)</span>
-            </label>
-        </div>
-
-        <div class="form-group">
-            <label for="viesti">Lisätiedot / Kysymykset</label>
-            <textarea id="viesti" name="viesti" rows="3" class="form-control" placeholder="Kerro toiveistasi tai anna palautetta meille"></textarea>
-        </div>
-
-        <div style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 0.85rem 1rem; text-align: center; margin-bottom: 1.2rem;">
-            <span style="font-size: 0.8rem; color: #475569; display: block; margin-bottom: 0.5rem; font-weight: 500;">
-                Mietityttääkö jokin ennen varauksen tekemistä?
-            </span>
-            
-            <div style="display: flex; justify-content: center; gap: 0.5rem; max-width: 380px; margin: 0 auto; flex-wrap: wrap;">
-                <a href="mailto:info@yllasporho.com" style="flex: 1; min-width: 140px; display: inline-flex; align-items: center; justify-content: center; gap: 0.35rem; padding: 0.45rem 0.65rem; background-color: #0f172a; color: #ffffff; border: 1px solid #0f172a; border-radius: 6px; font-size: 0.8rem; font-weight: 600; text-decoration: none; box-sizing: border-box;">
-                    ✉️ info@yllasporho.com
-                </a>
-                <a href="tel:+358400893439" style="flex: 1; min-width: 140px; display: inline-flex; align-items: center; justify-content: center; gap: 0.35rem; padding: 0.45rem 0.65rem; background-color: #0f172a; color: #ffffff; border: 1px solid #0f172a; border-radius: 6px; font-size: 0.8rem; font-weight: 600; text-decoration: none; box-sizing: border-box;">
-                    📞 0400 893 439
-                </a>
-            </div>
-        </div>
-
-        <div style="margin-bottom: 1.2rem; font-size: 0.85rem; color: #64748b; text-align: center;">
-            Tutustu 
-            <a href="varausehdot.html" target="_blank" rel="noopener" style="color: #0284c7; font-weight: 600; text-decoration: underline;">
-                varausehtoihimme tästä
-            </a>
-            <br>
-            <span style="color: #64748b; font-size: 0.75rem; display: inline-block; margin-top: 0.2rem;">
-                (avautuu uuteen välilehteen)
-            </span>
-        </div>
-
-        <div class="form-group checkbox-group" style="margin-bottom: 0.5rem;">
-            <label style="cursor: pointer;">
-                <input type="checkbox" name="varausehdot_hyvaksytty" value="Kyllä" required>
-                Olen lukenut ja hyväksyn varausehdot *
-            </label>
-        </div>
-
-        <div class="form-group checkbox-group" style="margin-bottom: 1.5rem;">
-            <label style="cursor: pointer;">
-                <input type="checkbox" name="taysi_ikainen" value="Kyllä" required>
-                Vakuutan olevani täysi-ikäinen *
-            </label>
-        </div>
-
-        <button class="g-recaptcha" 
-                data-sitekey="6LcfEnAtAAAAAHG8WU-7ovUMRPgIVP8lG80f7kig" 
-                data-callback="onBookingSubmit" 
-                data-action="submit" 
-                style="width: 100%; padding: 0.8rem; font-size: 1.1rem; font-weight: 700; background-color: #000000; color: #ffffff; border: none; border-radius: 6px; cursor: pointer;">
-            Lähetä varauspyyntö
-        </button>
-
-    </form>
-</div>
-
         </section>
-
     </main>
+
+    <section class="bottom-banner-hero">
+        <img src="images/yllas-tausta.jpg" alt="Ylläs maisema" class="bottom-banner-img">
+        <div class="bottom-banner-overlay"></div>
+        <div class="bottom-banner-content">
+            <h2>Kokeile aitoa Lapin lumoa Äkäslompolossa</h2>
+            <p>Varaa oma tunturiviikkosi Ylläsporhosta ja nauti luonnon rauhasta.</p>
+            <a href="yllasporho.html#kalenteri" class="btn-primary">Katso vapaat viikot</a>
+        </div>
+    </section>
 
     <footer>
         <div class="footer-content">
@@ -1218,7 +1651,6 @@
     let allWeeksData = []; 
     let limitToEight = true; 
 
-    // Muuntaa päivämäärän oikein Suomen kalenteripäiväksi
     function parseDate(dateString) {
         if (!dateString) return null;
 
@@ -1268,7 +1700,6 @@
             // Käytetään loppupäivää katkon laskemiseen
             const endDateStr = item.loppupvm || item.endDate;
             
-            // Jos loppupäivää ei ole, käytetään alkupäivää + 7 päivää
             let endDate = parseDate(endDateStr);
             if (!endDate) {
                 const startDateStr = item.alkupvm || item.startDate;
@@ -1277,8 +1708,6 @@
                 endDate = new Date(startDate.getFullYear(), startDate.getMonth(), startDate.getDate() + 7);
             }
 
-            // Cutoff: Loppupäivä (lauantai) - 2 päivää = samaisen viikon torstai klo 23:59:59
-            // Esim. Viikon 36 loppupäivä 5.9. -> Cutoff 3.9.2026 klo 23:59:59
             const cutoffDate = new Date(endDate.getFullYear(), endDate.getMonth(), endDate.getDate() - 2, 23, 59, 59, 999);
 
             return today <= cutoffDate;
@@ -1332,10 +1761,8 @@
 
         container.innerHTML = "";
 
-        // 1. Vanhentuneet pois (vuokrausviikon torstai-cutoff)
         const activeWeeks = getActiveUpcomingWeeks(allWeeksData);
 
-        // 2. Käyttäjän rajaukset
         let filteredData = activeWeeks.filter(item => {
             const startDate = parseDate(item.alkupvm);
             const seasonInfo = getSeasonInfo(item);
@@ -1380,21 +1807,26 @@
 
             if (isAvailable) {
                 card.className = `week-card available ${seasonInfo.class}`;
+                card.style.cursor = "pointer";
                 card.onclick = () => selectWeek(`${item.viikko} / ${yearText} (${dateText})`, item.hinta);
-                card.innerHTML = `
-                    <div>
-                        <div class="season-header">
-                            <span class="season-tag">${seasonInfo.label}</span>
-                            <span class="${badgeClass}">${yearText}</span>
-                        </div>
-                        <div class="week-number">${item.viikko}</div>
-                        <div class="week-dates">${dateText}</div>
+                
+            card.innerHTML = `
+                <div>
+                    <div class="season-header">
+                        <span class="season-tag">${seasonInfo.label}</span>
+                        <span class="${badgeClass}">${yearText}</span>
                     </div>
-                    <div>
-                        <div class="week-price">${item.hinta}</div>
-                        <span class="status-badge">Vapaa – Varaa</span>
-                    </div>
-                `;
+                    <div class="week-number">${item.viikko}</div>
+                    <div class="week-dates">${dateText}</div>
+                </div>
+                <div>
+                    <div class="week-price">${item.hinta}</div>
+                    <button type="button" class="btn-select-week" style="width: 100%; margin-top: 0.5rem; padding: 0.45rem 0.8rem; background-color: #ffffff; color: #000000; border: 1.5px solid #000000; border-radius: 6px; font-weight: 700; font-size: 0.85rem; cursor: pointer; transition: all 0.2s ease;">
+                        Valitse viikko →
+                    </button>
+                </div>
+            `;
+
             } else {
                 card.className = "week-card booked";
                 card.innerHTML = `
@@ -1436,5 +1868,35 @@
     }
 </script>
 
+<div id="videoModal" onclick="closeVideoModal()" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.9); z-index: 10000; align-items: center; justify-content: center;">
+    <div onclick="event.stopPropagation()" style="position: relative; height: 92vh; aspect-ratio: 9/16; max-width: 95vw; display: flex; align-items: center; justify-content: center;">
+        <button type="button" onclick="closeVideoModal()" style="position: absolute; top: 10px; right: 15px; background: rgba(0,0,0,0.6); border: none; color: white; font-size: 2rem; cursor: pointer; line-height: 1; width: 40px; height: 40px; border-radius: 50%; z-index: 10001; display: flex; align-items: center; justify-content: center;">&times;</button>
+        <video id="fullVideo" controls style="width: 100%; height: 100%; border-radius: 12px; object-fit: cover; background: #000; display: block;">
+            <source src="videos/yllasporho.mp4" type="video/mp4">
+            Selaimestasi puuttuu videotuki.
+        </video>
+    </div>
+</div>
+
+<script>
+function openVideoModal() {
+    const modal = document.getElementById('videoModal');
+    const video = document.getElementById('fullVideo');
+    if (modal && video) {
+        modal.style.display = 'flex';
+        video.currentTime = 0;
+        video.play();
+    }
+}
+
+function closeVideoModal() {
+    const modal = document.getElementById('videoModal');
+    const video = document.getElementById('fullVideo');
+    if (modal && video) {
+        video.pause();
+        modal.style.display = 'none';
+    }
+}
+</script>
 </body>
 </html>

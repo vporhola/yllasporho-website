@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ylläsporho – Vuokramökki Ylläs</title>
+    <title>Lomahuoneisto Äkäslompolossa - Ylläsporho</title>
 
     <link rel="canonical" href="https://yllasporho.com/yhteydenotto" />
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,700;0,900;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -104,259 +105,437 @@
     }
     </script>
     
-    <style>
+<style>
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
 
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            color: #333;
-            line-height: 1.6;
-            background-color: #fff;
-        }
+    body {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        color: #222222;
+        line-height: 1.7;
+        background-color: #fcfcfc;
+        letter-spacing: 0.2px;
+        -webkit-font-smoothing: antialiased;
+        min-height: 100vh;
+    }
 
-        header {
-            text-align: center;
-            padding: 2.5rem 1rem 1.5rem;
-            background-color: #ffffff;
-        }
+    header {
+        text-align: center;
+        padding: 2rem 1rem 1.2rem;
+        background-color: #ffffff;
+        border-bottom: 1px solid #eee;
+    }
 
-        .site-title {
-            font-family: 'Merriweather', serif;
-            font-size: 2.2rem;
-            font-weight: 900;
-            color: #111;
-            letter-spacing: -0.5px;
-        }
+    .site-title {
+        font-family: 'Merriweather', serif;
+        font-size: 2.2rem;
+        font-weight: 900;
+        color: #111;
+        letter-spacing: -0.5px;
+    }
 
-        .site-domain {
-            font-size: 0.85rem;
-            color: #777;
-            margin-bottom: 1.5rem;
-        }
+    .site-domain {
+        font-size: 0.85rem;
+        color: #777;
+        margin-bottom: 1.2rem;
+    }
 
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
+    nav ul {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+        margin: 0;
+        padding: 0;
+    }
+
+    nav a {
+        text-decoration: none;
+        color: #111;
+        font-weight: 700;
+        font-size: 0.95rem;
+        transition: color 0.2s ease;
+    }
+
+    nav a:hover {
+        color: #555;
+    }
+    
+    .hero {
+        position: relative;
+        height: 50vh;
+        min-height: 50vh;
+        background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), 
+                    url(images/yhteydenotto.jpg) center/cover no-repeat;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #ffffff;
+        padding: 3rem 1.5rem;
+        box-sizing: border-box;
+    }
+
+    .hero-content {
+        max-width: 680px;
+    }
+
+    .hero h1 {
+        font-family: 'Merriweather', serif;
+        font-size: 2.8rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .hero h2 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+    }
+
+    .hero p {
+        font-size: 0.95rem;
+        margin-bottom: 2rem;
+        opacity: 0.95;
+        font-weight: 400;
+    }
+
+    .contact-section {
+        background-color: #b0b7bd;
+        padding: 4rem 1.5rem;
+        color: #111;
+    }
+
+    .contact-container {
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    .contact-section h3 {
+        font-family: 'Merriweather', serif;
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .contact-layout {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        align-items: start;
+    }
+
+    .form-group {
+        margin-bottom: 1.2rem;
+    }
+
+    .form-group label {
+        display: block;
+        font-size: 0.85rem;
+        font-weight: 700;
+        margin-bottom: 0.3rem;
+        height: 1.2rem;
+        line-height: 1.2rem;
+    }
+
+    .form-group input, 
+    .form-group textarea {
+        width: 100%;
+        padding: 0.55rem 0.8rem !important;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 0.95rem;
+        background-color: #fff;
+        box-sizing: border-box;
+    }
+
+    .contact-buttons-wrapper {
+        margin-top: 1.5rem; 
+        display: flex;
+        flex-direction: column;
+        gap: 36px;
+        width: 100%;
+        max-width: 380px;
+    }
+
+    footer {
+        background-color: #ffffff;
+        border-top: 1px solid #eee;
+        padding: 2.5rem 1rem;
+        text-align: center;
+        margin-top: auto;
+        flex-shrink: 0;
+    }
+
+    .footer-content {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .footer-links {
+        display: flex;
+        gap: 1.5rem;
+        list-style: none;
+    }
+
+    .footer-links a {
+        color: #666;
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 500;
+    }
+
+    .footer-links a:hover {
+        color: #111;
+    }
+
+    .footer-copy {
+        font-size: 0.85rem;
+        color: #888;
+    }
+
+    @media (max-width: 768px) {
+        .contact-layout {
+            grid-template-columns: 1fr;
             gap: 2rem;
-            flex-wrap: wrap;
         }
-
-        nav a {
-            text-decoration: none;
-            color: #111;
-            font-weight: 700;
-            font-size: 0.95rem;
-            transition: color 0.2s ease;
-        }
-
-        nav a:hover {
-            color: #555;
-        }
-
-        .hero {
-            position: relative;
-            min-height: 60vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), 
-                        url(images/yhteydenotto.jpg) center/cover no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: #ffffff;
-            padding: 3rem 1.5rem;
-        }
-
-        .hero-content {
-            max-width: 680px;
-        }
-
-        .hero h1 {
-            font-family: 'Merriweather', serif;
-            font-size: 2.8rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .hero h2 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero p {
-            font-size: 0.95rem;
-            margin-bottom: 2rem;
-            opacity: 0.95;
-            font-weight: 400;
-        }
-
-        .btn-primary {
-            display: inline-block;
-            background-color: #ffffff;
-            color: #111111;
-            padding: 0.75rem 1.75rem;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.9rem;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-            transition: transform 0.15s ease, background-color 0.2s ease;
-        }
-
-        .btn-primary:hover {
-            background-color: #f0f0f0;
-            transform: translateY(-1px);
-        }
-
-        .contact-section {
-            background-color: #b0b7bd; /* Harmaa tausta */
-            padding: 4rem 1.5rem;
-            color: #111;
-        }
-
-        .contact-container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .contact-section h3 {
-            font-family: 'Merriweather', serif;
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-         .contact-layout {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: start;
-        }
-
-        .form-group {
-            margin-bottom: 1.2rem;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 0.85rem;
-            font-weight: 700;
-            margin-bottom: 0.3rem;
-        }
-
-        .form-group input, .form-group textarea {
-            width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 1rem;
-            background-color: #fff;
-        }
-
         .contact-buttons-wrapper {
-            margin-top: 1.55rem; 
-            display: flex;
-            flex-direction: column;
-            gap: 36px;
-            width: 100%;
-            max-width: 380px;
+            margin-top: 1rem; 
+            gap: 20px;
         }
-
-        .btn-contact {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;            
-            padding: 14px 20px;
-            background-color: #000000;
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: 600;
-            border-radius: 6px;
-            text-align: center;
-            white-space: nowrap;
-            box-sizing: border-box;
-            transition: background-color 0.2s ease, opacity 0.2s ease;
+        .hero h1 {
+            font-size: 2rem;
         }
-
-        .btn-contact:hover {
-            background-color: #222222;
-            color: #ffffff;
-        }
-
-        /* WhatsApp-napille oma vihreä väri */
-        .btn-whatsapp-custom {
-            background-color: #25D366;
-            color: #ffffff;
-        }
-
-        .btn-whatsapp-custom:hover {
-            background-color: #1da851;
-            color: #ffffff;
-        }
-
-        footer {
-            background-color: #ffffff;
-            border-top: 1px solid #eee;
-            padding: 2.5rem 1rem;
-            text-align: center;
-            margin-top: auto;
-            flex-shrink: 0;
-        }
-
-        .footer-content {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        nav ul {
             gap: 1rem;
         }
+    }
 
-        .footer-links {
-            display: flex;
-            gap: 1.5rem;
-            list-style: none;
-        }
+    .hero-announcement-link {
+        display: block !important;
+        text-decoration: none !important;
+        color: inherit !important;
+        width: 100%;
+        background-color: #0f172a;
+        position: relative;
+        z-index: 999;
+        cursor: pointer;
+    }
 
-        .footer-links a {
-            color: #666;
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
+    .hero-announcement-bar {
+        width: 100%;
+        background-color: #111111;
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.3rem 1rem;
+        border-top: 1px solid #111111;
+        border-bottom: 1.5px solid #111111;
+        transition: background-color 0.2s ease;
+        cursor: pointer;
+    }
 
-        .footer-links a:hover {
-            color: #111;
-        }
+    .hero-announcement-link:hover .hero-announcement-bar {
+        background-color: #ffffff;
+        color: #111111;
+    }
 
-        .footer-copy {
-            font-size: 0.85rem;
-            color: #888;
-        }
+    .hero-announcement-link:hover .marquee-text {
+        color: #111111;
+        text-decoration: underline;
+    }
 
-        @media (max-width: 768px) {
-            .contact-layout {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            .contact-buttons-wrapper {
-                margin-top: 1rem; 
-                gap: 20px;
-            }
-            .hero h1 {
-                font-size: 2rem;
-            }
-            nav ul {
-                gap: 1rem;
-            }
-        }
+    .marquee-container {
+        overflow: hidden;
+        white-space: nowrap;
+        width: 100%;
+    }
 
-    </style>
+    .marquee-text {
+        display: inline-block;
+        padding-left: 100%;
+        animation: marquee-scroll 22s linear infinite;
+        font-size: 0.85rem;
+        font-weight: 500;
+        letter-spacing: 0.3px;
+        color: #f0f0f0;
+        transition: color 0.2s ease;
+        pointer-events: auto;
+    }
+
+    @keyframes marquee-scroll {
+        0% { transform: translate(0, 0); }
+        100% { transform: translate(-100%, 0); }
+    }
+    
+    .bottom-banner-hero {
+        position: relative;
+        width: 100%;
+        height: 500px;
+        min-height: 250px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #ffffff;
+        padding: 2rem 1.5rem;
+        box-sizing: border-box;
+        overflow: hidden;
+        margin-top: 0.1rem;
+    }
+
+    .bottom-banner-img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        transform: translate(-50%, -50%);
+        object-fit: cover;
+        object-position: center 83%;
+    }
+
+    .bottom-banner-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.65);
+        z-index: 2;
+    }
+
+    .bottom-banner-content {
+        position: relative;
+        z-index: 3;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .bottom-banner-content h2 {
+        font-family: 'Merriweather', serif;
+        color: #ffffff;
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .bottom-banner-content p {
+        color: #ffffff;
+        font-size: 1rem;
+        opacity: 0.95;
+        font-weight: 400;
+        margin-bottom: 1.25rem;
+    }
+
+    .btn-primary,
+    .hero .btn-primary,
+    .bottom-banner-content .btn-primary {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        box-sizing: border-box !important;
+        
+        background-color: #ffffff !important;
+        color: #111111 !important;
+        border: 2px solid #111111 !important;
+        border-radius: 6px !important;
+        
+        padding: 0.5rem 1.2rem !important;
+        font-weight: 700 !important;
+        font-size: 0.95rem !important;
+        text-decoration: none !important;
+        cursor: pointer !important;
+        transition: all 0.2s ease !important;
+        text-align: center !important;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15) !important;
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus,
+    .hero .btn-primary:hover,
+    .bottom-banner-content .btn-primary:hover {
+        background-color: #111111 !important;
+        color: #ffffff !important;
+        border-color: #111111 !important;
+        transform: translateY(-2px) !important;
+    }
+
+    .btn-contact,
+    .btn-reserve,
+    .btn-submit {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        box-sizing: border-box !important;
+        width: 100% !important;
+        
+        background-color: #111111 !important;
+        color: #ffffff !important;
+        border: 2px solid #111111 !important;
+        border-radius: 6px !important;
+        
+        padding: 0.55rem 1.2rem !important;
+        font-weight: 700 !important;
+        font-size: 0.95rem !important;
+        text-decoration: none !important;
+        cursor: pointer !important;
+        transition: all 0.2s ease !important;
+        text-align: center !important;
+        white-space: nowrap !important;
+    }
+
+    .btn-contact:hover,
+    .btn-contact:focus,
+    .btn-reserve:hover,
+    .btn-reserve:focus,
+    .btn-submit:hover,
+    .btn-submit:focus {
+        background-color: #ffffff !important;
+        color: #111111 !important;
+        border-color: #111111 !important;
+        transform: translateY(-2px) !important;
+    }
+
+    .btn-whatsapp-custom {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        box-sizing: border-box !important;
+        width: 100% !important;
+        
+        background-color: #25D366 !important;
+        color: #ffffff !important;
+        border: 2px solid #25D366 !important;
+        border-radius: 6px !important;
+        
+        padding: 0.55rem 1.2rem !important;
+        font-weight: 700 !important;
+        font-size: 0.95rem !important;
+        text-decoration: none !important;
+        cursor: pointer !important;
+        transition: all 0.2s ease !important;
+        text-align: center !important;
+    }
+
+    .btn-whatsapp-custom:hover,
+    .btn-whatsapp-custom:focus {
+        background-color: #1da851 !important;
+        border-color: #1da851 !important;
+        color: #ffffff !important;
+        transform: translateY(-2px) !important;
+    }
+
+</style>
 </head>
 <body>
 
@@ -372,6 +551,16 @@
             </ul>
         </nav>
     </header>
+
+    <a href="yllasporho.html?utm_content=announcement_bar#kalenteri" class="hero-announcement-link">
+        <div class="hero-announcement-bar">
+            <div class="marquee-container">
+                <span class="marquee-text">
+                    ❄️ Ensilumen ja talvikauden varaukset käynnissä — Varmista oma tunturiviikkosi Äkäslompolossa! Klikkaa tästä ja katso vapaat viikot →
+                </span>
+            </div>
+        </div>
+    </a>
 
     <section class="hero" id="etusivu">
         <div class="hero-content">
@@ -432,7 +621,17 @@
 
         </div>
     </section>
-    
+
+    <section class="bottom-banner-hero">
+        <img src="images/yllas-tausta.jpg" alt="Ylläs maisema" class="bottom-banner-img">
+        <div class="bottom-banner-overlay"></div>
+        <div class="bottom-banner-content">
+            <h2>Kokeile aitoa Lapin lumoa Äkäslompolossa</h2>
+            <p>Varaa oma tunturiviikkosi Ylläsporhosta ja nauti luonnon rauhasta.</p>
+            <a href="yllasporho.html#kalenteri" class="btn-primary">Katso vapaat viikot</a>
+        </div>
+    </section>
+
     <footer>
         <div class="footer-content">
             <div class="site-title" style="font-size: 1.5rem;">Ylläsporho</div>
