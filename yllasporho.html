@@ -104,17 +104,15 @@
     }
     </script>
 
-    <style>
+<style>
             html {
                 scroll-behavior: smooth;
             }
-
             * {
                 box-sizing: border-box;
                 margin: 0;
                 padding: 0;
             }
-
             body {
                 font-family: 'Plus Jakarta Sans', sans-serif;
                 color: #222222;
@@ -124,27 +122,57 @@
                 -webkit-font-smoothing: antialiased;
                 min-height: 100vh;
             }
-
             #kalenteri {
                 scroll-margin-top: 2rem;
             }
-
             h1, h2, h3 {
                 font-family: 'Merriweather', serif;
                 color: #111;
             }
-
             a {
                 color: inherit;
                 text-decoration: none;
             }
-
+            header, .site-header {
+                display: grid;
+                grid-template-columns: 1fr auto 1fr;
+                align-items: center;
+                padding: 0.8rem 2rem;
+                background-color: #ffffff;
+                border-bottom: none;
+            }
+            .site-nav {
+                justify-self: center;
+            }
+            .site-nav ul {
+                display: flex;
+                list-style: none;
+                gap: 1.5rem;
+                margin: 0;
+                padding: 0;
+            }
+            .site-nav a {
+                color: #000000 !important;
+                text-decoration: none !important;
+                font-weight: 700 !important;
+                font-size: 1.1rem !important;
+                padding-bottom: 4px;
+                border-bottom: 2px solid transparent;
+                transition: color 0.2s ease, border-color 0.2s ease;
+            }
+            .site-nav a:hover {
+                color: #64748b !important;
+                text-decoration: none !important;
+            }
+            .site-nav a.active {
+                color: #000000 !important;
+                border-bottom-color: #000000 !important;
+            }
             .container {
                 max-width: 1100px;
                 margin: 0 auto;
                 padding: 0 1.5rem;
             }
-
             .btn-reserve,
             .btn-show-more {
                 display: inline-flex !important;
@@ -165,7 +193,6 @@
                 transition: all 0.2s ease !important;
                 text-align: center !important;
             }
-
             .btn-reserve:hover,
             .btn-reserve:focus,
             .btn-show-more:hover,
@@ -175,7 +202,6 @@
                 border-color: #111111 !important;
                 transform: translateY(-2px) !important;
             }
-
             .btn-primary,
             .hero-compact .btn-primary,
             .bottom-banner-content .btn-primary,
@@ -200,7 +226,6 @@
                 transition: all 0.2s ease !important;
                 text-align: center !important;
             }
-
             .btn-primary:hover,
             .hero-compact .btn-primary:hover,
             .bottom-banner-content .btn-primary:hover,
@@ -212,7 +237,6 @@
                 border-color: #111111 !important;
                 transform: translateY(-2px) !important;
             }
-
             .btn-video-modal {
                 width: 100% !important;
                 gap: 0.5rem !important;
@@ -221,13 +245,11 @@
                 font-weight: 600 !important;
                 margin-bottom: 0.75rem !important;
             }
-
             .btn-select-week {
                 width: 100% !important;
                 padding: 0.55rem 1rem !important;
                 font-size: 0.88rem !important;
             }
-
             .btn-show-photos {
                 position: absolute !important;
                 bottom: 15px !important;
@@ -250,7 +272,6 @@
                 z-index: 2 !important;
                 width: auto !important;
             }
-
             .btn-show-photos:hover,
             .btn-show-photos:focus {
                 background: #111111 !important;
@@ -274,7 +295,6 @@
                 box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
                 box-sizing: border-box !important;
             }
-
             .btn-booking-submit:hover,
             .btn-booking-submit:focus {
                 background-color: #ffffff !important;
@@ -283,7 +303,6 @@
                 transform: translateY(-2px) !important;
                 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15) !important;
             }
-
             .booking-inquiry-box {
                 background-color: #f8fafc;
                 border: 1px solid #e2e8f0;
@@ -292,7 +311,6 @@
                 text-align: center;
                 margin-bottom: 1.2rem;
             }
-
             .booking-inquiry-title {
                 font-size: 0.8rem;
                 color: #475569;
@@ -300,7 +318,6 @@
                 margin-bottom: 0.5rem;
                 font-weight: 500;
             }
-
             .booking-inquiry-buttons {
                 display: flex;
                 justify-content: center;
@@ -309,7 +326,6 @@
                 margin: 0 auto;
                 flex-wrap: wrap;
             }
-
             .btn-contact-mini {
                 flex: 1;
                 min-width: 140px;
@@ -328,7 +344,6 @@
                 box-sizing: border-box !important;
                 transition: all 0.2s ease !important;
             }
-
             .btn-contact-mini:hover,
             .btn-contact-mini:focus {
                 background-color: #ffffff !important;
@@ -337,28 +352,6 @@
                 transform: translateY(-2px) !important;
                 box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12) !important;
             }
-
-            header {
-                text-align: center;
-                padding: 2rem 1rem 1.2rem;
-                background-color: #ffffff;
-                border-bottom: 1px solid #eee;
-            }
-
-            .site-title {
-                font-family: 'Merriweather', serif;
-                font-size: 2.2rem;
-                font-weight: 900;
-                color: #111;
-                letter-spacing: -0.5px;
-            }
-
-            .site-domain {
-                font-size: 0.85rem;
-                color: #777;
-                margin-bottom: 1.2rem;
-            }
-
             nav ul {
                 list-style: none;
                 display: flex;
@@ -369,7 +362,6 @@
                 margin: 0;
                 padding: 0;
             }
-
             nav a {
                 text-decoration: none;
                 color: #111111;
@@ -377,18 +369,15 @@
                 font-size: 0.95rem;
                 transition: color 0.2s ease;
             }
-
             nav a:hover, 
             nav a.active {
                 color: #555555;
             }
-
             main.container {
                 flex: 1 0 auto;
                 margin-top: 0.5rem;
                 margin-bottom: 3rem;
             }
-
             .hero-section {
                 padding: 1rem 0 1.5rem 0;
             }
@@ -401,13 +390,11 @@
                 flex-wrap: wrap;
                 gap: 1rem;
             }
-
             .location-tag {
                 font-size: 0.9rem;
                 color: #666;
                 margin-top: 0.3rem;
             }
-
             .hero-compact {
                 position: relative;
                 width: 100%;
@@ -422,21 +409,18 @@
                 box-sizing: border-box;
                 overflow: hidden;
             }
-
             .hero-compact h1 {
                 font-family: 'Merriweather', serif;
                 color: #ffffff;
                 font-size: 2.8rem;
                 margin-bottom: 0.5rem;
             }
-
             .hero-compact h2 {
                 color: #ffffff; 
                 font-size: 1.25rem;
                 font-weight: 600;
                 margin-bottom: 1.5rem;
             }
-
             .hero-compact p {
                 color: #ffffff;
                 font-size: 0.95rem;
@@ -444,7 +428,6 @@
                 opacity: 0.95;
                 font-weight: 400;
             }
-
             .hero-video {
                 position: absolute;
                 top: 50%;
@@ -455,7 +438,6 @@
                 transform: translate(-50%, -50%);
                 object-fit: cover;
             }
-
             .hero-overlay {
                 position: absolute;
                 top: 0;
@@ -465,14 +447,12 @@
                 background: rgba(0, 0, 0, 0.65);
                 z-index: 2;
             }
-
             .hero-content-compact {
                 position: relative;
                 z-index: 3;
                 max-width: 850px;
                 margin: 0 auto;
             }
-
             .hero-specs-badge {
                 display: inline-flex;
                 gap: 1.5rem;
@@ -486,16 +466,13 @@
                 flex-wrap: wrap;
                 justify-content: center;
             }
-
             .hero-specs-badge span strong {
                 color: #ffffff;
             }
-
             .gallery-container {
                 position: relative;
                 margin-bottom: 3rem;
             }
-
             .gallery-grid {
                 display: grid;
                 grid-template-columns: 2fr 1fr 1fr;
@@ -505,32 +482,26 @@
                 overflow: hidden;
                 box-shadow: 0 6px 20px rgba(0,0,0,0.04);
             }
-
             .gallery-grid .gallery-item:nth-child(1) {
                 grid-column: 1;
                 grid-row: 1 / span 2;
             }
-
             .gallery-grid .gallery-item:nth-child(2) {
                 grid-column: 2;
                 grid-row: 1;
             }
-
             .gallery-grid .gallery-item:nth-child(3) {
                 grid-column: 3;
                 grid-row: 1;
             }
-
             .gallery-grid .gallery-item:nth-child(4) {
                 grid-column: 2;
                 grid-row: 2;
             }
-
             .gallery-grid .gallery-item:nth-child(5) {
                 grid-column: 3;
                 grid-row: 2;
             }
-
             .gallery-item {
                 position: relative;
                 overflow: hidden;
@@ -540,7 +511,6 @@
                 width: 100%;
                 height: 100%;
             }
-
             .gallery-item img {
                 position: absolute;
                 top: 0;
@@ -552,17 +522,14 @@
                 transition: transform 0.3s ease, filter 0.3s ease;
                 display: block;
             }
-
             .gallery-item:hover img {
                 transform: scale(1.03);
                 filter: brightness(1);
             }
-
             .gallery-item-main {
                 grid-column: 1;
                 grid-row: 1 / span 2;
             }
-
             .more-overlay {
                 position: absolute;
                 top: 0; left: 0; width: 100%; height: 100%;
@@ -575,37 +542,9 @@
                 font-size: 1.1rem;
                 transition: background 0.2s ease;
             }
-
             .gallery-item-more:hover .more-overlay {
                 background: rgba(0, 0, 0, 0.25);
             }
-
-            .btn-show-photos {
-                position: absolute;
-                bottom: 15px;
-                right: 15px;
-                background: rgba(255, 255, 255, 0.95);
-                color: #111;
-                padding: 0.6rem 1.1rem;
-                border-radius: 6px;
-                font-weight: 700;
-                font-size: 0.85rem;
-                border: 1px solid rgba(0,0,0,0.1);
-                cursor: pointer;
-                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-                transition: all 0.2s ease;
-                display: flex;
-                align-items: center;
-                gap: 0.5rem;
-                z-index: 2;
-            }
-
-            .btn-show-photos:hover {
-                background: #ffffff;
-                transform: translateY(-2px);
-                box-shadow: 0 6px 16px rgba(0,0,0,0.2);
-            }
-
             .lightbox-modal {
                 display: none;
                 position: fixed;
@@ -621,11 +560,9 @@
                 backdrop-filter: blur(5px);
                 user-select: none;
             }
-
             .lightbox-modal.active {
                 display: flex;
             }
-
             .lightbox-content-wrapper {
                 position: relative;
                 max-width: 90%;
@@ -634,7 +571,6 @@
                 flex-direction: column;
                 align-items: center;
             }
-
             .lightbox-content {
                 max-width: 100%;
                 max-height: 80vh;
@@ -642,7 +578,6 @@
                 box-shadow: 0 10px 30px rgba(0,0,0,0.5);
                 object-fit: contain;
             }
-
             .lightbox-close {
                 position: absolute;
                 top: 20px;
@@ -655,11 +590,9 @@
                 line-height: 1;
                 z-index: 1001;
             }
-
             .lightbox-close:hover {
                 color: #ccc;
             }
-
             .lightbox-nav {
                 position: absolute;
                 top: 50%;
@@ -679,15 +612,12 @@
                 width: 50px;
                 height: 50px;
             }
-
             .lightbox-nav:hover {
                 background: rgba(255, 255, 255, 0.35);
                 color: #ffffff;
             }
-
             .lightbox-prev { left: 20px; }
             .lightbox-next { right: 20px; }
-
             .lightbox-caption {
                 margin-top: 12px;
                 color: #fff;
@@ -698,14 +628,12 @@
                 padding: 0.4rem 1.2rem;
                 border-radius: 20px;
             }
-
             .content-grid {
                 display: grid;
                 grid-template-columns: 2fr 1fr;
                 gap: 3rem;
                 margin-bottom: 4rem;
             }
-
             .specs-bar {
                 display: flex;
                 gap: 2rem;
@@ -716,19 +644,16 @@
                 font-weight: 500;
                 font-size: 0.95rem;
             }
-
             .spec-item span {
                 display: block;
                 color: #777;
                 font-size: 0.8rem;
                 font-weight: 400;
             }
-
             .description p {
                 margin-bottom: 1.2rem;
                 color: #4a5568;
             }
-
             .features-list {
                 list-style: none;
                 display: grid;
@@ -736,13 +661,11 @@
                 gap: 0.8rem;
                 margin-top: 1rem;
             }
-
             .features-list li::before {
                 content: "✓ ";
                 color: #111;
                 font-weight: bold;
             }
-
             .info-card {
                 background: #fff;
                 padding: 1.8rem;
@@ -752,20 +675,17 @@
                 position: sticky;
                 top: 20px;
             }
-
             .price-highlight {
                 font-size: 1.5rem;
                 font-weight: 700;
                 color: #111;
                 margin-bottom: 0.5rem;
             }
-
             .price-highlight span {
                 font-size: 0.9rem;
                 color: #666;
                 font-weight: 400;
             }
-
             .calendar-section {
                 background: #fff;
                 padding: 2.5rem 2rem;
@@ -784,7 +704,6 @@
                 font-size: 0.92rem;
                 color: #1e3a8a;
             }
-
             .weeks-grid {
                 display: grid;
                 grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
@@ -804,16 +723,13 @@
                 flex-direction: column;
                 justify-content: space-between;
             }
-
             .week-card.available {
                 cursor: pointer;
             }
-
             .week-card.available:hover {
                 transform: translateY(-3px);
                 box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
             }
-
             .year-badge {
                 background: #111111;
                 color: #ffffff;
@@ -823,7 +739,6 @@
                 border-radius: 4px;
                 letter-spacing: 0.5px;
             }
-
             .year-badge-next {
                 background: #0284c7; 
                 color: #ffffff;
@@ -833,7 +748,6 @@
                 border-radius: 4px;
                 letter-spacing: 0.5px;
             }
-
             .week-card.available.season-kevat {
                 border-color: #d97706;
                 background: #fffdfa;
@@ -842,7 +756,6 @@
                 background-color: #fef3c7;
                 color: #92400e;
             }
-
             .week-card.available.season-ruska {
                 border-color: #ea580c;
                 background: #fffaf8;
@@ -851,7 +764,6 @@
                 background-color: #ffedd5;
                 color: #9a3412;
             }
-
             .week-card.available.season-ensilumi {
                 border-color: #64748b;
                 background: #f8fafc;
@@ -860,7 +772,6 @@
                 background-color: #e2e8f0;
                 color: #334155;
             }
-
             .week-card.available.season-lumiaika {
                 border-color: #0284c7;
                 background: #f0f9ff;
@@ -869,7 +780,6 @@
                 background-color: #e0f2fe;
                 color: #075985;
             }
-
             .week-card.available.season-kesa {
                 border-color: #16a34a;
                 background: #f6fbf6;
@@ -878,26 +788,22 @@
                 background-color: #dcfce7;
                 color: #166534;
             }
-
             .week-card.booked {
                 background-color: #f9f9f9 !important;
                 border-color: #e2e8f0 !important;
                 opacity: 0.65;
                 cursor: not-allowed;
             }
-
             .status-badge.booked-badge {
                 background-color: #fee2e2;
                 color: #991b1b;
             }
-
             .season-header {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
                 margin-bottom: 0.5rem;
             }
-
             .season-tag {
                 font-size: 0.72rem;
                 font-weight: 700;
@@ -905,26 +811,22 @@
                 letter-spacing: 0.5px;
                 color: #64748b;
             }
-
             .week-number {
                 font-family: 'Merriweather', serif;
                 font-size: 1.25rem;
                 font-weight: 700;
             }
-
             .week-dates {
                 font-size: 0.82rem;
                 color: #666;
                 margin: 0.2rem 0 0.8rem 0;
             }
-
             .week-price {
                 font-size: 1.15rem;
                 font-weight: 700;
                 color: #111;
                 margin-bottom: 0.8rem;
             }
-
             .status-badge {
                 display: inline-block;
                 font-size: 0.78rem;
@@ -932,7 +834,6 @@
                 padding: 0.35rem 0.6rem;
                 border-radius: 5px;
             }
-
             #varausosio {
                 margin-top: 3rem;
                 background: #fdfdfd;
@@ -941,18 +842,15 @@
                 border: 1px solid #e2e8f0;
                 display: none;
             }
-
             .form-group {
                 margin-bottom: 1rem;
             }
-
             .form-group label {
                 display: block;
                 font-weight: 600;
                 font-size: 0.9rem;
                 margin-bottom: 0.3rem;
             }
-
             .form-control {
                 width: 100%;
                 box-sizing: border-box;
@@ -961,22 +859,18 @@
                 border-radius: 6px;
                 font-family: inherit;
             }
-
             .form-row {
                 display: flex;
                 gap: 1rem;
                 margin-bottom: 1rem;
             }
-
             .form-row .form-group {
                 flex: 1;
                 margin-bottom: 0;
             }
-
             .text-center {
                 text-align: center;
             }
-
             .checkbox-group {
                 display: flex;
                 justify-content: center;
@@ -985,7 +879,6 @@
                 margin-top: 0.5rem;
                 margin-bottom: 1.5rem;
             }
-
             .checkbox-group label {
                 display: inline-flex;
                 align-items: center;
@@ -993,13 +886,11 @@
                 font-weight: normal;
                 cursor: pointer;
             }
-
             .checkbox-group input[type="checkbox"] {
                 width: 1.2rem;
                 height: 1.2rem;
                 cursor: pointer;
             }
-
             .hero-announcement-link {
                 display: block !important;
                 text-decoration: none !important;
@@ -1010,7 +901,6 @@
                 z-index: 999;
                 cursor: pointer;
             }
-
             .hero-announcement-bar {
                 width: 100%;
                 background-color: #111111;
@@ -1024,23 +914,19 @@
                 transition: background-color 0.2s ease;
                 cursor: pointer;
             }
-
             .hero-announcement-link:hover .hero-announcement-bar {
                 background-color: #ffffff;
                 color: #111111;
             }
-
             .hero-announcement-link:hover .marquee-text {
                 color: #111111;
                 text-decoration: underline;
             }
-
             .marquee-container {
                 overflow: hidden;
                 white-space: nowrap;
                 width: 100%;
             }
-
             .marquee-text {
                 display: inline-block;
                 padding-left: 100%;
@@ -1052,12 +938,10 @@
                 transition: color 0.2s ease;
                 pointer-events: auto;
             }
-
             @keyframes marquee-scroll {
                 0% { transform: translate(0, 0); }
                 100% { transform: translate(-100%, 0); }
             }
-
             .bottom-banner-hero {
                 position: relative;
                 width: 100%;
@@ -1073,7 +957,6 @@
                 overflow: hidden;
                 margin-top: 0.1rem;
             }
-
             .bottom-banner-img {
                 position: absolute;
                 top: 50%;
@@ -1085,7 +968,6 @@
                 object-fit: cover;
                 object-position: center 83%;
             }
-
             .bottom-banner-overlay {
                 position: absolute;
                 top: 0;
@@ -1095,21 +977,18 @@
                 background: rgba(0, 0, 0, 0.65);
                 z-index: 2;
             }
-
             .bottom-banner-content {
                 position: relative;
                 z-index: 3;
                 max-width: 800px;
                 margin: 0 auto;
             }
-
             .bottom-banner-content h2 {
                 font-family: 'Merriweather', serif;
                 color: #ffffff;
                 font-size: 1.8rem;
                 margin-bottom: 0.5rem;
             }
-
             .bottom-banner-content p {
                 color: #ffffff;
                 font-size: 1rem;
@@ -1117,48 +996,82 @@
                 font-weight: 400;
                 margin-bottom: 1.25rem;
             }
-
             footer {
                 background-color: #ffffff;
                 border-top: 1px solid #eee;
-                padding: 2.5rem 1rem;
+                padding: 1.5rem 1rem;
                 text-align: center;
                 margin-top: auto;
                 flex-shrink: 0;
             }
-
             .footer-content {
                 max-width: 1100px;
                 margin: 0 auto;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                gap: 1rem;
+                gap: 0.6rem;
             }
-
+            .footer-logo {
+                height: 60px;
+                width: auto;
+                object-fit: contain;
+            }
             .footer-links {
                 display: flex;
-                gap: 1.5rem;
+                justify-content: center;
+                gap: 1.25rem;
                 list-style: none;
+                margin: 0;
+                padding: 0;
             }
 
             .footer-links a {
-                color: #666;
-                text-decoration: none;
-                font-size: 0.9rem;
-                font-weight: 500;
+                color: #000000 !important;
+                text-decoration: none !important;
+                font-weight: 700 !important;
+                font-size: 0.85rem !important;
+                transition: color 0.2s ease;
             }
-
             .footer-links a:hover {
                 color: #111;
             }
-
             .footer-copy {
                 font-size: 0.85rem;
                 color: #888;
+                margin: 0;
+            }
+            .site-logo-link {
+                display: inline-flex;
+                align-items: center;
+                justify-self: center;
+                width: fit-content;
+                text-decoration: none;
+            }
+            .site-logo {
+                height: 80px;
+                width: auto;
+                object-fit: contain;
+            }
+            .site-logo-link:hover .site-logo {
+                opacity: 0.85;
             }
 
             @media (max-width: 850px) {
+                header, .site-header {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1rem;
+                    padding: 1rem;
+                }
+                .site-logo {
+                    height: 50px;
+                }
+                .site-nav ul {
+                    gap: 1rem;
+                    flex-wrap: wrap;
+                    justify-content: center;
+                }
                 .gallery-grid {
                     grid-template-columns: 1fr 1fr;
                     grid-template-rows: repeat(3, 160px);
@@ -1188,13 +1101,15 @@
                 }
             }
     </style>
+
 </head>
 <body>
 
-    <header>
-        <div class="site-title">Ylläsporho</div>
-        <div class="site-domain">yllasporho.com</div>
-        <nav>
+    <header class="site-header">
+        <a href="index.html" class="site-logo-link">
+            <img src="images/logo_black.png" alt="Ylläsporho" class="site-logo">
+        </a>
+        <nav class="site-nav">
             <ul>
                 <li><a href="index.html">Etusivu</a></li>
                 <li><a href="yllasporho.html" class="active">Majoitus</a></li>
@@ -1202,6 +1117,7 @@
                 <li><a href="yhteydenotto.html">Yhteystiedot</a></li>
             </ul>
         </nav>
+        <div></div>
     </header>
 
     <a href="yllasporho.html?utm_content=announcement_bar#kalenteri" class="hero-announcement-link">
@@ -1218,20 +1134,17 @@
         <video autoplay muted loop playsinline poster="images/ulko_talvi.jpg" class="hero-video">
             <source src="videos/yllas_ruska.mp4" type="video/mp4">
         </video>
+        
         <div class="hero-overlay"></div>
 
-     <div class="hero-content-compact">
-        <h1>Ylläsporho</h1>
-        <p style="font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; opacity: 0.95;">
-            Hyvin varusteltu kelohuoneisto Äkäslompolossa
-        </p>
-        <p style="font-size: 0.95rem; margin-bottom: 2rem; opacity: 0.9; font-weight: 400;">
-            Tasokas ja tyylikkäästi sisustettu lomahuoneisto Ylläksellä. Nauti Lapin rauhasta ja laadukkaasta asumisesta kaikkien palveluiden äärellä.
-        </p>
-        <a href="#kalenteri" class="btn-primary">Katso vapaat viikot ja varaa</a>
-    </div>
+        <div class="hero-content-compact">
+            <h1>Äkäslompolo, Ylläs <span style="font-size: 0.55em; opacity: 0.85; font-weight: 400; display: block; margin-top: 0.2rem;">67.6013° N, 24.1777° E</span></h1>
+            
+            <p class="subtitle">Tasokas ja tyylikkäästi sisustettu kelohuoneisto Ylläksellä. Nauti Lapin rauhasta ja laadukkaasta asumisesta kaikkien palveluiden äärellä.</p>
+            
+            <a href="#kalenteri" class="btn-primary">Katso vapaat viikot ja varaa</a>
+        </div>
     </section>
-
     <main class="container">
         
         <section class="gallery-header" style="margin: 1rem 0 1rem 0; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem;">
@@ -1418,6 +1331,12 @@
                         <input type="text" id="valittu_viikko" name="valittu_viikko" readonly class="form-control" style="background:#eef2f7; font-weight:700;">
                     </div>
 
+                    <div class="form-group">
+                        <label for="alekoodi">Kampanjakoodi / Alekoodi</label>
+                        <input type="text" id="alekoodi" name="alekoodi" class="form-control" placeholder="Esim. KOODI10" oninput="laskeAlehinta()" style="text-transform: uppercase;">
+                        <small id="ale_viesti" style="display: block; margin-top: 0.4rem; font-weight: 600; font-size: 0.85rem; min-height: 1.2rem;"></small>
+                    </div>                    
+
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
                         <div class="form-group">
                             <label for="nimi">Nimesi *</label>
@@ -1557,7 +1476,9 @@
 
     <footer>
         <div class="footer-content">
-            <div class="site-title" style="font-size: 1.5rem;">Ylläsporho</div>
+            <a href="index.html" class="footer-logo-link">
+                <img src="images/logo_black.png" alt="Ylläsporho" class="footer-logo">
+            </a>
             <ul class="footer-links">
                 <li><a href="index.html">Etusivu</a></li>
                 <li><a href="yllasporho.html">Majoitus</a></li>
@@ -1568,7 +1489,8 @@
         </div>
     </footer>
 
-    <script>
+   <script>
+        // 1. KUVAGALLERIA & LIGHTBOX
         const galleryImages = [
             { src: 'images/ulko_kesa.jpg', title: 'Näkymä ulkoa' },
             { src: 'images/makuuhuone.jpg', title: 'Makuuhuone' },
@@ -1586,11 +1508,16 @@
 
         document.addEventListener("DOMContentLoaded", function() {
             const totalCount = galleryImages.length;
-            document.getElementById('total-photo-count').textContent = totalCount;
-            if (totalCount > 5) {
-                document.getElementById('more-photos-tag').textContent = `+${totalCount - 4} lisää`;
-            } else {
-                document.getElementById('more-photos-tag').style.display = 'none';
+            const totalCountEl = document.getElementById('total-photo-count');
+            const moreTagEl = document.getElementById('more-photos-tag');
+
+            if (totalCountEl) totalCountEl.textContent = totalCount;
+            if (moreTagEl) {
+                if (totalCount > 5) {
+                    moreTagEl.textContent = `+${totalCount - 4} lisää`;
+                } else {
+                    moreTagEl.style.display = 'none';
+                }
             }
         });
 
@@ -1650,6 +1577,12 @@
 
     let allWeeksData = []; 
     let limitToEight = true; 
+    let aleDebounceTimer = null;
+    
+    // Tilan hallinta valitulle viikolle ja alennukselle
+    let currentSelectedViikkoText = "";
+    let originalSelectedPrice = 0;
+    let currentDiscountPercent = 0;
 
     function parseDate(dateString) {
         if (!dateString) return null;
@@ -1697,7 +1630,6 @@
         today.setHours(0, 0, 0, 0);
 
         return allWeeks.filter(item => {
-            // Käytetään loppupäivää katkon laskemiseen
             const endDateStr = item.loppupvm || item.endDate;
             
             let endDate = parseDate(endDateStr);
@@ -1747,13 +1679,17 @@
             })
             .catch(error => {
                 console.error("Virhe haettaessa tietoja taulukosta:", error);
-                document.getElementById("weeks-container").innerHTML = 
-                    "<p style='color:red;'>Varaustietojen lataaminen epäonnistui. Ole hyvä ja yritä myöhemmin uudelleen.</p>";
+                const container = document.getElementById("weeks-container");
+                if (container) {
+                    container.innerHTML = "<p style='color:red;'>Varaustietojen lataaminen epäonnistui. Ole hyvä ja yritä myöhemmin uudelleen.</p>";
+                }
             });
     });
 
     function renderWeeks() {
         const container = document.getElementById("weeks-container");
+        if (!container) return;
+
         const loadMoreBtn = document.getElementById("load-more-container");
         const selectedSeason = document.getElementById("filter-season") ? document.getElementById("filter-season").value : "all";
         const selectedMonth = document.getElementById("filter-month") ? document.getElementById("filter-month").value : "all";
@@ -1810,22 +1746,22 @@
                 card.style.cursor = "pointer";
                 card.onclick = () => selectWeek(`${item.viikko} / ${yearText} (${dateText})`, item.hinta);
                 
-            card.innerHTML = `
-                <div>
-                    <div class="season-header">
-                        <span class="season-tag">${seasonInfo.label}</span>
-                        <span class="${badgeClass}">${yearText}</span>
+                card.innerHTML = `
+                    <div>
+                        <div class="season-header">
+                            <span class="season-tag">${seasonInfo.label}</span>
+                            <span class="${badgeClass}">${yearText}</span>
+                        </div>
+                        <div class="week-number">${item.viikko}</div>
+                        <div class="week-dates">${dateText}</div>
                     </div>
-                    <div class="week-number">${item.viikko}</div>
-                    <div class="week-dates">${dateText}</div>
-                </div>
-                <div>
-                    <div class="week-price">${item.hinta}</div>
-                    <button type="button" class="btn-select-week" style="width: 100%; margin-top: 0.5rem; padding: 0.45rem 0.8rem; background-color: #ffffff; color: #000000; border: 1.5px solid #000000; border-radius: 6px; font-weight: 700; font-size: 0.85rem; cursor: pointer; transition: all 0.2s ease;">
-                        Valitse viikko →
-                    </button>
-                </div>
-            `;
+                    <div>
+                        <div class="week-price">${item.hinta}</div>
+                        <button type="button" class="btn-select-week" style="width: 100%; margin-top: 0.5rem; padding: 0.45rem 0.8rem; background-color: #ffffff; color: #000000; border: 1.5px solid #000000; border-radius: 6px; font-weight: 700; font-size: 0.85rem; cursor: pointer; transition: all 0.2s ease;">
+                            Valitse viikko →
+                        </button>
+                    </div>
+                `;
 
             } else {
                 card.className = "week-card booked";
@@ -1862,41 +1798,113 @@
         const varausosio = document.getElementById('varausosio');
         if (varausosio) {
             varausosio.style.display = 'block';
-            document.getElementById('valittu_viikko').value = viikko + " (Hinta: " + hinta + ")";
+            
+            currentSelectedViikkoText = viikko;
+
+            const cleanPriceStr = (hinta || "").toString().replace(/[^\d]/g, '');
+            const rawPrice = parseInt(cleanPriceStr, 10);
+            originalSelectedPrice = !isNaN(rawPrice) ? rawPrice : 0;
+
+            const koodiInput = document.getElementById('alekoodi');
+            if (!koodiInput || koodiInput.value.trim() === '') {
+                currentDiscountPercent = 0;
+            }
+
+            paivitaValittuViikkoTeksti();
+
             varausosio.scrollIntoView({ behavior: 'smooth' });
+
+            if (koodiInput && koodiInput.value.trim() !== '') {
+                laskeAlehinta();
+            }
         }
     }
-</script>
 
-<div id="videoModal" onclick="closeVideoModal()" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.9); z-index: 10000; align-items: center; justify-content: center;">
-    <div onclick="event.stopPropagation()" style="position: relative; height: 92vh; aspect-ratio: 9/16; max-width: 95vw; display: flex; align-items: center; justify-content: center;">
-        <button type="button" onclick="closeVideoModal()" style="position: absolute; top: 10px; right: 15px; background: rgba(0,0,0,0.6); border: none; color: white; font-size: 2rem; cursor: pointer; line-height: 1; width: 40px; height: 40px; border-radius: 50%; z-index: 10001; display: flex; align-items: center; justify-content: center;">&times;</button>
-        <video id="fullVideo" controls style="width: 100%; height: 100%; border-radius: 12px; object-fit: cover; background: #000; display: block;">
-            <source src="videos/yllasporho.mp4" type="video/mp4">
-            Selaimestasi puuttuu videotuki.
-        </video>
-    </div>
-</div>
+    function paivitaValittuViikkoTeksti() {
+        const viikkoInput = document.getElementById('valittu_viikko');
+        if (!viikkoInput || !currentSelectedViikkoText) return;
 
-<script>
-function openVideoModal() {
-    const modal = document.getElementById('videoModal');
-    const video = document.getElementById('fullVideo');
-    if (modal && video) {
-        modal.style.display = 'flex';
-        video.currentTime = 0;
-        video.play();
+        if (originalSelectedPrice > 0) {
+            if (currentDiscountPercent > 0) {
+                const rawDiscounted = originalSelectedPrice * (1 - currentDiscountPercent / 100);
+                const alennettuHinta = Math.floor(rawDiscounted / 10) * 10;
+                
+                viikkoInput.value = `${currentSelectedViikkoText} (Hinta: ${alennettuHinta} €, alennuskoodi hyödynnetty / norm. ${originalSelectedPrice} €)`;
+            } else {
+                viikkoInput.value = `${currentSelectedViikkoText} (Hinta: ${originalSelectedPrice} €)`;
+            }
+        } else {
+            viikkoInput.value = currentSelectedViikkoText;
+        }
     }
-}
 
-function closeVideoModal() {
-    const modal = document.getElementById('videoModal');
-    const video = document.getElementById('fullVideo');
-    if (modal && video) {
-        video.pause();
-        modal.style.display = 'none';
+    function laskeAlehinta() {
+        const koodiInput = document.getElementById('alekoodi');
+        const viestiEl = document.getElementById('ale_viesti');
+        
+        if (!koodiInput || !viestiEl) return;
+
+        const koodi = koodiInput.value.trim().toUpperCase();
+        clearTimeout(aleDebounceTimer);
+
+        if (!koodi) {
+            currentDiscountPercent = 0;
+            viestiEl.textContent = '';
+            paivitaValittuViikkoTeksti();
+            return;
+        }
+
+        viestiEl.style.color = 'var(--text-muted, #94a3b8)';
+        viestiEl.textContent = 'Tarkistetaan koodia...';
+
+        aleDebounceTimer = setTimeout(() => {
+            tarkistaKoodiBackendista(koodi);
+        }, 800);
     }
-}
+
+    async function tarkistaKoodiBackendista(koodi) {
+        const viestiEl = document.getElementById('ale_viesti');
+
+        try {
+            const response = await fetch(`${GOOGLE_SHEET_API_URL}?action=checkPromo&code=${encodeURIComponent(koodi)}`);
+            const data = await response.json();
+
+            if (data.valid) {
+                viestiEl.style.color = '#4ade80';
+
+                const rawDiscount = data.Ale_prosentti ?? data.ale_prosentti ?? data.discountPercent ?? data.discount ?? data.alennus;
+                const discountPercent = parseFloat(rawDiscount);
+
+                if (!isNaN(discountPercent) && discountPercent > 0) {
+                    currentDiscountPercent = discountPercent;
+                    
+                    let alennusTeksti = `✓ Koodi aktiivinen! Alennus: ${discountPercent}%`;
+                    
+                    if (originalSelectedPrice > 0) {
+                        const rawDiscountedPrice = originalSelectedPrice * (1 - discountPercent / 100);
+                        const alennettuHinta = Math.floor(rawDiscountedPrice / 10) * 10;
+                        
+                        alennusTeksti += ` (Uusi hinta: ${alennettuHinta} €)`;
+                    }
+
+                    viestiEl.textContent = alennusTeksti;
+                } else {
+                    currentDiscountPercent = 0;
+                    viestiEl.textContent = `✓ Koodi aktiivinen!`;
+                }
+            } else {
+                currentDiscountPercent = 0;
+                viestiEl.style.color = '#f87171';
+                viestiEl.textContent = '✕ Virheellinen tai vanhentunut koodi.';
+            }
+        } catch (err) {
+            currentDiscountPercent = 0;
+            viestiEl.style.color = '#f87171';
+            viestiEl.textContent = 'Koodin tarkistus epäonnistui.';
+        }
+
+        paivitaValittuViikkoTeksti();
+    }
 </script>
 </body>
 </html>
