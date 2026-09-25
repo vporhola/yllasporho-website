@@ -107,6 +107,7 @@
 <style>
             html {
                 scroll-behavior: smooth;
+                overflow-x: hidden;
             }
             * {
                 box-sizing: border-box;
@@ -121,6 +122,8 @@
                 letter-spacing: 0.2px;
                 -webkit-font-smoothing: antialiased;
                 min-height: 100vh;
+                overflow-x: hidden; /
+                width: 100%;
             }
             #kalenteri {
                 scroll-margin-top: 2rem;
@@ -926,6 +929,7 @@
                 overflow: hidden;
                 white-space: nowrap;
                 width: 100%;
+                position: relative;
             }
             .marquee-text {
                 display: inline-block;
@@ -1099,7 +1103,10 @@
                 .hero-video-container {
                     max-height: 320px;
                 }
-            }
+                .form-row {
+                    flex-direction: column;
+                    gap: 0.5rem;
+                }
     </style>
 
 </head>

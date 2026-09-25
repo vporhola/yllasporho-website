@@ -21,4 +21,11 @@
     <loc>https://yllasporho.com/varausehdot/</loc>
   </url>
 
+  <url>
+      <loc>https://yllasporho.com/ensilumi/</loc>
+      <lastmod>2026-09-25</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.8</priority>
+  </url>
+
 </urlset>

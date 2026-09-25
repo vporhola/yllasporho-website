@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ensilumen tarjous | Lomahuoneisto Ylläsporho Äkäslompolo</title>
+    <meta name="description" content="Hyödynnä Ylläsporhon ensilumen erikoistarjous Äkäslompolossa. Varaa laadukas kelohuoneisto Ylläkseltä.">
+    
+    <link rel="stylesheet" href="css/ensilumi.css">
+    <link rel="canonical" href="https://yllasporho.com/ensilumi/" />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EFSD1E0WZP"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.0.0/dist/cookieconsent.css">
+    <script src="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.0.0/dist/cookieconsent.umd.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+    
+    <script src="js/ensilumi.js" defer></script>
+</head>
+<body>
+
+    <header class="site-header site-header-dark">
+        <a href="/index.html" class="site-logo-link">
+            <img src="/images/logo_white.png" alt="Ylläsporho" class="site-logo">
+        </a>
+        <nav class="site-nav">
+            <ul>
+                <li><a href="index.html">Etusivu</a></li>
+                <li><a href="yllasporho.html" class="nav-offer active">Tarjous</a></li>
+                <li><a href="mahdollisuudet.html">Mahdollisuudet</a></li>
+                <li><a href="yhteydenotto.html">Yhteystiedot</a></li>
+            </ul>
+        </nav>
+        <div class="yllas-weather-strip">
+            <div class="weather-icon" id="weather-icon">❄️</div>
+            <div class="weather-info">
+                <span class="weather-location">YLLÄS, ÄKÄSLOMPOLO</span>
+                <div class="weather-data">
+                    <span class="temp-display" id="yllas-temp">-- °C</span>
+                    <span class="weather-divider">•</span>
+                    <span class="snow-display" id="yllas-snow">Lumisyvyys: -- cm</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero-banner">
+        <div class="hero-badge">Ensilumen tarjous nopeimmille</div>
+        <h1 class="hero-title">Varaa ensilumen viikkosi Äkäslompolossa</h1>
+        <p class="hero-subtitle">Valitse sopiva ajankohta alta avataksesi varauskyselyn. Tarjoushinnat voimassa loka-marraskuun suosikkiviikoille.</p>
+    
+    <div class="reviews-strip">
+        <div class="rating-stars" id="rating-stars">★★★★★</div>
+        <div class="review-content" id="review-content">
+            <p class="review-quote" id="review-quote">...</p>
+            <span class="review-author" id="review-author">...</span>
+        </div>
+    </div>
+    
+    <div id="promo-grid-container" class="promo-grid">
+        <p style="grid-column: 1/-1; text-align: center; color: #94a3b8;">Ladataan kampanjaviikkoja...</p>
+    </div>
+    
+    <div class="custom-booking-cta">
+        <p class="cta-text">Etkö löytänyt sopivaa viikkoa kampanjaosioistamme?</p>
+        <a href="yllasporho.html#kalenteri" class="btn-bottom-banner">
+            Katso kaikkien viikkojen varaustilanne →
+        </a>
+    </div>
+    </section>
+
+    <section class="filmstrip-section">
+        <div class="section-header-center">
+            <h2>Tutustu huoneistoon</h2>
+            <p style="color: var(--text-muted); font-size: 0.95rem;">Pyyhkäise tai käytä nuolia selataksesi kuvia</p>
+        </div>
+
+        <div class="gallery-wrapper">
+            <button class="scroll-btn left" onclick="scrollGallery(-320)">❮</button>
+
+            <div class="filmstrip-container" id="galleryContainer">
+                <div class="film-card" onclick="openLightbox(0)">
+                    <img src="/images/ulko_ensi.jpg" alt="Kelomökki ulkoa">
+                    <div class="film-caption">Aito kelomökki Äkäslompolossa</div>
+                </div>
+                <div class="film-card" onclick="openLightbox(1)">
+                    <img src="/images/makuuhuone.jpg" alt="Makuuhuone">
+                    <div class="film-caption">Viihtyisä makuuhuone</div>
+                </div>
+                <div class="film-card" onclick="openLightbox(2)">
+                    <img src="/images/olohuone.jpg" alt="Olohuone ja takka">
+                    <div class="film-caption">Tunnelmallinen olohuone ja takka</div>
+                </div>
+                <div class="film-card" onclick="openLightbox(3)">
+                    <img src="/images/keittio.jpg" alt="Keittiö">
+                    <div class="film-caption">Täysin varusteltu keittiö</div>
+                </div>
+                <div class="film-card" onclick="openLightbox(4)">
+                    <img src="/images/sauna.jpg" alt="Sauna">
+                    <div class="film-caption">Oma sauna ulkoilupäivän jälkeen</div>
+                </div>
+                <div class="film-card" onclick="openLightbox(5)">
+                    <img src="/images/ylakuva.jpg" alt="Näkymä parvelta">
+                    <div class="film-caption">Parvitilat ja lisävuoteet</div>
+                </div>
+                <div class="film-card" onclick="openLightbox(7)">
+                    <img src="/images/kota_ulko.jpg" alt="Grillikota">
+                    <div class="film-caption">Grillikota vapaasti käytettävissä</div>
+                </div>
+                <div class="film-card" onclick="openLightbox(9)">
+                    <img src="/images/suksihuolto.jpg" alt="Suksienhuoltotila">
+                    <div class="film-caption">Lämmin suksienhuoltotila</div>
+                </div>
+            </div>
+
+            <button class="scroll-btn right" onclick="scrollGallery(320)">❯</button>
+        </div>
+    </section>
+
+    <!-- LIGHTBOX MODAL -->
+    <div id="lightbox" class="lightbox-modal" onclick="closeLightboxOnBg(event)">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <div class="lightbox-content">
+            <button class="lightbox-btn lightbox-prev" onclick="prevImage(event)">❮</button>
+            <img id="lightbox-img" src="" alt="Suurennettu kuva">
+            <button class="lightbox-btn lightbox-next" onclick="nextImage(event)">❯</button>
+        </div>
+        <div id="lightbox-caption" style="color:white; margin-top:15px; font-weight:600;"></div>
+    </div>
+
+
+    <!-- SPEKSIT JA VARUSTELU -->
+    <section class="details-section">
+        <div class="dark-card">
+            <h2>Majoitus Äkäslompolon parhaalla paikalla</h2>
+            <p style="color: var(--text-muted); margin-top: 0.5rem;">
+                Ylläsporho tarjoaa kodikkaan ja laadukkaan tukikohdan Tunturi-Lapin reittien äärellä. Latuverkostot ja pyöräreitit alkavat lähes etuovelta, ja ulkoilupäivän jälkeen pääset nauttimaan saunan lämmöstä sekä varaavan takan tunnelmasta.
+            </p>
+            
+            <h3 style="margin-top: 1.8rem; font-size: 1.1rem; color: #ffffff;">Huoneiston varustelu &amp; edut</h3>
+            <div class="features-grid">
+                <div class="feature-item">Täysin varusteltu keittiö</div>
+                <div class="feature-item">Sähkösauna &amp; Varaava takka</div>
+                <div class="feature-item">Pyykinpesukone &amp; Kuivauskaappi</div>
+                <div class="feature-item">Nopea Wi-Fi &amp; Autopaikka</div>
+                <div class="feature-item">Lämmin suksienhuoltotila</div>
+                <div class="feature-item">Grillikota pihapiirissä</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODAL VARAUSLOMAKE -->
+    <div id="bookingModal" class="modal-overlay" onclick="closeModalOnBg(event)">
+        <div class="modal-card">
+            <button type="button" class="modal-close" onclick="closeBookingModal()">&times;</button>
+            
+            <h2 style="font-size: 1.6rem; margin-bottom: 0.3rem;">Viimeistele varauspyyntö</h2>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">Kohde 639597 – Lomahuoneisto Ylläsporho</p>
+
+            <form id="booking-form" action="https://formspree.io/f/xnjekjbe" method="POST">
+                <input type="hidden" name="kohde_id" value="639597">
+                <input type="hidden" name="kohde_nimi" value="Ylläsporho">
+
+                <div style="margin-bottom: 1.2rem;">
+                    <label style="display: block; font-weight: 700; margin-bottom: 0.3rem; font-size: 0.9rem;">Valittu ajankohta &amp; hinta *</label>
+                    <input type="text" id="valittu_viikko" name="valittu_viikko" required readonly class="form-control" style="border-color: var(--brand-gold); font-weight: 700; color: var(--brand-gold);">
+                </div>
+
+                <div style="margin-bottom: 1.2rem;">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.3rem; font-size: 0.9rem; color: var(--text-muted);">Kampanjakoodi / Alekoodi</label>
+                    <input type="text" id="alekoodi" name="alekoodi" class="form-control" placeholder="Esim. KOODI10" oninput="laskeAlehinta()" style="text-transform: uppercase;">
+                    <small id="ale_viesti" style="display: block; margin-top: 0.4rem; font-weight: 600; font-size: 0.85rem; min-height: 1.2rem;"></small>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.2rem;">
+                    <div>
+                        <label style="display: block; font-weight: 600; margin-bottom: 0.3rem; font-size: 0.9rem;">Nimi *</label>
+                        <input type="text" id="nimi" name="nimi" required class="form-control" placeholder="Etunimi Sukunimi">
+                    </div>
+                    <div>
+                        <label style="display: block; font-weight: 600; margin-bottom: 0.3rem; font-size: 0.9rem;">Puhelin *</label>
+                        <input type="tel" id="puhelin" name="puhelin" required class="form-control" placeholder="040 123 4567">
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 1.2rem;">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.3rem; font-size: 0.9rem;">Sähköposti *</label>
+                    <input type="email" id="email" name="_replyto" required class="form-control" placeholder="sähköposti@esimerkki.fi">
+                </div>
+
+                <div style="margin-bottom: 1.2rem;">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.3rem; font-size: 0.9rem;">Katuosoite *</label>
+                    <input type="text" id="katuosoite" name="katuosoite" required class="form-control" placeholder="Katuosoite 1 A 2">
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.2rem;">
+                    <div>
+                        <label style="display: block; font-weight: 600; margin-bottom: 0.3rem; font-size: 0.9rem;">Postinumero *</label>
+                        <input type="text" id="postinumero" name="postinumero" required class="form-control" placeholder="00100">
+                    </div>
+                    <div>
+                        <label style="display: block; font-weight: 600; margin-bottom: 0.3rem; font-size: 0.9rem;">Postitoimipaikka *</label>
+                        <input type="text" id="postitoimipaikka" name="postitoimipaikka" required class="form-control" placeholder="Helsinki">
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.2rem;">
+                    <div>
+                        <label style="display: block; font-weight: 600; margin-bottom: 0.3rem; font-size: 0.9rem;">Aikuiset *</label>
+                        <select id="aikuiset" name="aikuiset" required class="form-control">
+                            <option value="1">1 aikuinen</option>
+                            <option value="2" selected>2 aikuista</option>
+                            <option value="3">3 aikuista</option>
+                            <option value="4">4 aikuista</option>
+                            <option value="5">5 aikuista</option>
+                            <option value="6">6 aikuista</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label style="display: block; font-weight: 600; margin-bottom: 0.3rem; font-size: 0.9rem;">Lapset (alle 16v)</label>
+                        <select id="lapset" name="lapset" class="form-control">
+                            <option value="0" selected>Ei lapsia</option>
+                            <option value="1">1 lapsi</option>
+                            <option value="2">2 lasta</option>
+                            <option value="3">3 lasta</option>
+                            <option value="4">4 lasta</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- LISÄPALVELUT -->
+                <div style="background: var(--brand-dark); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-light); margin-bottom: 1.2rem;">
+                    <label style="font-weight: 700; display: block; margin-bottom: 0.5rem; font-size: 0.9rem;">Lisäpalvelut</label>
+                    <label style="display: flex; align-items: center; gap: 0.6rem; color: var(--text-muted); cursor: pointer; margin-bottom: 0.4rem; font-size: 0.88rem;">
+                        <input type="checkbox" name="lisapalvelu_siivous" value="Kyllä (115 €)" style="width: 16px; height: 16px;">
+                        <span>Loppusiivous (<strong>115 €</strong>)</span>
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 0.6rem; color: var(--text-muted); cursor: pointer; font-size: 0.88rem;">
+                        <input type="checkbox" name="lisapalvelu_lakanat" value="Kyllä (25 €/hlö)" style="width: 16px; height: 16px;">
+                        <span>Liinavaatteet &amp; pyyhkeet (<strong>25 € / hlö</strong>)</span>
+                    </label>
+                </div>
+
+                <div style="margin-bottom: 1.2rem;">
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.3rem; font-size: 0.9rem;">Lisätiedot / Kysymykset</label>
+                    <textarea id="viesti" name="viesti" rows="3" class="form-control" placeholder="Kirjoita mahdolliset toiveesi tähän..."></textarea>
+                </div>
+
+                <div style="margin-bottom: 1.2rem; color: var(--text-muted); font-size: 0.85rem;">
+                    <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer; margin-bottom: 0.4rem;">
+                        <input type="checkbox" name="varausehdot_hyvaksytty" value="Kyllä" required>
+                        <span>Hyväksyn <a href="varausehdot.html" target="_blank" style="color: var(--brand-gold);">varausehdot</a> *</span>
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                        <input type="checkbox" name="taysi_ikainen" value="Kyllä" required>
+                        <span>Vakuutan olevani täysi-ikäinen *</span>
+                    </label>
+                </div>
+
+                <!-- GOOGLE RECAPTCHA V3 BTN -->
+                <button class="g-recaptcha btn-submit"
+                        data-sitekey="6LcfEnAtAAAAAHG8WU-7ovUMRPgIVP8lG80f7kig" 
+                        data-callback="onBookingSubmit" 
+                        data-action="submit">
+                    Lähetä varauspyyntö
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <a href="/index.html" class="footer-logo-link">
+                <img src="/images/logo_white.png" alt="Ylläsporho" class="footer-logo">
+            </a>
+            <ul class="footer-links">
+                <li><a href="/index.html">Etusivu</a></li>
+                <li><a href="/yllasporho.html">Majoitus</a></li>
+                <li><a href="/mahdollisuudet.html">Mahdollisuudet</a></li>
+                <li><a href="/yhteydenotto.html">Yhteystiedot</a></li>
+            </ul>
+            <p class="footer-copy">© Ylläsporho – Äkäslompolo, Ylläs. Kaikki oikeudet pidätetään.</p>
+        </div>
+    </footer>
+
+<script src="js/testisivu.js" defer></script>
+</body>
+</html>
